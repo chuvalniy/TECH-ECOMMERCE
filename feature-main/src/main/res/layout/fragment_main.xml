@@ -18,6 +18,7 @@
     
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavBar"
+        android:background="@color/grayPrimary"
         android:layout_width="match_parent"
         app:labelVisibilityMode="unlabeled"
         android:layout_height="72dp"/>

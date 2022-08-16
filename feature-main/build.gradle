@@ -34,6 +34,11 @@ android {
 
 dependencies {
     implementation project(path: ':core')
+    implementation project(path: ':feature-cart')
+    implementation project(path: ':feature-details')
+    implementation project(path: ':feature-home')
+    implementation project(path: ':feature-profile')
+    implementation project(path: ':feature-search')
 
     // Navigation Component
     def nav_version = "2.5.1"
