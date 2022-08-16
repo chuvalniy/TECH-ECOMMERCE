@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/grayPrimary"
+    tools:context=".HomeFragment">
+
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:background="@null"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/searchViewHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchViewHome"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewHome"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/bg_search"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnMenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="Search"
+        app:searchIcon="@drawable/ic_search"
+        app:theme="@style/AppSearchView" />
+
+    <TextView
+        android:id="@+id/tvTitleHome"
+        style="@style/Headline4Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Order online\ncollect in store"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@id/btnMenu"
+        app:layout_constraintRight_toRightOf="@id/searchViewHome"
+        app:layout_constraintTop_toBottomOf="@id/searchViewHome" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:clipToPadding="false"
+        android:paddingStart="48dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleHome"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/violet"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/violet"
+        app:tabTextAppearance="@style/TabText">
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        tools:listitem="@layout/home_item" />
+
+    <Button
+        android:id="@+id/btnSeeMore"
+        style="@style/TextButtonHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:contentDescription="see more"
+        app:layout_constraintRight_toLeftOf="@id/ivArrowRight"
+        app:layout_constraintTop_toBottomOf="@id/epoxyRecyclerView"
+        tools:ignore="TextContrastCheck"
+        tools:text="see more" />
+
+    <ImageView
+        android:id="@+id/ivArrowRight"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/btnSeeMore"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnSeeMore"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
