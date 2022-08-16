@@ -35,6 +35,14 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':feature-home')
+    implementation project(path: ':feature-login')
+    implementation project(path: ':core')
+    implementation project(path: ':feature-search')
+    implementation project(path: ':feature-main')
+    implementation project(path: ':feature-profile')
+    implementation project(path: ':feature-cart')
+    implementation project(path: ':feature-details')
 
 
     // Navigation Component

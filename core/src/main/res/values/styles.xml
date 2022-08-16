@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Headline2ExtraBold">
+        <item name="android:textSize">64sp</item>
+        <item name="android:fontFamily">@font/raleway_extrabold</item>
+    </style>
+
+    <style name="Headline4Bold">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+    </style>
+
+    <style name="Headline5SemiBold">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
+    
+    <style name="Headline6Bold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+    </style>
+
+    <style name="Headline6Semibold">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
+
+    <style name="Subtitle1Bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+    </style>
+
+    <style name="Subtitle1Semibold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
+    
+    <style name="Body1Regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+    </style>
+    
+    <style name="Body2Regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+    </style>
+
+</resources>
