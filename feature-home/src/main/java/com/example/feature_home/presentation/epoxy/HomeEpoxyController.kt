@@ -4,13 +4,13 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.bumptech.glide.RequestManager
 import com.example.feature_home.presentation.epoxy.model.ModelHomeItem
 import com.example.feature_home.presentation.epoxy.model.ShimmerHomeItem
-import com.example.feature_home.presentation.model.UiState
+import com.example.feature_home.presentation.model.HomeState
 
 class HomeEpoxyController(
     private val glide: RequestManager
-) : TypedEpoxyController<UiState>() {
+) : TypedEpoxyController<HomeState>() {
 
-    override fun buildModels(state: UiState?) {
+    override fun buildModels(state: HomeState?) {
         if (state?.isLoading == true) {
             repeat(4) { index ->
                 ShimmerHomeItem()

@@ -14,9 +14,9 @@ import com.example.core.navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_home.databinding.FragmentHomeBinding
 import com.example.feature_home.presentation.epoxy.HomeEpoxyController
-import com.example.feature_home.presentation.model.UiEvent
-import com.example.feature_home.presentation.model.UiSideEffect
-import com.example.feature_home.presentation.model.UiState
+import com.example.feature_home.presentation.model.HomeEvent
+import com.example.feature_home.presentation.model.HomeSideEffect
+import com.example.feature_home.presentation.model.HomeState
 import com.example.feature_home.presentation.view_model.HomeViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,7 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val glide by inject<RequestManager>()
 
     private var epoxyController: HomeEpoxyController? = null
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,11 +43,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun processUiEvent() {
         binding.tabLayout.onTabSelected { category ->
-            viewModel.onEvent(UiEvent.CategorySelected(category))
+            viewModel.onEvent(HomeEvent.CategorySelected(category))
         }
 
         binding.searchViewHome.setOnClickListener {
-            viewModel.onEvent(UiEvent.SearchClicked)
+            viewModel.onEvent(HomeEvent.SearchClicked)
         }
     }
 
@@ -67,12 +66,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun observeUiEffect() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.uiEffect.collect { effect ->
+            viewModel.sideEffect.collect { effect ->
                 when (effect) {
-                    is UiSideEffect.ShowSnackbar -> {
+                    is HomeSideEffect.ShowSnackbar -> {
 
                     }
-                    is UiSideEffect.NavigateToSearch -> {
+                    is HomeSideEffect.NavigateToSearch -> {
                         navigate(NavCommand(
                             NavCommands.DeepLink(
                                 url = Uri.parse("myApp://featureSearch"),
@@ -88,13 +87,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.uiState.collect { state ->
+            viewModel.state.collect { state ->
                 processUiState(state)
             }
         }
     }
 
-    private fun processUiState(state: UiState) {
+    private fun processUiState(state: HomeState) {
         epoxyController?.setData(state)
     }
 

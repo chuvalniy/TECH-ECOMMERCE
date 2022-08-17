@@ -1,72 +1,73 @@
 package com.example.feature_home.presentation.view_model
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.ui.EventHandler
+import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
 import com.example.core.utils.Resource
-import com.example.feature_home.domain.use_case.FetchData
-import com.example.feature_home.presentation.model.UiEvent
-import com.example.feature_home.presentation.model.UiSideEffect
-import com.example.feature_home.presentation.model.UiState
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import com.example.feature_home.domain.model.DomainDataSource
+import com.example.feature_home.domain.repository.HomeRepository
+import com.example.feature_home.presentation.model.HomeEvent
+import com.example.feature_home.presentation.model.HomeSideEffect
+import com.example.feature_home.presentation.model.HomeState
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val fetchData: FetchData
-) : ViewModel(), EventHandler<UiEvent> {
-
-    private val _uiState = MutableStateFlow(UiState())
-    val uiState get() = _uiState.asStateFlow()
-
-    private val _uiEffect = Channel<UiSideEffect>()
-    val uiEffect get() = _uiEffect.receiveAsFlow()
+    private val repository: HomeRepository
+) : BaseViewModel<HomeEvent, HomeState, HomeSideEffect>(HomeState()) {
 
     init {
         fetchData()
     }
 
     private fun fetchData(
-        category: String = _uiState.value.category
+        category: String = _state.value.category
     ) {
         viewModelScope.launch {
-            fetchData.execute(category).onEach { result ->
+            repository.fetchData(category).onEach { result ->
                 when (result) {
                     is Resource.Error -> {
-                        showSnackbar(result.error ?: UiText.DynamicString("error")) // todo
+                        processErrorState(result)
                     }
                     is Resource.Loading -> {
-                        _uiState.value = _uiState.value.copy(isLoading = result.isLoading)
+                        _state.value = _state.value.copy(isLoading = result.isLoading)
                     }
                     is Resource.Success -> {
-                        result.data?.let { _uiState.value = _uiState.value.copy(data = it) }
+                        result.data?.let { _state.value = _state.value.copy(data = it) }
                     }
                 }
             }.launchIn(this)
         }
     }
 
-    override fun onEvent(event: UiEvent) {
+    private fun processErrorState(result: Resource<List<DomainDataSource>>) {
+        showSnackbar(
+            result.error
+                ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+        )
+    }
+
+    override fun onEvent(event: HomeEvent) {
         when (event) {
-            is UiEvent.CategorySelected -> categorySelected(category = event.category)
-            is UiEvent.ProductClicked -> TODO()
-            is UiEvent.SearchClicked -> searchClicked()
+            is HomeEvent.CategorySelected -> categorySelected(category = event.category)
+            is HomeEvent.ProductClicked -> TODO()
+            is HomeEvent.SearchClicked -> searchClicked()
         }
     }
 
     private fun searchClicked() = viewModelScope.launch {
-        _uiEffect.send(UiSideEffect.NavigateToSearch)
+        _sideEffect.send(HomeSideEffect.NavigateToSearch)
     }
 
     private fun categorySelected(category: String) {
-        if (category == _uiState.value.category) return
+        if (category == _state.value.category) return
 
-        _uiState.value = _uiState.value.copy(category = category)
+        _state.value = _state.value.copy(category = category)
         fetchData()
     }
 
     private fun showSnackbar(message: UiText) = viewModelScope.launch {
-        _uiEffect.send(UiSideEffect.ShowSnackbar(message))
+        _sideEffect.send(HomeSideEffect.ShowSnackbar(message))
     }
 }

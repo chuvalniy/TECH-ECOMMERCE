@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:background="@color/grayPrimary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SearchFragment">
+    tools:context=".presentation.fragment.SearchFragment">
 
     <ImageButton
         android:id="@+id/btnBack"

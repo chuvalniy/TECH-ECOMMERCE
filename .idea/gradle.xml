@@ -20,7 +20,7 @@
             <option value="$PROJECT_DIR$/feature-main" />
             <option value="$PROJECT_DIR$/feature-profile" />
             <option value="$PROJECT_DIR$/feature-search" />
-            <option value="$PROJECT_DIR$/ui-components" />
+            <option value="$PROJECT_DIR$/ui-component" />
           </set>
         </option>
       </GradleProjectSettings>

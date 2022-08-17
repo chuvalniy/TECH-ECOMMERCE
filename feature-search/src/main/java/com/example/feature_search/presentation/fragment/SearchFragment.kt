@@ -1,10 +1,11 @@
-package com.example.feature_search
+package com.example.feature_search.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.feature_search.R
 
 
 class SearchFragment : Fragment() {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unexpected_error">Unexpected error occurred.</string>
+    <string name="api_error">Can\'t update data. Something went wrong.</string>
+    <string name="internet_connection_error">Can\'t update data. Check your internet connection.</string>
+</resources>

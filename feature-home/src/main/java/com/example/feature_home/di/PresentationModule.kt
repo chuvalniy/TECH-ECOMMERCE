@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val homePresentationModule = module {
     viewModel {
-        HomeViewModel(fetchData = get())
+        HomeViewModel(repository = get())
     }
 }
