@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "596180526849",
+    "project_id": "tech-ecommerce-f3bce",
+    "storage_bucket": "tech-ecommerce-f3bce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596180526849:android:6e4ca9b170cc598a295d00",
+        "android_client_info": {
+          "package_name": "com.example.techecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596180526849-bflhubpumb2sjki2hc71beq7224ckkja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKlwTwDtlgNrJnfB4RjfWPUlQ_chL8Tmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596180526849-bflhubpumb2sjki2hc71beq7224ckkja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

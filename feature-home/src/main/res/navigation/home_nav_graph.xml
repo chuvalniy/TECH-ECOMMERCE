@@ -7,7 +7,11 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.feature_home.HomeFragment"
+        android:name="com.example.feature_home.presentation.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <deepLink
+            android:id="@+id/deepLinkHome"
+            app:uri="myApp://featureHome" />
+    </fragment>
 </navigation>
