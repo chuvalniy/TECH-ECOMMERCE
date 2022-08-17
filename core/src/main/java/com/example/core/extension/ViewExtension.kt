@@ -17,10 +17,10 @@ inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit)
 }
 
 
-inline fun TabLayout.onTabSelected(crossinline listener: (Int) -> Unit) {
+inline fun TabLayout.onTabSelected(crossinline listener: (String) -> Unit) {
     this.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab?) {
-            tab?.let { listener.invoke(it.position) }
+            tab?.let { listener.invoke(it.text.toString()) }
         }
 
         override fun onTabUnselected(tab: TabLayout.Tab?) {}

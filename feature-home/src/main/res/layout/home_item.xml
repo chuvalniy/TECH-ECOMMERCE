@@ -2,26 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="220dp"
-    android:layout_height="315dp">
+    android:layout_width="252dp"
+    android:layout_height="352dp"
+    android:clipToPadding="false"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    tools:background="@color/grayPrimary">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cvProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@color/violet" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="270dp"
         app:cardCornerRadius="20dp"
@@ -40,22 +30,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/tvInfo"
-                app:layout_constraintLeft_toLeftOf="@id/tvInfo"
-                app:layout_constraintRight_toRightOf="@id/tvInfo"
+                app:layout_constraintBottom_toTopOf="@id/tvBody"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 tools:text="Apple Watch" />
 
             <TextView
-                android:id="@+id/tvInfo"
+                android:id="@+id/tvBody"
                 style="@style/Subtitle1Semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 android:textColor="@color/graySecondary"
                 app:layout_constraintBottom_toTopOf="@id/tvPrice"
-                app:layout_constraintLeft_toLeftOf="@id/tvPrice"
-                app:layout_constraintRight_toRightOf="@id/tvPrice"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 tools:text="Series 6 . Red" />
 
             <TextView
@@ -65,14 +54,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:textColor="@color/violet"
-                app:="@id/tvInfo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:text="$ 359" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="1000dp"
+        app:cardElevation="7dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@color/violet"/>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

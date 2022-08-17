@@ -19,26 +19,26 @@ class HomeRepositoryImpl(
 
     private val dao = db.dao
 
-    override fun fetchCache(): Flow<Resource<List<DomainDataSource>>> = flow {
+    override fun fetchData(category: String): Flow<Resource<List<DomainDataSource>>> = flow {
         emit(Resource.Loading(isLoading = true))
 
-        val cache = dao.fetchCache()
+        val cache = dao.fetchCache(category)
         emit(Resource.Success(cache.map { it.toDomainDataSource() }))
 
         val response = try {
             api.fetchCloudData()
         } catch (e: Exception) { // Todo
-            emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage)))
+            emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage ?: "")))
             null
         }
 
         response?.let { data ->
             db.withTransaction {
-                dao.clearCache()
+                dao.clearCache(category)
                 dao.insertCache(data.map { it.toCacheDataSource() })
             }
 
-            emit(Resource.Success(dao.fetchCache().map { it.toDomainDataSource() }))
+            emit(Resource.Success(dao.fetchCache(category).map { it.toDomainDataSource() }))
             emit(Resource.Loading(isLoading = false))
         }
     }

@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
 
-    fun fetchCache(): Flow<Resource<List<DomainDataSource>>>
+    fun fetchData(category: String): Flow<Resource<List<DomainDataSource>>>
 }

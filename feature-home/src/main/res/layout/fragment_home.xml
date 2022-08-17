@@ -55,23 +55,27 @@
         android:layout_marginTop="48dp"
         android:clipToPadding="false"
         android:paddingStart="48dp"
+        app:tabTextColor="@color/grayFourth"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitleHome"
         app:tabGravity="fill"
+        android:backgroundTint="@color/grayPrimary"
         app:tabIndicatorColor="@color/violet"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/violet"
-        app:tabTextAppearance="@style/TabText">
-
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextAppearance="@style/TabText"/>
 
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"
         android:layout_width="match_parent"
+        android:paddingLeft="32dp"
+        android:overScrollMode="never"
+        android:paddingRight="32dp"
+        android:clipToPadding="false"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"

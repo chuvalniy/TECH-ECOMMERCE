@@ -12,6 +12,9 @@ data class ModelHomeItem(
 ) : ViewBindingKotlinModel<HomeItemBinding>(R.layout.home_item) {
 
     override fun HomeItemBinding.bind() {
-        TODO("Not yet implemented")
+        glide.load(item.image).into(ivProduct)
+        tvTitle.text = item.model
+        tvBody.text = item.model
+        tvPrice.text = root.context.getString(com.example.core.R.string.formatted_price, item.price)
     }
 }

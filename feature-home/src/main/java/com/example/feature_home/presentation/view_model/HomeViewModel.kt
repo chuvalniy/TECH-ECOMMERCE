@@ -31,7 +31,7 @@ class HomeViewModel(
         category: String = _uiState.value.category
     ) {
         viewModelScope.launch {
-            fetchData.execute().onEach { result ->
+            fetchData.execute(category).onEach { result ->
                 when (result) {
                     is Resource.Error -> {
                         showSnackbar(result.error ?: UiText.DynamicString("error")) // todo
@@ -51,8 +51,12 @@ class HomeViewModel(
         when (event) {
             is UiEvent.CategorySelected -> categorySelected(category = event.category)
             is UiEvent.ProductClicked -> TODO()
-            is UiEvent.SearchClicked -> TODO()
+            is UiEvent.SearchClicked -> searchClicked()
         }
+    }
+
+    private fun searchClicked() = viewModelScope.launch {
+        _uiEffect.send(UiSideEffect.NavigateToSearch)
     }
 
     private fun categorySelected(category: String) {

@@ -6,5 +6,5 @@ class FetchData(
     private val repository: HomeRepository
 ) {
 
-    fun execute() = repository.fetchCache()
+    fun execute(category: String) = repository.fetchData(category)
 }

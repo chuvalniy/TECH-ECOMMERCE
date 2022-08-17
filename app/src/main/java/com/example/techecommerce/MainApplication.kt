@@ -14,6 +14,7 @@ class MainApplication : Application() {
         startKoin {
             androidContext(this@MainApplication)
             modules(
+                mainModule,
                 homeDataModule,
                 homeDomainModule,
                 homePresentationModule
