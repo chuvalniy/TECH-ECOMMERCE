@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/feature-cart" />
             <option value="$PROJECT_DIR$/feature-details" />
+            <option value="$PROJECT_DIR$/feature-favorites" />
             <option value="$PROJECT_DIR$/feature-home" />
             <option value="$PROJECT_DIR$/feature-login" />
             <option value="$PROJECT_DIR$/feature-main" />
