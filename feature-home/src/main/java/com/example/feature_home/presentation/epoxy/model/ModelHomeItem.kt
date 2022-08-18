@@ -15,6 +15,6 @@ data class ModelHomeItem(
         glide.load(item.image).into(ivProduct)
         tvTitle.text = item.model
         tvBody.text = item.model
-        tvPrice.text = root.context.getString(com.example.core.R.string.formatted_price, item.price)
+        tvPrice.text = root.context.getString(com.example.ui_component.R.string.formatted_price, item.price)
     }
 }

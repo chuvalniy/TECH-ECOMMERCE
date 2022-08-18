@@ -1,4 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_online_ncollect_in_store">Order online\ncollect in store</string>
+    <string name="app_menu">App menu</string>
 </resources>

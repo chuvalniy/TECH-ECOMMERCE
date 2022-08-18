@@ -9,7 +9,7 @@ import com.example.feature_search.data.local.model.CacheDataSource
 @Dao
 interface SearchDao {
 
-    @Query("SELECT * FROM ${SearchDatabase.DATABASE_NAME} WHERE modelFull = :searchQuery")
+    @Query("SELECT * FROM ${SearchDatabase.DATABASE_NAME} WHERE modelFull LIKE '%' || :searchQuery || '%'")
     suspend fun fetchCache(searchQuery: String): List<CacheDataSource>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

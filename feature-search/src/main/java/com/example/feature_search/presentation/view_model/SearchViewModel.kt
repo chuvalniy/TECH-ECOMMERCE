@@ -57,7 +57,7 @@ class SearchViewModel(
 
     override fun onEvent(event: SearchEvent) {
         when (event) {
-            is SearchEvent.BackButtonClicked -> TODO()
+            is SearchEvent.BackButtonClicked -> backButtonClicked()
             is SearchEvent.ProductClicked -> TODO()
             is SearchEvent.QueryChanged -> queryChanged(event.searchQuery)
         }
@@ -71,8 +71,12 @@ class SearchViewModel(
         searchJob?.cancel()
 
         searchJob = viewModelScope.launch {
-            delay(300)
+            delay(500)
             fetchData()
         }
+    }
+
+    private fun backButtonClicked() = viewModelScope.launch {
+        _sideEffect.send(SearchSideEffect.NavigateBack)
     }
 }

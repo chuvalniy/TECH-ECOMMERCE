@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_view_product_image_size">110dp</dimen>
+    <dimen name="search_product_item_width">188dp</dimen>
+    <dimen name="search_product_item_height">284dp</dimen>
+    <dimen name="search_product_item_content_height">212dp</dimen>
+</resources>

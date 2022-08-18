@@ -10,7 +10,6 @@ val mainModule = module {
     single {
         Glide.with(androidContext()).setDefaultRequestOptions(
             RequestOptions()
-                .circleCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
         )
     }

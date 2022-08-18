@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/layoutSearchItem"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="@dimen/search_product_item_width"
+    android:layout_height="@dimen/search_product_item_height"
+    android:clipToPadding="false">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="156dp"
-        android:layout_height="252dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_search_item"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_product_item_content_height"
+        app:cardCornerRadius="@dimen/corner_radius_small"
+        app:cardElevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivProduct"
-        android:layout_width="120dp"
-        android:layout_height="130dp"
-        android:src="@color/grayFourth"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/Subtitle1Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_space_small"
+                android:textColor="@color/violet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="From $569" />
 
-    <TextView
-        android:id="@+id/tvBrand"
-        style="@style/Headline5SemiBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/ivProduct"
-        app:layout_constraintStart_toStartOf="@+id/ivProduct"
-        app:layout_constraintTop_toBottomOf="@+id/ivProduct"
-        tools:text="Apple" />
+            <TextView
+                android:id="@+id/tvModel"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_space_small"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/tvPrice"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="iPad Air" />
 
-    <TextView
-        android:id="@+id/tvModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="iPad Air"
-        app:layout_constraintLeft_toLeftOf="@id/tvBrand"
-        app:layout_constraintRight_toRightOf="@id/tvBrand"
-        app:layout_constraintTop_toBottomOf="@id/tvBrand"
-        android:textColor="@color/black"
-        style="@style/Headline5SemiBold"/>
+            <TextView
+                android:id="@+id/tvBrand"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/tvModel"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Apple" />
 
-    <TextView
-        android:id="@+id/tvPrice"
-        style="@style/Subtitle1Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="From $579"
-        android:textColor="@color/violet"
-        app:layout_constraintLeft_toLeftOf="@id/tvModel"
-        app:layout_constraintRight_toRightOf="@id/tvModel"
-        app:layout_constraintTop_toBottomOf="@id/tvModel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/card_view_product_image_size"
+        android:layout_height="@dimen/card_view_product_image_size"
+        app:cardCornerRadius="@dimen/corner_radius_small"
+        app:cardElevation="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/product_image" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
