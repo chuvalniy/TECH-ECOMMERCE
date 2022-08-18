@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvSearchItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Headline5SemiBold"
+        tools:text="Found 6 result"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"/>
+</LinearLayout>

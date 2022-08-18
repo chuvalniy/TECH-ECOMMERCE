@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/grayPrimary"
+    tools:context=".presentation.fragment.SearchFragment">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_space_medium"
+        android:background="@null"
+        android:contentDescription="@string/go_back"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/searchView"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/search_view_size"
+        android:layout_marginLeft="@dimen/layout_space_small"
+        android:layout_marginTop="@dimen/layout_space_big"
+        android:layout_marginRight="@dimen/layout_space_medium"
+        android:background="@drawable/bg_search"
+        app:iconifiedByDefault="false"
+        app:layout_constraintLeft_toRightOf="@id/btnBack"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="Search"
+        app:searchIcon="@drawable/ic_search"
+        app:theme="@style/AppSearchView" />
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/layout_space_medium"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:spanCount="2"
+        tools:listitem="@layout/search_item" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutSearchError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+
+        <ImageView
+            android:id="@+id/ivSearchError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/search_error"
+            android:src="@drawable/ic_saly_17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tvErrorTitle"
+            style="@style/Headline5SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_not_found"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivSearchError" />
+
+        <TextView
+            android:id="@+id/tvErrorBody"
+            style="@style/Body1Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_space_big"
+            android:layout_marginTop="@dimen/layout_space_small"
+            android:layout_marginRight="@dimen/layout_space_big"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.4"
+            android:text="@string/try_a_more_generic_search_term_or_try_looking_for_alternative_products"
+            android:textColor="@color/graySecondary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvErrorTitle"
+            tools:ignore="TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

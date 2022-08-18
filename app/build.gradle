@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -35,12 +37,35 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':feature-home')
+    implementation project(path: ':feature-login')
+    implementation project(path: ':core')
+    implementation project(path: ':feature-search')
+    implementation project(path: ':feature-main')
+    implementation project(path: ':feature-profile')
+    implementation project(path: ':feature-cart')
+    implementation project(path: ':feature-details')
 
+    // Koin
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
+    implementation project(path: ':feature-favorites')
+    implementation project(path: ':ui-component')
 
     // Navigation Component
     def nav_version = "2.5.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    // Firebase Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-database:20.0.5'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'

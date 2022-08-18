@@ -1,0 +1,7 @@
+<resources>
+    <string name="item_not_found">Item not found</string>
+    <string name="try_a_more_generic_search_term_or_try_looking_for_alternative_products">Try a more generic search term or try looking for alternative products</string>
+    <string name="search_error">Search error</string>
+
+    <string name="from_price">From $%1$s</string>
+</resources>

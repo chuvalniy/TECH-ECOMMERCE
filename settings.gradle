@@ -15,3 +15,12 @@ dependencyResolutionManagement {
 rootProject.name = "TechEcommerce"
 include ':app'
 include ':core'
+include ':feature-home'
+include ':feature-main'
+include ':feature-details'
+include ':feature-search'
+include ':feature-login'
+include ':feature-profile'
+include ':feature-cart'
+include ':feature-favorites'
+include ':ui-component'

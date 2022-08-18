@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/home_product_item_width"
+    android:layout_height="@dimen/home_product_item_height"
+    android:clipToPadding="false"
+    android:paddingStart="@dimen/layout_space_small"
+    android:paddingTop="@dimen/layout_space_small"
+    android:paddingEnd="@dimen/layout_space_small"
+    android:paddingBottom="@dimen/layout_space_small"
+    tools:background="@color/grayPrimary">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_product_item_content_height"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_space_tiny"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/tvBody"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Apple Watch" />
+
+            <TextView
+                android:id="@+id/tvBody"
+                style="@style/Subtitle1Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_space_small"
+                android:textColor="@color/graySecondary"
+                app:layout_constraintBottom_toTopOf="@id/tvPrice"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Series 6 . Red" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/Subtitle1Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_space_medium"
+                android:textColor="@color/violet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="$ 359" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/home_product_image_size"
+        android:layout_height="@dimen/home_product_image_size"
+        app:cardCornerRadius="1000dp"
+        app:cardElevation="7dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProduct"
+            android:contentDescription="@string/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@color/violet"/>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
