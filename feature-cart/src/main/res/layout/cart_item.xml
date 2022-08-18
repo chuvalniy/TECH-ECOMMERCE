@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingLeft="@dimen/layout_space_big"
-    android:paddingTop="@dimen/layout_space_small"
-    android:paddingRight="@dimen/layout_space_big"
+    android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:layout_height="match_parent">
+    android:paddingLeft="@dimen/layout_space_medium"
+    android:paddingTop="@dimen/layout_space_tiny"
+    android:paddingBottom="@dimen/layout_space_tiny"
+    android:paddingRight="@dimen/layout_space_medium">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvCartItem"
-        app:cardCornerRadius="@dimen/corner_radius_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="1dp"
->
+        app:cardCornerRadius="@dimen/corner_radius_small"
+        app:cardElevation="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,40 +30,47 @@
                 android:layout_marginBottom="@dimen/layout_space_small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvModel"
                 style="@style/Subtitle1Semibold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:layout_width="0dp"
                 android:layout_marginStart="@dimen/layout_space_tiny"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/corner_radius_small"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/tvPrice"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/ivProduct"
+                app:layout_constraintStart_toEndOf="@+id/ivProduct"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="2020 Apple iPad Air 10.9" />
 
             <TextView
                 android:id="@+id/tvPrice"
                 style="@style/Subtitle1Semibold"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/violet"
                 app:layout_constraintBottom_toTopOf="@+id/tvQuantity"
+                app:layout_constraintEnd_toEndOf="@+id/tvModel"
                 app:layout_constraintLeft_toLeftOf="@id/tvModel"
+                app:layout_constraintStart_toStartOf="@+id/tvModel"
                 app:layout_constraintTop_toBottomOf="@+id/tvModel"
                 tools:text="$375.00" />
 
             <TextView
                 android:id="@+id/tvQuantity"
                 style="@style/Body2Regular"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Quantity"
+                android:text="@string/quantity"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tvPrice"
                 app:layout_constraintLeft_toLeftOf="@id/tvPrice"
+                app:layout_constraintStart_toStartOf="@+id/tvPrice"
                 app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 
 

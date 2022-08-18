@@ -2,4 +2,6 @@
 
     <string name="cart">Cart</string>
     <string name="delete_cart">Delete cart</string>
+    <string name="formatted_price_float">$%1$s.00</string>
+    <string name="quantity">Quantity</string>
 </resources>
