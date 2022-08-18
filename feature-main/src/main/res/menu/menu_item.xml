@@ -17,7 +17,7 @@
         android:title="Profile" />
 
     <item
-        android:id="@+id/nav_graph_cart"
+        android:id="@+id/cart_nav_graph"
         android:icon="@drawable/ic_cart"
         android:title="Cart" />
 </menu>

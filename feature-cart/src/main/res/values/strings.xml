@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="cart">Cart</string>
+    <string name="delete_cart">Delete cart</string>
+</resources>
