@@ -8,4 +8,5 @@
     <include app:graph="@navigation/favorites_nav_graph" />
     <include app:graph="@navigation/search_nav_graph" />
     <include app:graph="@navigation/cart_nav_graph" />
+    <include app:graph="@navigation/profile_nav_graph" />
 </navigation>

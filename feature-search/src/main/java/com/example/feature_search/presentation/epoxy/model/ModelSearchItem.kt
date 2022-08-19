@@ -24,16 +24,16 @@ data class ModelSearchItem(
     private fun SearchItemBinding.setupPadding() {
         when (index % 2) {
             0 -> layoutSearchItem.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_medium),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
             )
             1 -> layoutSearchItem.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_medium),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
             )
         }
     }

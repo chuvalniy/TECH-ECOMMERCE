@@ -1,0 +1,13 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_profile">My profile</string>
+    <string name="user_avatar">User avatar</string>
+    <string name="location">Location</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="shopping_address">Shopping address</string>
+    <string name="order_history">Order history</string>
+    <string name="cards">Cards</string>
+    <string name="notifications">Notifications</string>
+    <string name="man_with_a_laptop">Man with a laptop</string>
+</resources>

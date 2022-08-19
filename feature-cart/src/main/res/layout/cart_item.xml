@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:paddingLeft="@dimen/layout_space_medium"
-    android:paddingTop="@dimen/layout_space_tiny"
-    android:paddingBottom="@dimen/layout_space_tiny"
-    android:paddingRight="@dimen/layout_space_medium">
+    android:paddingLeft="@dimen/layout_space_2"
+    android:paddingTop="@dimen/layout_space_5"
+    android:paddingBottom="@dimen/layout_space_5"
+    android:paddingRight="@dimen/layout_space_2">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvCartItem"
@@ -25,9 +25,9 @@
                 android:id="@+id/ivProduct"
                 android:layout_width="80dp"
                 android:layout_height="105dp"
-                android:layout_marginLeft="@dimen/layout_space_small"
-                android:layout_marginTop="@dimen/layout_space_small"
-                android:layout_marginBottom="@dimen/layout_space_small"
+                android:layout_marginLeft="@dimen/layout_space_4"
+                android:layout_marginTop="@dimen/layout_space_4"
+                android:layout_marginBottom="@dimen/layout_space_4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,7 @@
                 android:id="@+id/tvModel"
                 style="@style/Subtitle1Semibold"
                 android:layout_width="0dp"
-                android:layout_marginStart="@dimen/layout_space_tiny"
+                android:layout_marginStart="@dimen/layout_space_5"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/corner_radius_small"
                 android:textColor="@color/black"

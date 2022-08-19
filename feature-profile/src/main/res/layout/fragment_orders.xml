@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/grayPrimary"
-    tools:context=".FavoritesFragment">
+    tools:context=".OrdersFragment">
 
     <ImageButton
         android:id="@+id/btnGoBack"
@@ -13,18 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/layout_space_2"
         android:background="@null"
+        android:contentDescription="@string/go_back"
         android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/tvFavorites"
+        app:layout_constraintBottom_toBottomOf="@id/tvOrderHistory"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvFavorites" />
+        app:layout_constraintTop_toTopOf="@id/tvOrderHistory"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/tvFavorites"
+        android:id="@+id/tvOrderHistory"
         style="@style/Headline6Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_space_1"
-        android:text="@string/favorites"
+        android:text="@string/order_history"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,8 +35,8 @@
         android:id="@+id/ivSaly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_1"
-        android:src="@drawable/ic_saly_4"
+        android:contentDescription="@string/man_with_a_laptop"
+        android:src="@drawable/ic_saly_11"
         app:layout_constraintBottom_toTopOf="@+id/tvTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_space_3"
-        android:text="@string/no_favorites_yet"
+        android:text="No history yet"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/tvBody"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -58,7 +59,7 @@
     <TextView
         android:id="@+id/tvBody"
         style="@style/Body1Regular"
-        android:layout_width="0dp"
+        android:layout_width="217dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_space_3"
         android:gravity="center"
@@ -68,6 +69,7 @@
         app:layout_constraintLeft_toLeftOf="@id/tvTitle"
         app:layout_constraintRight_toRightOf="@id/tvTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvStartOrder"
@@ -90,7 +92,7 @@
             android:layout_gravity="center"
             android:text="@string/start_ordering"
             android:textColor="@color/white" />
-
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

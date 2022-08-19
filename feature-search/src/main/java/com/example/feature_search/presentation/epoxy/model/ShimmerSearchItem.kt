@@ -2,7 +2,6 @@ package com.example.feature_search.presentation.epoxy.model
 
 import com.example.core.helpers.ViewBindingKotlinModel
 import com.example.feature_search.R
-import com.example.feature_search.databinding.SearchItemBinding
 import com.example.feature_search.databinding.ShimmerSearchItemBinding
 
 data class ShimmerSearchItem(
@@ -22,16 +21,16 @@ data class ShimmerSearchItem(
     private fun ShimmerSearchItemBinding.setupPadding() {
         when (index % 2) {
             0 -> root.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_medium),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
             )
             1 -> root.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_medium),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_small)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
             )
         }
     }

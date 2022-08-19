@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/grayPrimary"
+    tools:context=".ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnGoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_space_2"
+            android:background="@null"
+            android:contentDescription="@string/go_back"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/tvHelper"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHelper"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/tvHelper"
+            style="@style/Headline6Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_1"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMyProfile"
+            style="@style/Headline4Bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_space_2"
+            android:layout_marginTop="@dimen/layout_space_2"
+            android:layout_marginRight="@dimen/layout_space_2"
+            android:text="@string/my_profile"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHelper" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAvatar"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_marginTop="@dimen/layout_space_4"
+            android:outlineProvider="none"
+            app:cardCornerRadius="1000dp"
+            app:cardElevation="@dimen/card_elevation_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMyProfile">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="@dimen/user_avatar_size"
+                android:layout_height="@dimen/user_avatar_size"
+                android:contentDescription="@string/user_avatar"
+                android:src="@color/violet" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvUserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="167dp"
+            android:layout_marginStart="@dimen/layout_space_2"
+            android:layout_marginTop="@dimen/layout_space_3"
+            android:layout_marginEnd="@dimen/layout_space_2"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cvAvatar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    style="@style/Headline6Semibold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_3"
+                    android:layout_marginEnd="@dimen/layout_space_3"
+                    android:layout_marginBottom="@dimen/layout_space_5"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Rosina Doe" />
+
+                <ImageView
+                    android:id="@+id/ivLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_space_3"
+                    android:contentDescription="@string/location"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvAddress" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    style="@style/Body1Regular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_4"
+                    android:layout_marginTop="@dimen/layout_space_5"
+                    android:layout_marginEnd="@dimen/layout_space_3"
+                    android:text="Address: 43 Oxford Road\nM13 4GR\nManchester, UK"
+                    android:textColor="@color/black"
+                    app:layout_constraintLeft_toRightOf="@id/ivLocation"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvEditProfile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cv_profile_action_height"
+            android:layout_marginTop="@dimen/layout_space_3"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintLeft_toLeftOf="@id/cvUserInfo"
+            app:layout_constraintRight_toRightOf="@id/cvUserInfo"
+            app:layout_constraintTop_toBottomOf="@id/cvUserInfo">
+
+            <TextView
+                android:id="@+id/tvEditProfile"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/layout_space_3"
+                android:text="@string/edit_profile"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/layout_space_3"
+                android:background="@null"
+                android:contentDescription="@string/edit_profile"
+                android:src="@drawable/ic_chevron_left"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvShoppingAddress"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cv_profile_action_height"
+            android:layout_marginTop="@dimen/layout_space_3"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintLeft_toLeftOf="@id/cvEditProfile"
+            app:layout_constraintRight_toRightOf="@id/cvEditProfile"
+            app:layout_constraintTop_toBottomOf="@id/cvEditProfile">
+
+            <TextView
+                android:id="@+id/tvShoppingAddress"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/layout_space_3"
+                android:text="@string/shopping_address"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/btnShoppingAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/layout_space_3"
+                android:background="@null"
+                android:contentDescription="@string/shopping_address"
+                android:src="@drawable/ic_chevron_left"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvOrderHistory"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cv_profile_action_height"
+            android:layout_marginTop="@dimen/layout_space_3"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintLeft_toLeftOf="@id/cvEditProfile"
+            app:layout_constraintRight_toRightOf="@id/cvEditProfile"
+            app:layout_constraintTop_toBottomOf="@id/cvShoppingAddress">
+
+            <TextView
+                android:id="@+id/tvOrderHistory"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="@dimen/layout_space_3"
+                android:text="@string/order_history"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/btnOrderHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginRight="@dimen/layout_space_3"
+                android:background="@null"
+                android:contentDescription="@string/order_history"
+                android:src="@drawable/ic_chevron_left"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCards"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cv_profile_action_height"
+            android:layout_marginTop="@dimen/layout_space_3"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintLeft_toLeftOf="@id/cvOrderHistory"
+            app:layout_constraintRight_toRightOf="@id/cvOrderHistory"
+            app:layout_constraintTop_toBottomOf="@id/cvOrderHistory">
+
+            <TextView
+                android:id="@+id/tvCards"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="@dimen/layout_space_3"
+                android:text="@string/cards"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/btnCards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/layout_space_3"
+                android:background="@null"
+                android:contentDescription="@string/cards"
+                android:src="@drawable/ic_chevron_left"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvNotifications"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cv_profile_action_height"
+            android:layout_marginTop="@dimen/layout_space_3"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation_2"
+            app:layout_constraintLeft_toLeftOf="@id/cvCards"
+            app:layout_constraintRight_toRightOf="@id/cvCards"
+            app:layout_constraintTop_toBottomOf="@id/cvCards">
+
+            <TextView
+                android:id="@+id/tvNotification"
+                style="@style/Headline6Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="@dimen/layout_space_3"
+                android:text="@string/notifications"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/btnNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/layout_space_3"
+                android:background="@null"
+                android:contentDescription="@string/notifications"
+                android:src="@drawable/ic_chevron_left"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_space_4"
+            android:layout_marginTop="@dimen/layout_space_5"
+            app:layout_constraintTop_toBottomOf="@id/cvNotifications" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
