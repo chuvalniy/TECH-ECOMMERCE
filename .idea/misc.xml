@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/activity_main.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/fragment_splash.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/bg_search.xml" value="0.121" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/bg_search_item.xml" value="0.1895" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/ic_arrow_left.xml" value="0.1895" />
@@ -17,12 +18,16 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/ic_search.xml" value="0.121" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/cart_item.xml" value="0.4" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_cart.xml" value="0.2" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_checkout.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_payment_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/shimmer_cart_item.xml" value="0.21105072463768115" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-details/src/main/res/layout/fragment_details.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-details/src/main/res/layout/fragment_details2.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-favorites/src/main/res/layout/fragment_favorites.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-home/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-home/src/main/res/layout/home_item.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-home/src/main/res/layout/shimmer_home_item.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-login/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-main/src/main/res/layout/fragment_main.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-main/src/main/res/menu/menu_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-profile/src/main/res/layout/fragment_orders.xml" value="0.21105072463768115" />
@@ -33,9 +38,11 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-search/src/main/res/layout/search_item.xml" value="0.536" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-search/src/main/res/layout/shimmer_search_item.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/bg_button_violet.xml" value="0.1245" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/bg_button_white.xml" value="0.159" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/bg_search.xml" value="0.138" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/bg_search_item.xml" value="0.138" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/ic_arrow_left.xml" value="0.138" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/drawable/ic_arrow_right.xml" value="0.154" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/ui-component/src/main/res/layout/blue_button.xml" value="0.21105072463768115" />
       </map>
     </option>

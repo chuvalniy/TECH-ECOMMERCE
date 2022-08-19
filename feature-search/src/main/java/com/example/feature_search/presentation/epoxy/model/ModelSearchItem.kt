@@ -24,16 +24,16 @@ data class ModelSearchItem(
     private fun SearchItemBinding.setupPadding() {
         when (index % 2) {
             0 -> layoutSearchItem.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
             )
             1 -> layoutSearchItem.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
             )
         }
     }

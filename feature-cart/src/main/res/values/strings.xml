@@ -4,4 +4,7 @@
     <string name="delete_cart">Delete cart</string>
     <string name="formatted_price_float">$%1$s.00</string>
     <string name="quantity">Quantity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="checkout">Checkout</string>
 </resources>

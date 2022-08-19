@@ -21,16 +21,16 @@ data class ShimmerSearchItem(
     private fun ShimmerSearchItemBinding.setupPadding() {
         when (index % 2) {
             0 -> root.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
             )
             1 -> root.setPadding(
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_2),
-                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_4)
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
+                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
             )
         }
     }
