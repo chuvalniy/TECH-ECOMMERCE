@@ -7,4 +7,5 @@ sealed class CartSideEffect : UiSideEffect {
     data class ShowSnackbar(val message: UiText) : CartSideEffect()
     object NavigateBack : CartSideEffect()
     object NavigateToCheckout : CartSideEffect()
+    object NavigateToPayment : CartSideEffect()
 }

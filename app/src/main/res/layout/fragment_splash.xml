@@ -8,7 +8,6 @@
     tools:context=".SplashFragment">
 
     <TextView
-        android:layout_marginTop="@dimen/layout_space_32"
         android:id="@+id/tvHeader"
         style="@style/Headline2ExtraBold"
         android:layout_width="0dp"
@@ -26,7 +25,7 @@
         android:id="@+id/ivSaly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_saly_19"
+        android:src="@drawable/saly_19"
         app:layout_constraintBottom_toTopOf="@+id/cvGetStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -46,7 +45,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ivSaly" />
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_marginTop="@dimen/layout_space_32"
         android:id="@+id/cvGetStarted"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height_70"
@@ -57,7 +55,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/layout_space_48"
         app:layout_constraintTop_toBottomOf="@+id/ivSaly">
 
         <TextView

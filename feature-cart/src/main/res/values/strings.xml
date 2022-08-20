@@ -7,4 +7,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="checkout">Checkout</string>
+    <string name="payment_method">Payment method</string>
+    <string name="shipping_information">Shipping information</string>
+    <string name="change">change</string>
+    <string name="total">Total</string>
+    <string name="confirm_and_pay">Confirm and pay</string>
+    <string name="pay_now">Pay now</string>
+    <string name="my_credit_card">My credit card</string>
 </resources>

@@ -67,7 +67,6 @@
         app:tabSelectedTextColor="@color/violet"
         app:tabTextAppearance="@style/TabText"/>
 
-
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"
         android:layout_width="match_parent"

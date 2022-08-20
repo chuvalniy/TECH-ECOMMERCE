@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/man_with_a_laptop"
-        android:src="@drawable/ic_saly_11"
+        android:src="@drawable/saly_11"
         app:layout_constraintBottom_toTopOf="@+id/tvTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

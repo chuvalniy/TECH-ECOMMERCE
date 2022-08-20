@@ -11,6 +11,11 @@
         <item name="android:fontFamily">@font/raleway_bold</item>
     </style>
 
+    <style name="Headline4Regular">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+    </style>
+
     <style name="Headline5SemiBold">
         <item name="android:textSize">28sp</item>
         <item name="android:fontFamily">@font/raleway_semibold</item>
@@ -33,6 +38,11 @@
 
     <style name="Subtitle1Semibold">
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
+
+    <style name="Subtitle2Semibold">
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
     
@@ -84,4 +94,11 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_rounded_bottom_dialog</item>
+    </style>
 </resources>

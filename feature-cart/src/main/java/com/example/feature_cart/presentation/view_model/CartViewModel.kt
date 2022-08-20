@@ -44,11 +44,20 @@ class CartViewModel(
     override fun onEvent(event: CartEvent) {
         when (event) {
             CartEvent.BackButtonClicked -> backButtonClicked()
-            CartEvent.CheckoutButtonClicked -> TODO()
+            CartEvent.CheckoutButtonClicked -> checkoutButtonClicked()
             CartEvent.ClearCartButtonClicked -> TODO()
             CartEvent.DecreaseQuantityButtonClicked -> TODO()
             CartEvent.IncreaseQuantityButtonClicked -> TODO()
+            CartEvent.ConfirmAndPayButtonClicked -> confirmAndPayButtonClicked()
         }
+    }
+
+    private fun confirmAndPayButtonClicked() = viewModelScope.launch {
+        _sideEffect.send(CartSideEffect.NavigateToPayment)
+    }
+
+    private fun checkoutButtonClicked() = viewModelScope.launch {
+        _sideEffect.send(CartSideEffect.NavigateToCheckout)
     }
 
     private fun backButtonClicked() = viewModelScope.launch {

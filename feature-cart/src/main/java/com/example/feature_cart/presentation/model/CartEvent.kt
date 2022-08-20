@@ -6,6 +6,7 @@ sealed class CartEvent : UiEvent {
     object BackButtonClicked : CartEvent()
     object CheckoutButtonClicked : CartEvent()
     object ClearCartButtonClicked : CartEvent()
+    object ConfirmAndPayButtonClicked : CartEvent()
     object IncreaseQuantityButtonClicked : CartEvent()
     object DecreaseQuantityButtonClicked : CartEvent()
 }
