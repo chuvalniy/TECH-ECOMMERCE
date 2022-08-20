@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:overScrollMode="never"
     android:background="@color/violet"
     android:fillViewport="true"
     tools:context=".LoginFragment">
@@ -122,6 +123,7 @@
                     android:backgroundTint="@color/grayTetriary"
                     android:hint="example@example.com"
                     android:paddingBottom="@dimen/layout_space_16"
+                    android:inputType="textEmailAddress"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivMessage" />
@@ -155,6 +157,7 @@
                     android:layout_marginHorizontal="@dimen/layout_space_48"
                     android:backgroundTint="@color/grayTetriary"
                     android:hint="* * * * * * * *"
+                    android:inputType="textPassword"
                     android:paddingBottom="@dimen/layout_space_16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

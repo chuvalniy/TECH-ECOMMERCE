@@ -30,4 +30,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btnFavorites"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_favorite"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvHelper"
+        app:layout_constraintBottom_toBottomOf="@id/tvHelper"
+        android:layout_marginEnd="@dimen/layout_space_32"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/tvHelper"
+        android:layout_height="240dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

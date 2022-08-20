@@ -12,10 +12,11 @@
     tools:background="@color/grayPrimary">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/home_product_item_content_height"
-        app:cardElevation="@dimen/card_elevation_1"
         app:cardCornerRadius="@dimen/corner_radius_20"
+        app:cardElevation="@dimen/card_elevation_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

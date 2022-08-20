@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Headline2ExtraBold">
-        <item name="android:textSize">64sp</item>
+        <item name="android:textSize">58sp</item>
         <item name="android:fontFamily">@font/raleway_extrabold</item>
     </style>
 

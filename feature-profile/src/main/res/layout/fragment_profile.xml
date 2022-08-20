@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/grayPrimary"
+    android:overScrollMode="never"
     tools:context=".ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -132,7 +133,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvEditProfile"
             android:layout_width="0dp"
             android:layout_height="@dimen/cv_profile_action_height"
@@ -163,9 +164,9 @@
                 android:contentDescription="@string/edit_profile"
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvShoppingAddress"
             android:layout_width="0dp"
             android:layout_height="@dimen/cv_profile_action_height"
@@ -196,9 +197,9 @@
                 android:contentDescription="@string/shopping_address"
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvOrderHistory"
             android:layout_width="0dp"
             android:layout_height="@dimen/cv_profile_action_height"
@@ -229,9 +230,9 @@
                 android:contentDescription="@string/order_history"
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvCards"
             android:layout_width="0dp"
             android:layout_height="@dimen/cv_profile_action_height"
@@ -262,9 +263,9 @@
                 android:contentDescription="@string/cards"
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvNotifications"
             android:layout_width="0dp"
             android:layout_height="@dimen/cv_profile_action_height"
@@ -296,7 +297,7 @@
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <Space
             android:id="@+id/space"
