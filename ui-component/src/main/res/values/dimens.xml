@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="layout_space_big">48dp</dimen>
-    <dimen name="layout_space_medium">32dp</dimen>
-    <dimen name="layout_space_small">16dp</dimen>
-    <dimen name="layout_space_tiny">8dp</dimen>
+    <dimen name="layout_space_48">48dp</dimen>
+    <dimen name="layout_space_32">32dp</dimen>
+    <dimen name="layout_space_24">24dp</dimen>
+    <dimen name="layout_space_16">16dp</dimen>
+    <dimen name="layout_space_8">8dp</dimen>
 
-    <dimen name="corner_radius_small">10dp</dimen>
+    <dimen name="corner_radius_10">10dp</dimen>
+    <dimen name="corner_radius_20">20dp</dimen>
 
+    <dimen name="card_elevation_2">2dp</dimen>
+    <dimen name="card_elevation_1">1dp</dimen>
+
+    <dimen name="button_height_70">70dp</dimen>
+    <dimen name="button_height_50">50dp</dimen>
     <dimen name="search_view_size">60dp</dimen>
 </resources>

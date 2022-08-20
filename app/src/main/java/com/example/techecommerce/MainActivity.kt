@@ -24,11 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationProvider {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-
-        val window: Window = window
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
     }
 
     override fun launch(navCommand: NavCommand) {

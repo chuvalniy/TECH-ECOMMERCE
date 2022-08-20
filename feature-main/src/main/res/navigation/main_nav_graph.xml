@@ -9,5 +9,9 @@
         android:id="@+id/mainFragment"
         android:name="com.example.feature_main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <deepLink
+            android:id="@+id/deepLinkMain"
+            app:uri="myApp://featureMain" />
+    </fragment>
 </navigation>

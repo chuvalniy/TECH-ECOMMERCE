@@ -10,8 +10,10 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/grayPrimary</item>
+        <item name="android:statusBarColor" >@color/violet</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/grayPrimary</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="colorControlActivated">@color/black</item>
     </style>
 </resources>

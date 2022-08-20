@@ -4,4 +4,6 @@
     <string name="search_error">Search error</string>
 
     <string name="from_price">From $%1$s</string>
+
+    <string name="found_results">Found %1$s results</string>
 </resources>

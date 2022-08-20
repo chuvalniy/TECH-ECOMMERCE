@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cart_nav_graph"
+    app:startDestination="@id/cartFragment">
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.feature_cart.presentation.fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart">
+        <deepLink
+            android:id="@+id/deepLinkCart"
+            app:uri="myApp://featureCart" />
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.feature_cart.presentation.fragment.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_paymentBottomSheetFragment"
+            app:destination="@id/paymentBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/paymentBottomSheetFragment"
+        android:name="com.example.feature_cart.presentation.fragment.PaymentBottomSheetFragment"
+        android:label="fragment_payment_bottom_sheet"
+        tools:layout="@layout/fragment_payment_bottom_sheet" />
+</navigation>

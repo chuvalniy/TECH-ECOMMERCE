@@ -4,4 +4,5 @@
     <dimen name="search_product_item_width">188dp</dimen>
     <dimen name="search_product_item_height">284dp</dimen>
     <dimen name="search_product_item_content_height">212dp</dimen>
+    <dimen name="search_item_image_size">90dp</dimen>
 </resources>

@@ -3,6 +3,7 @@ package com.example.feature_search.presentation.epoxy
 import com.airbnb.epoxy.TypedEpoxyController
 import com.bumptech.glide.RequestManager
 import com.example.feature_search.presentation.epoxy.model.ModelSearchItem
+import com.example.feature_search.presentation.epoxy.model.ModelSearchResult
 import com.example.feature_search.presentation.epoxy.model.ShimmerSearchItem
 import com.example.feature_search.presentation.model.SearchState
 
@@ -18,6 +19,10 @@ class SearchEpoxyController(
                     .addTo(this)
             }
         } else if (state?.isLoading == false) {
+            if (state.data.isNotEmpty()) {
+                ModelSearchResult(state.data.size).id("search_result").addTo(this)
+            }
+
             state.data.onEachIndexed { index, item ->
                 ModelSearchItem(glide, item, index)
                     .id("search_item_${item.id}")

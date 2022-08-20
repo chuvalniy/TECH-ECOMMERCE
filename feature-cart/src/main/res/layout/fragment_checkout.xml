@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.fragment.CheckoutFragment">
+
+    <ImageButton
+        android:id="@+id/btnGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_space_32"
+        android:background="@null"
+        android:contentDescription="@string/go_back"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/tvCheckoutTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvCheckoutTitle" />
+
+    <TextView
+        android:id="@+id/tvCheckoutTitle"
+        style="@style/Headline6Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:text="@string/checkout"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvShippingInfo"
+        style="@style/Subtitle1Semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:text="@string/shipping_information"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/btnGoBack"
+        app:layout_constraintTop_toBottomOf="@id/tvCheckoutTitle" />
+
+    <Button
+        android:id="@+id/btnChange"
+        style="@style/TextButtonGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/layout_space_32"
+        android:text="@string/change"
+        app:layout_constraintBottom_toBottomOf="@id/tvShippingInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvShippingInfo" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvShippingInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_24"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/corner_radius_10"
+        app:cardElevation="@dimen/card_elevation_2"
+        app:layout_constraintEnd_toEndOf="@id/btnChange"
+        app:layout_constraintStart_toStartOf="@id/tvShippingInfo"
+        app:layout_constraintTop_toBottomOf="@id/tvShippingInfo">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_space_24"
+                android:layout_marginTop="@dimen/layout_space_24"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintBottom_toTopOf="@+id/ivLocation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/Body1Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_space_16"
+                android:layout_marginEnd="@dimen/layout_space_24"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/ivUser"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivUser"
+                app:layout_constraintTop_toTopOf="@id/ivUser"
+                tools:text="Rosina Dae" />
+
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_space_24"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toTopOf="@+id/icPhone"
+                app:layout_constraintLeft_toLeftOf="@id/ivUser"
+                app:layout_constraintTop_toBottomOf="@+id/ivUser" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/Body1Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_space_16"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
+                app:layout_constraintEnd_toEndOf="@+id/tvName"
+                app:layout_constraintStart_toEndOf="@+id/ivLocation"
+                app:layout_constraintTop_toTopOf="@+id/ivLocation"
+                tools:text="43 Oxford Road M13 4GR Manchester, UK" />
+
+            <ImageView
+                android:id="@+id/icPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_space_24"
+                android:layout_marginBottom="@dimen/layout_space_24"
+                android:src="@drawable/ic_call"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ivLocation"
+                app:layout_constraintTop_toBottomOf="@+id/ivLocation" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                style="@style/Body1Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/icPhone"
+                app:layout_constraintEnd_toEndOf="@+id/tvLocation"
+                app:layout_constraintStart_toStartOf="@+id/tvLocation"
+                app:layout_constraintTop_toTopOf="@+id/icPhone"
+                tools:text="+234 901103971" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        style="@style/Subtitle1Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_32"
+        android:text="@string/payment_method"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/cvShippingInfo"
+        app:layout_constraintStart_toStartOf="@+id/cvShippingInfo"
+        app:layout_constraintTop_toBottomOf="@+id/cvShippingInfo" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/card_elevation_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/Headline6Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_space_24"
+                android:layout_marginEnd="@dimen/layout_space_48"
+                android:text="$ 954"
+                android:textColor="@color/violet"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                style="@style/Body1Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_space_48"
+                android:text="@string/total"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvPrice" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvConfirmPay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_70"
+                android:layout_marginLeft="@dimen/layout_space_48"
+                android:layout_marginTop="@dimen/layout_space_32"
+                android:layout_marginRight="@dimen/layout_space_48"
+                android:layout_marginBottom="@dimen/layout_space_32"
+                app:cardBackgroundColor="@color/violet"
+                app:cardCornerRadius="@dimen/corner_radius_10"
+                app:cardElevation="@dimen/card_elevation_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/Headline6Semibold"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height_70"
+                    android:contentDescription="@string/checkout"
+                    android:gravity="center"
+                    android:text="@string/confirm_and_pay"
+                    android:textColor="@color/white" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

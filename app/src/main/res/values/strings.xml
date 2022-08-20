@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TechEcommerce</string>
+
+    <string name="find_your_gadget">Find your Gadget</string>
+    <string name="get_started">Get started</string>
+    <string name="splash_image">Splash image</string>
 </resources>

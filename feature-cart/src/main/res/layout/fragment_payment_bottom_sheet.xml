@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".presentation.fragment.PaymentBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/tvConfirmPay"
+        style="@style/Subtitle1Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_space_48"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:text="@string/confirm_and_pay"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvProducts"
+        style="@style/Subtitle2Semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="Products:"
+        app:layout_constraintBottom_toBottomOf="@id/tvConfirmPay"
+        app:layout_constraintEnd_toStartOf="@id/tvProductCounter"
+        app:layout_constraintTop_toTopOf="@id/tvConfirmPay" />
+
+    <TextView
+        android:id="@+id/tvProductCounter"
+        style="@style/Subtitle2Semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/layout_space_48"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvProducts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvProducts"
+        tools:text="2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutCreditCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:background="@drawable/bg_credit_card"
+        app:layout_constraintEnd_toEndOf="@+id/tvProductCounter"
+        app:layout_constraintStart_toStartOf="@+id/tvConfirmPay"
+        app:layout_constraintTop_toBottomOf="@id/tvConfirmPay">
+
+        <TextView
+            android:id="@+id/tvMyCreditCard"
+            style="@style/Subtitle1Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_space_16"
+            android:layout_marginTop="@dimen/layout_space_24"
+            android:text="@string/my_credit_card"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tvCardNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCardNumber"
+            style="@style/Headline4Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_16"
+            android:layout_marginEnd="@dimen/layout_space_16"
+            android:text="**** **** **** 1234"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/tvMyCreditCard"
+            app:layout_constraintTop_toBottomOf="@+id/tvMyCreditCard" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/Subtitle1Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_16"
+            android:layout_marginBottom="@dimen/layout_space_24"
+            android:text="Rosina Doe"
+            android:textColor="@color/graySecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvCardNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardNumber" />
+
+        <TextView
+            android:id="@+id/tvCardDate"
+            style="@style/Subtitle1Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_space_16"
+            android:text="04/26"
+            android:textColor="@color/graySecondary"
+            app:layout_constraintBottom_toBottomOf="@id/tvName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvName" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvPrice"
+        style="@style/Headline6Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_24"
+        android:layout_marginEnd="@dimen/layout_space_48"
+        android:text="$ 954"
+        android:textColor="@color/violet"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutCreditCard" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        style="@style/Body1Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_space_48"
+        android:text="@string/total"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvPrice" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPayNow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_70"
+        android:layout_marginLeft="@dimen/layout_space_48"
+        android:layout_marginTop="@dimen/layout_space_32"
+        android:layout_marginRight="@dimen/layout_space_48"
+        android:layout_marginBottom="@dimen/layout_space_32"
+        app:cardBackgroundColor="@color/violet"
+        app:cardCornerRadius="@dimen/corner_radius_10"
+        app:cardElevation="@dimen/card_elevation_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/Headline6Semibold"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_70"
+            android:contentDescription="@string/checkout"
+            android:gravity="center"
+            android:text="@string/pay_now"
+            android:textColor="@color/white" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

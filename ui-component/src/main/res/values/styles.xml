@@ -2,13 +2,18 @@
 <resources>
 
     <style name="Headline2ExtraBold">
-        <item name="android:textSize">64sp</item>
+        <item name="android:textSize">58sp</item>
         <item name="android:fontFamily">@font/raleway_extrabold</item>
     </style>
 
     <style name="Headline4Bold">
         <item name="android:textSize">34sp</item>
         <item name="android:fontFamily">@font/raleway_bold</item>
+    </style>
+
+    <style name="Headline4Regular">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
     </style>
 
     <style name="Headline5SemiBold">
@@ -35,6 +40,11 @@
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
+
+    <style name="Subtitle2Semibold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
     
     <style name="Body1Regular">
         <item name="android:textSize">16sp</item>
@@ -57,12 +67,38 @@
         <item name="android:fontFamily">@font/raleway_semibold</item>
         <item name="android:textSize">16sp</item>
     </style>
-    
-    <style name="TextButtonHelper" parent="Widget.MaterialComponents.Button.TextButton">
+
+    <style name="LoginFormStyle">
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="TextButtonGray" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/violet</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
 
+    <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/corner_radius_20</item>
+        <item name="cornerSizeTopLeft">@dimen/corner_radius_20</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_rounded_bottom_dialog</item>
+    </style>
 </resources>

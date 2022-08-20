@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:background="@color/violet"
+    android:fillViewport="true"
+    tools:context=".LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivEllipsePink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_space_24"
+            android:src="@drawable/ellipse_pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/blur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blur2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivEllipse1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="@dimen/layout_space_24"
+            android:src="@drawable/ellipse_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tvEllipse2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_space_48"
+            android:src="@drawable/ellipse_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeBack" />
+
+        <TextView
+            android:maxLines="2"
+            android:id="@+id/tvWelcomeBack"
+            style="@style/Headline2ExtraBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_space_48"
+            android:layout_marginTop="@dimen/layout_space_48"
+            android:layout_marginEnd="@dimen/layout_space_48"
+            android:text="@string/welcome_back"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivEllipse1" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CustomCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_space_48"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEllipse2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvLoginTitle"
+                    style="@style/Headline6Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_space_48"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:text="@string/login"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/ivMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:src="@drawable/ic_message"
+                    app:layout_constraintStart_toStartOf="@id/tvLoginTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvLoginTitle" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:text="Email"
+                    android:textColor="@color/graySecondary"
+                    app:layout_constraintBottom_toBottomOf="@id/ivMessage"
+                    app:layout_constraintStart_toEndOf="@id/ivMessage"
+                    app:layout_constraintTop_toTopOf="@id/ivMessage" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    style="@style/LoginFormStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:backgroundTint="@color/grayTetriary"
+                    android:hint="example@example.com"
+                    android:paddingBottom="@dimen/layout_space_16"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivMessage" />
+
+                <ImageView
+                    android:id="@+id/ivLock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:src="@drawable/ic_lock"
+                    app:layout_constraintStart_toStartOf="@id/etEmail"
+                    app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+                <TextView
+                    android:id="@+id/tvPassord"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:text="Password"
+                    android:textColor="@color/graySecondary"
+                    app:layout_constraintBottom_toBottomOf="@id/ivLock"
+                    app:layout_constraintStart_toEndOf="@id/ivLock"
+                    app:layout_constraintTop_toTopOf="@id/ivLock" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    style="@style/LoginFormStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:backgroundTint="@color/grayTetriary"
+                    android:hint="* * * * * * * *"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/layout_space_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivLock" />
+
+                <Button
+                    android:id="@+id/btnForgotPassword"
+                    style="@style/TextButtonGray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot password?"
+                    app:layout_constraintStart_toStartOf="@+id/etPassword"
+                    app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvLogin"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_70"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:layout_marginTop="@dimen/layout_space_48"
+                    app:cardBackgroundColor="@color/violet"
+                    app:cardCornerRadius="@dimen/corner_radius_10"
+                    app:cardElevation="@dimen/card_elevation_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnForgotPassword">
+
+                    <TextView
+                        android:id="@+id/tv"
+                        style="@style/Headline6Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/login"
+                        android:textColor="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <Button
+                    android:id="@+id/btnCreateAccount"
+                    style="@style/TextButtonGray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_8"
+                    android:text="Create account"
+                    app:layout_constraintEnd_toEndOf="@+id/cvLogin"
+                    app:layout_constraintStart_toStartOf="@+id/cvLogin"
+                    app:layout_constraintTop_toBottomOf="@+id/cvLogin" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
