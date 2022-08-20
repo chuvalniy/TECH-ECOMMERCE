@@ -13,4 +13,5 @@
         android:name="com.example.techecommerce.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" />
+    <include app:graph="@navigation/details_nav_graph" />
 </navigation>

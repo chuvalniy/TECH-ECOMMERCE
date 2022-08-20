@@ -7,7 +7,8 @@ import com.example.feature_home.presentation.epoxy.model.ShimmerHomeItem
 import com.example.feature_home.presentation.model.HomeState
 
 class HomeEpoxyController(
-    private val glide: RequestManager
+    private val glide: RequestManager,
+    private val onProductClick: (String) -> Unit
 ) : TypedEpoxyController<HomeState>() {
 
     override fun buildModels(state: HomeState?) {
@@ -19,7 +20,11 @@ class HomeEpoxyController(
             }
         } else if (state?.isLoading == false) {
             state.data.onEach { item ->
-                ModelHomeItem(item, glide)
+                ModelHomeItem(
+                    item = item,
+                    glide = glide,
+                    onProductClick = onProductClick
+                )
                     .id("home_item_${item.id}")
                     .addTo(this)
             }

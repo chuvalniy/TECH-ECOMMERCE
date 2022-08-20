@@ -7,11 +7,15 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.feature_details.DetailsFragment"
+        android:name="com.example.feature_details.presentation.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details">
+        <argument
+            android:name="id"
+            android:defaultValue="empty"
+            app:argType="string"/>
         <deepLink
             android:id="@+id/deepLinkDetails"
-            app:uri="myApp://featureDetails" />
+            app:uri="myApp://featureDetails/{id}" />
     </fragment>
 </navigation>

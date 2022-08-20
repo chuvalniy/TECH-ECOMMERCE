@@ -8,7 +8,8 @@ import com.example.feature_home.domain.model.DomainDataSource
 
 data class ModelHomeItem(
     private val item: DomainDataSource,
-    private val glide: RequestManager
+    private val glide: RequestManager,
+    private val onProductClick: (String) -> Unit
 ) : ViewBindingKotlinModel<HomeItemBinding>(R.layout.home_item) {
 
     override fun HomeItemBinding.bind() {
@@ -16,5 +17,7 @@ data class ModelHomeItem(
         tvTitle.text = item.model
         tvBody.text = item.model
         tvPrice.text = root.context.getString(com.example.ui_component.R.string.formatted_price, item.price)
+
+        root.setOnClickListener { onProductClick(item.id) }
     }
 }

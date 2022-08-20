@@ -165,7 +165,7 @@
 
                 <Button
                     android:id="@+id/btnForgotPassword"
-                    style="@style/TextButtonGray"
+                    style="@style/TextButtonHelper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Forgot password?"
@@ -197,7 +197,7 @@
 
                 <Button
                     android:id="@+id/btnCreateAccount"
-                    style="@style/TextButtonGray"
+                    style="@style/TextButtonHelper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/layout_space_8"
