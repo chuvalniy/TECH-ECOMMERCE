@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="home_product_image_size">160dp</dimen>
-    <dimen name="home_product_item_content_height">270dp</dimen>
-    <dimen name="home_product_item_width">252dp</dimen>
-    <dimen name="home_product_item_height">352dp</dimen>
+
 </resources>

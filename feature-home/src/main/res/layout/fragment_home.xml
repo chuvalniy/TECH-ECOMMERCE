@@ -9,10 +9,10 @@
 
     <ImageButton
         android:id="@+id/btnMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/layout_space_48"
-        android:background="@null"
+        android:layout_width="@dimen/clickable_icon_size"
+        android:layout_height="@dimen/clickable_icon_size"
+        android:layout_marginStart="@dimen/layout_space_24"
+        android:background="?android:selectableItemBackground"
         android:contentDescription="@string/app_menu"
         android:src="@drawable/ic_menu"
         app:layout_constraintBottom_toBottomOf="@+id/searchViewHome"
@@ -20,67 +20,83 @@
         app:layout_constraintTop_toTopOf="@+id/searchViewHome"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.appcompat.widget.SearchView
+    <View
         android:id="@+id/searchViewHome"
         android:layout_width="0dp"
         android:layout_height="@dimen/search_view_size"
-        android:layout_marginStart="@dimen/layout_space_32"
+        android:layout_marginStart="@dimen/layout_space_24"
         android:layout_marginTop="@dimen/layout_space_32"
-        android:layout_marginEnd="@dimen/layout_space_48"
+        android:layout_marginEnd="@dimen/layout_space_32"
         android:background="@drawable/bg_search"
-        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/search"
-        app:searchIcon="@drawable/ic_search"
-        app:theme="@style/AppSearchView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/searchViewText"
+        app:layout_constraintTop_toTopOf="@id/searchViewHome"
+        app:layout_constraintBottom_toBottomOf="@id/searchViewHome"
+        app:layout_constraintStart_toStartOf="@id/searchViewHome"
+        android:text="@string/search"
+        android:paddingStart="20dp"
+        android:textColor="@color/graySecondary"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        app:drawableLeftCompat="@drawable/ic_search"
+        android:fontFamily="@font/raleway_semibold"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tvTitleHome"
         style="@style/Headline4Bold"
+        android:layout_marginStart="@dimen/layout_space_32"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_48"
         android:text="@string/order_online_ncollect_in_store"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@id/btnMenu"
         app:layout_constraintRight_toRightOf="@id/searchViewHome"
-        app:layout_constraintTop_toBottomOf="@id/searchViewHome" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewHome" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_48"
+        android:backgroundTint="@color/grayPrimary"
         android:clipToPadding="false"
-        android:paddingStart="@dimen/layout_space_48"
-        app:tabTextColor="@color/grayFourth"
+        android:paddingStart="@dimen/layout_space_32"
+        app:layout_constraintBottom_toTopOf="@+id/epoxyRecyclerView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleHome"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleHome"
         app:tabGravity="fill"
-        android:backgroundTint="@color/grayPrimary"
         app:tabIndicatorColor="@color/violet"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/violet"
-        app:tabTextAppearance="@style/TabText"/>
+        app:tabTextAppearance="@style/TabText"
+        app:tabTextColor="@color/grayFourth" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/layout_space_32"
-        android:overScrollMode="never"
-        android:paddingRight="@dimen/layout_space_32"
-        android:clipToPadding="false"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_32"
+        android:clipToPadding="false"
         android:orientation="horizontal"
+        android:overScrollMode="never"
+        android:paddingLeft="@dimen/layout_space_16"
+        android:paddingRight="@dimen/layout_space_16"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:listitem="@layout/home_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

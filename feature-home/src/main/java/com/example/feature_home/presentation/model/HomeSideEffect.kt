@@ -5,5 +5,6 @@ import com.example.core.ui.UiText
 
 sealed class HomeSideEffect : UiSideEffect {
     data class ShowSnackbar(val message: UiText): HomeSideEffect()
+    data class NavigateToDetails(val id: String): HomeSideEffect()
     object NavigateToSearch : HomeSideEffect()
 }

@@ -14,4 +14,5 @@
     <string name="confirm_and_pay">Confirm and pay</string>
     <string name="pay_now">Pay now</string>
     <string name="my_credit_card">My credit card</string>
+    <string name="products">Products:</string>
 </resources>

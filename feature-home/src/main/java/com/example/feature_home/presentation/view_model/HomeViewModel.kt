@@ -51,9 +51,13 @@ class HomeViewModel(
     override fun onEvent(event: HomeEvent) {
         when (event) {
             is HomeEvent.CategorySelected -> categorySelected(category = event.category)
-            is HomeEvent.ProductClicked -> TODO()
+            is HomeEvent.ProductClicked -> productClicked(event.id)
             is HomeEvent.SearchClicked -> searchClicked()
         }
+    }
+
+    private fun productClicked(id: String) = viewModelScope.launch {
+        _sideEffect.send(HomeSideEffect.NavigateToDetails(id))
     }
 
     private fun searchClicked() = viewModelScope.launch {

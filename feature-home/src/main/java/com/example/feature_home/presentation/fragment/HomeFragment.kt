@@ -55,35 +55,59 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Wearable"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Phones"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Laptops"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tablet"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Drones"))
     }
 
     private fun setupEpoxyController() {
-        epoxyController = HomeEpoxyController(glide).also { controller ->
+        epoxyController = HomeEpoxyController(
+            glide = glide,
+            onProductClick = { viewModel.onEvent(HomeEvent.ProductClicked(it)) }
+        ).also { controller ->
             binding.epoxyRecyclerView.setController(controller)
         }
     }
 
-    private fun observeUiEffect() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.sideEffect.collect { effect ->
-                when (effect) {
-                    is HomeSideEffect.ShowSnackbar -> {
+    private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                is HomeSideEffect.ShowSnackbar -> {
 
-                    }
-                    is HomeSideEffect.NavigateToSearch -> {
-                        navigate(NavCommand(
-                            NavCommands.DeepLink(
-                                url = Uri.parse("myApp://featureSearch"),
-                                isModal = true,
-                                isSingleTop = false
-                            )
-                        ))
-                    }
+                }
+                is HomeSideEffect.NavigateToSearch -> {
+                    navigateToSearch()
+                }
+                is HomeSideEffect.NavigateToDetails -> {
+                    navigateToDetails(effect)
                 }
             }
         }
     }
+
+    private fun navigateToDetails(effect: HomeSideEffect.NavigateToDetails) {
+        navigate(
+            NavCommand(
+                NavCommands.DeepLink(
+                    url = Uri.parse("myApp://featureDetails/${effect.id}"),
+                    isModal = true,
+                    isSingleTop = false
+                )
+            )
+        )
+    }
+
+    private fun navigateToSearch() {
+        navigate(
+            NavCommand(
+                NavCommands.DeepLink(
+                    url = Uri.parse("myApp://featureSearch"),
+                    isModal = true,
+                    isSingleTop = false
+                )
+            )
+        )
+    }
+
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

@@ -1,53 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DetailsFragment">
+    android:fillViewport="false"
+    android:overScrollMode="never"
+    tools:context=".presentation.fragment.DetailsFragment">
 
-    <ImageButton
-        android:id="@+id/btnGoBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/layout_space_32"
-        android:background="@null"
-        android:contentDescription="@string/go_back"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/tvHelper"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHelper"
-        tools:ignore="TouchTargetSizeCheck" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvHelper"
-        style="@style/Headline6Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_48"
-        android:visibility="invisible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/btnGoBack"
+            android:layout_width="@dimen/clickable_icon_size"
+            android:layout_height="@dimen/clickable_icon_size"
+            android:layout_marginLeft="@dimen/layout_space_24"
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/go_back"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/tvHelper"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHelper"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <ImageButton
-        android:id="@+id/btnFavorites"
-        android:layout_width="wrap_content"
-        android:src="@drawable/ic_favorite"
-        android:background="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHelper"
-        app:layout_constraintBottom_toBottomOf="@id/tvHelper"
-        android:layout_marginEnd="@dimen/layout_space_32"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvHelper"
+            style="@style/Headline6Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_32"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/tvHelper"
-        android:layout_height="240dp"/>
+        <ImageButton
+            android:id="@+id/btnFavorites"
+            android:layout_width="@dimen/clickable_icon_size"
+            android:layout_height="@dimen/clickable_icon_size"
+            android:layout_marginEnd="@dimen/layout_space_24"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/tvHelper"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHelper" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+            android:id="@+id/circleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_8"
+            app:dotsColor="@color/violet"
+            app:dotsSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/layout_space_48"
+            android:paddingTop="@dimen/layout_space_32"
+            android:paddingBottom="@dimen/layout_space_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHelper" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvDetails"
+            style="@style/CustomCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_space_16"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/card_elevation_6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circleIndicator">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/Headline5SemiBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_32"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:layout_marginEnd="@dimen/layout_space_32"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2020 Apple iPad Air 10.9" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_8"
+                    android:isIndicator="true"
+                    android:max="5"
+                    android:minHeight="0dp"
+                    android:scaleX=".5"
+                    android:scaleY=".5"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="0dp"
+                    app:layout_constraintStart_toStartOf="@id/tvTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+                <TextView
+                    android:id="@+id/tvDescriptionTitle"
+                    style="@style/Subtitle1Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/tvTitle"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/tvTitle"
+                    app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    style="@style/Body2Regular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_8"
+                    android:lineSpacingMultiplier="1.4"
+                    android:maxLines="3"
+                    android:textColor="@color/graySecondary"
+                    app:layout_constraintEnd_toEndOf="@id/tvDescriptionTitle"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/tvDescriptionTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle"
+                    tools:text="Curabitur dui ligula, finibus id tincidunt in, porta nec lorem. Fusce pellentesque id leo id congue. Aliquam id dictum elit, rhoncus commodo nunc." />
+
+                <Button
+                    android:id="@+id/btnFullDescription"
+                    style="@style/TextButtonHelper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_24"
+                    android:text="@string/full_description"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvAddToCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height_70"
+                    android:layout_marginStart="@dimen/layout_space_32"
+                    android:layout_marginTop="@dimen/layout_space_24"
+                    android:layout_marginEnd="@dimen/layout_space_32"
+                    android:layout_marginBottom="@dimen/layout_space_24"
+                    app:cardBackgroundColor="@color/violet"
+                    app:cardCornerRadius="@dimen/corner_radius_10"
+                    app:cardElevation="@dimen/card_elevation_2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnFullDescription">
+
+                    <TextView
+                        android:id="@+id/tvAddToCart"
+                        style="@style/Headline6Semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="@dimen/layout_space_24"
+                        android:text="@string/add_to_cart"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        style="@style/Headline6Semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/layout_space_24"
+                        android:textColor="@color/white"
+                        tools:text="799$" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
