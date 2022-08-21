@@ -57,6 +57,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
         binding.viewPager.setPageTransformer(pageTransformer)
+
+        binding.circleIndicator.attachTo(binding.viewPager)
     }
 
 

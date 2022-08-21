@@ -14,8 +14,12 @@ data class ModelHomeItem(
 
     override fun HomeItemBinding.bind() {
         glide.load(item.image).into(ivProduct)
-        tvTitle.text = item.model
-        tvBody.text = item.model
+        tvTitle.text = root.context.getString(
+            R.string.formatted_product_title,
+            item.brand,
+            item.model
+        )
+        tvModel.text = item.model
         tvPrice.text = root.context.getString(com.example.ui_component.R.string.formatted_price, item.price)
 
         root.setOnClickListener { onProductClick(item.id) }

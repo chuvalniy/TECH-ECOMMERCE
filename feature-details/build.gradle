@@ -67,7 +67,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutine_version"
 
     // Circle indicator (for ViewPager2)
-    implementation 'me.relex:circleindicator:2.1.6'
+    implementation "com.tbuonomo:dotsindicator:4.3"
 
     // Epoxy
     def epoxy_version = "4.6.3"

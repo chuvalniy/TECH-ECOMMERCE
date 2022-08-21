@@ -9,21 +9,23 @@
 
     <ImageButton
         android:id="@+id/btnGoBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/layout_space_32"
-        android:background="@null"
+        android:layout_width="@dimen/clickable_icon_size"
+        android:layout_height="@dimen/clickable_icon_size"
+        android:layout_marginLeft="@dimen/layout_space_24"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="@string/go_back"
         android:src="@drawable/ic_arrow_left"
         app:layout_constraintBottom_toBottomOf="@id/tvFavorites"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvFavorites" />
+        app:layout_constraintTop_toTopOf="@id/tvFavorites"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvFavorites"
         style="@style/Headline6Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_space_48"
+        android:layout_marginTop="@dimen/layout_space_32"
         android:text="@string/favorites"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -58,25 +60,27 @@
     <TextView
         android:id="@+id/tvBody"
         style="@style/Body1Regular"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_space_24"
         android:gravity="center"
         android:lineSpacingMultiplier="1.4"
         android:text="@string/hit_the_blue_button"
         app:layout_constraintBottom_toTopOf="@+id/cvStartOrder"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/tvTitle"
         app:layout_constraintRight_toRightOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvStartOrder"
-        android:layout_width="224dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/blue_button_size"
+        android:layout_height="@dimen/button_height_50"
         android:layout_marginTop="@dimen/layout_space_32"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="@dimen/corner_radius_10"
-        app:cardElevation="6dp"
+        app:cardElevation="@dimen/card_elevation_6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/tvBody"
         app:layout_constraintRight_toRightOf="@id/tvBody"
@@ -91,6 +95,6 @@
             android:text="@string/start_ordering"
             android:textColor="@color/white" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

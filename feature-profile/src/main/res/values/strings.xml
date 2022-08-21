@@ -10,4 +10,5 @@
     <string name="cards">Cards</string>
     <string name="notifications">Notifications</string>
     <string name="man_with_a_laptop">Man with a laptop</string>
+    <string name="no_history_yet">No history yet</string>
 </resources>
