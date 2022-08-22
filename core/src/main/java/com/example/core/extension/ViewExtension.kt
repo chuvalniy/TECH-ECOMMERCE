@@ -55,7 +55,29 @@ fun Context.showSnackBar(
                     sb?.anchorView = null
                 }
             })
-        snackBar.view.background = ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_snackbar)
+        snackBar.view.background = ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_error_snackbar)
         snackBar.show()
     }
+}
+
+fun Context.getSnackBar(
+    view: View,
+    messageString: String,
+    anchorView: View? = null,
+): Snackbar? {
+    view.hideKeyboard()
+    return if (view.isAttachedToWindow) {
+        val snackBar = Snackbar.make(view, messageString, Snackbar.LENGTH_INDEFINITE)
+            .setAnchorView(anchorView)
+            .addCallback(object : Snackbar.Callback() {
+                override fun onShown(sb: Snackbar?) {
+                    super.onShown(sb)
+                    sb?.anchorView = null
+                }
+            })
+        snackBar.view.background = ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_loading_snackbar)
+
+        snackBar.show()
+        return snackBar
+    } else null
 }

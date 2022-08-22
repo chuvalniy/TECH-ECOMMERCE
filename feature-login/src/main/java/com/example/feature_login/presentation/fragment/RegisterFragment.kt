@@ -8,15 +8,20 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.core.extension.getSnackBar
+import com.example.core.extension.showSnackBar
 import com.example.core.navigation.NavCommand
 import com.example.core.navigation.NavCommands
 import com.example.core.navigation.navigate
 import com.example.core.ui.BaseFragment
+import com.example.feature_login.R
 import com.example.feature_login.databinding.FragmentRegisterBinding
 import com.example.feature_login.presentation.model.LoginEvent
 import com.example.feature_login.presentation.model.LoginSideEffect
 import com.example.feature_login.presentation.model.LoginState
+import com.example.feature_login.presentation.model.LoginSubState
 import com.example.feature_login.presentation.view_model.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -24,23 +29,26 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     private val viewModel by sharedViewModel<LoginViewModel>()
 
+    private var snackbar: Snackbar? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        processUiEvent()
 
         observeUiState()
         observeUiEffect()
-
-        processUiEvent()
     }
 
     private fun processUiEvent() {
+        viewModel.onEvent(LoginEvent.SubStateChanged(LoginSubState.Register))
+
         binding.btnAlreadyHaveAccount.setOnClickListener {
             viewModel.onEvent(LoginEvent.AlreadyHaveAccountButtonClicked)
         }
 
         binding.cvRegister.setOnClickListener {
-            viewModel.onEvent(LoginEvent.RegisterButtonClicked)
+            viewModel.onEvent(LoginEvent.LoginButtonClicked)
         }
 
         binding.etEmail.addTextChangedListener {
@@ -63,7 +71,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     is LoginSideEffect.NavigateToHome -> navigateToHome()
                     is LoginSideEffect.NavigateToLogin -> findNavController().popBackStack()
                     is LoginSideEffect.ShowSnackbar -> {
-
+                        requireContext().showSnackBar(
+                            binding.root,
+                            effect.message.asString(requireContext())
+                        )
                     }
                     else -> Unit
                 }
@@ -74,7 +85,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
-//                processUiState(state)
+                processUiState(state)
             }
         }
     }
@@ -92,7 +103,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     private fun processUiState(state: LoginState) {
-        binding.etEmail.setText(state.email)
+        if (state.isLoading) {
+            snackbar = requireContext().getSnackBar(binding.root, getString(R.string.loading_message))
+        } else snackbar?.dismiss()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        snackbar = null
     }
 
     override fun initBinding(

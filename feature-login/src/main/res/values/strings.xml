@@ -17,5 +17,7 @@
     <string name="empty_email_field">The email can\'t be blank</string>
     <string name="empty_password_field">The password can\'t be blank</string>
     <string name="repeated_password_error">The passwords doesn\'t match</string>
+    <string name="loading_message">Wait a second, I\'m loading</string>
+
 
 </resources>

@@ -9,7 +9,6 @@ val loginPresentationModule = module {
     viewModel {
         LoginViewModel(
             login = get(),
-            register = get(),
             validateEmail = get(),
             validatePassword = get(),
             validateRepeatedPassword = get(),

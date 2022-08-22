@@ -4,6 +4,7 @@ import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import com.example.feature_login.data.api.LoginApi
 import com.example.feature_login.domain.repository.LoginRepository
+import com.example.feature_login.presentation.model.LoginSubState
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -15,11 +16,18 @@ class LoginRepositoryImpl(
     private val api: LoginApi
 ) : LoginRepository {
 
-    override fun login(email: String, password: String): Flow<Resource<AuthResult>> = flow {
+    override fun login(
+        email: String,
+        password: String,
+        subState: LoginSubState
+    ): Flow<Resource<AuthResult>> = flow {
         emit(Resource.Loading(isLoading = true))
 
         val result = try {
-            api.login(email, password)
+            when (subState) {
+                LoginSubState.Login -> api.login(email, password)
+                LoginSubState.Register -> api.register(email, password)
+            }
         } catch (e: FirebaseAuthUserCollisionException) {
             emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage ?: "")))
             null
@@ -29,23 +37,6 @@ class LoginRepositoryImpl(
         } catch (e: FirebaseAuthInvalidCredentialsException) {
             emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage ?: "")))
             null
-        } catch (e: Exception) {
-            emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage ?: "")))
-            null
-        }
-
-        result?.let { authResult ->
-            emit(Resource.Success(authResult))
-        }
-
-        emit(Resource.Loading(isLoading = false))
-    }
-
-    override fun register(email: String, password: String): Flow<Resource<AuthResult>> = flow {
-        emit(Resource.Loading(isLoading = true))
-
-        val result = try {
-            api.register(email, password)
         } catch (e: Exception) {
             emit(Resource.Error(error = UiText.DynamicString(e.localizedMessage ?: "")))
             null

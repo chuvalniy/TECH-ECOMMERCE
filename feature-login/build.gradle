@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation project(path: ':core')
     implementation project(path: ':ui-component')
+    implementation project(path: ':data-user-session')
 
     // Firebase Core
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
@@ -44,8 +45,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
 
     // Firebase Realtime Database
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
-    implementation project(path: ':data-user-session')
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.1'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
 
     // Navigation Component
     def nav_version = "2.5.1"
