@@ -6,8 +6,11 @@
     <color name="violet">#5956E9</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="grayPrimary">#F5F5F8</color>
-    <color name="graySecondary">#868686</color>
-    <color name="grayTetriary">#C9C9C9</color>
-    <color name="grayFourth">#9A9A9D</color>
+    <color name="gray_primary">#F5F5F8</color>
+    <color name="gray_secondary">#868686</color>
+    <color name="gray_tetriary">#C9C9C9</color>
+    <color name="gray_fourth">#9A9A9D</color>
+
+    <color name="error_color">#F44336</color>
+    <color name="shimmer_color">#DDDDDD</color>
 </resources>

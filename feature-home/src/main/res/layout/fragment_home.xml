@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/grayPrimary"
+    tools:background="@color/gray_primary"
     tools:context=".presentation.fragment.HomeFragment">
 
     <ImageButton
@@ -38,13 +38,12 @@
         app:layout_constraintBottom_toBottomOf="@id/searchViewHome"
         app:layout_constraintStart_toStartOf="@id/searchViewHome"
         android:text="@string/search"
-        android:paddingStart="20dp"
-        android:textColor="@color/graySecondary"
-        android:drawablePadding="12dp"
+        android:paddingStart="@dimen/search_view_hint_start_padding"
+        android:textColor="@color/gray_secondary"
+        android:drawablePadding="@dimen/search_view_drawable_padding"
         android:gravity="center_vertical"
         app:drawableLeftCompat="@drawable/ic_search"
-        android:fontFamily="@font/raleway_semibold"
-        android:textSize="16sp"
+        style="@style/Subtitle1Semibold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -67,7 +66,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/grayPrimary"
+        android:backgroundTint="@color/gray_primary"
         android:clipToPadding="false"
         android:paddingStart="@dimen/layout_space_32"
         app:layout_constraintBottom_toTopOf="@+id/epoxyRecyclerView"
@@ -80,7 +79,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/violet"
         app:tabTextAppearance="@style/TabText"
-        app:tabTextColor="@color/grayFourth" />
+        app:tabTextColor="@color/gray_fourth" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"

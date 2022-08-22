@@ -37,6 +37,7 @@ class SearchViewModel(
             }.launchIn(this)
         }
     }
+
     private fun processErrorState(result: Resource<List<DomainDataSource>>) {
         viewModelScope.launch {
             _sideEffect.send(
@@ -58,7 +59,7 @@ class SearchViewModel(
     override fun onEvent(event: SearchEvent) {
         when (event) {
             is SearchEvent.BackButtonClicked -> backButtonClicked()
-            is SearchEvent.ProductClicked -> TODO()
+            is SearchEvent.ProductClicked -> productClicked(event.id)
             is SearchEvent.QueryChanged -> queryChanged(event.searchQuery)
         }
     }
@@ -78,5 +79,9 @@ class SearchViewModel(
 
     private fun backButtonClicked() = viewModelScope.launch {
         _sideEffect.send(SearchSideEffect.NavigateBack)
+    }
+
+    private fun productClicked(id: String) = viewModelScope.launch {
+        _sideEffect.send(SearchSideEffect.NavigateToDetails(id))
     }
 }

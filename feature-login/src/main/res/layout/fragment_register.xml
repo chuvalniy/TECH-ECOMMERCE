@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/violet"
+    android:overScrollMode="never"
+    tools:context=".presentation.fragment.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivEllipsePink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_space_24"
+            android:src="@drawable/ellipse_pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/blur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blur2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ivEllipse1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="@dimen/layout_space_24"
+            android:src="@drawable/ellipse_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <ImageView
+            android:id="@+id/tvEllipse2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_space_48"
+            android:src="@drawable/ellipse_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNewAccount"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tvNewAccount"
+            style="@style/Headline2ExtraBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_space_48"
+            android:layout_marginTop="@dimen/layout_space_48"
+            android:layout_marginEnd="@dimen/layout_space_48"
+            android:text="@string/new_account"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivEllipse1" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CustomCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_space_48"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEllipse2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvRegisterTitle"
+                    style="@style/Headline6Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_space_48"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:text="@string/register"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_48"
+                    android:contentDescription="@string/message"
+                    android:src="@drawable/ic_message"
+                    app:layout_constraintStart_toStartOf="@id/tvRegisterTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:text="@string/email"
+                    android:textColor="@color/gray_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/ivMessage"
+                    app:layout_constraintStart_toEndOf="@id/ivMessage"
+                    app:layout_constraintTop_toTopOf="@id/ivMessage"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    style="@style/LoginFormStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:backgroundTint="@color/gray_tetriary"
+                    android:hint="@string/example_example_com"
+                    android:inputType="textEmailAddress"
+                    android:paddingBottom="@dimen/layout_space_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivMessage"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <ImageView
+                    android:id="@+id/ivPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:contentDescription="@string/lock"
+                    android:src="@drawable/ic_lock"
+                    app:layout_constraintStart_toStartOf="@id/etEmail"
+                    app:layout_constraintTop_toBottomOf="@id/etEmail"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tvPassword"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:text="@string/password"
+                    android:textColor="@color/gray_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/ivPassword"
+                    app:layout_constraintStart_toEndOf="@id/ivPassword"
+                    app:layout_constraintTop_toTopOf="@id/ivPassword"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    style="@style/LoginFormStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:backgroundTint="@color/gray_tetriary"
+                    android:hint="@string/password_hint"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/layout_space_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivPassword"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <ImageView
+                    android:id="@+id/ivRepeatPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    android:contentDescription="@string/lock"
+                    android:src="@drawable/ic_lock"
+                    app:layout_constraintStart_toStartOf="@id/etPassword"
+                    app:layout_constraintTop_toBottomOf="@id/etPassword"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tvRepeatPassword"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:text="@string/repeat_password"
+                    android:textColor="@color/gray_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/ivRepeatPassword"
+                    app:layout_constraintStart_toEndOf="@id/ivRepeatPassword"
+                    app:layout_constraintTop_toTopOf="@id/ivRepeatPassword"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/etRepeatPassword"
+                    style="@style/LoginFormStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    android:backgroundTint="@color/gray_tetriary"
+                    android:hint="@string/password_hint"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/layout_space_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivRepeatPassword"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvRegister"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height_70"
+                    android:layout_marginHorizontal="@dimen/layout_space_48"
+                    app:cardBackgroundColor="@color/violet"
+                    android:layout_marginTop="@dimen/layout_space_32"
+                    app:cardCornerRadius="@dimen/corner_radius_10"
+                    app:cardElevation="@dimen/card_elevation_2"
+                    app:layout_constraintBottom_toTopOf="@+id/btnAlreadyHaveAccount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etRepeatPassword"
+                    app:layout_constraintVertical_chainStyle="packed">
+
+                    <TextView
+                        android:id="@+id/tvRegister"
+                        style="@style/Headline6Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/register"
+                        android:textColor="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <Button
+                    android:id="@+id/btnAlreadyHaveAccount"
+                    style="@style/TextButtonHelper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_8"
+                    android:contentDescription="@string/create_account"
+                    android:text="@string/already_have_an_account"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cvRegister"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    android:layout_marginBottom="@dimen/layout_space_32"
+                    app:layout_constraintStart_toStartOf="@+id/cvRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/cvRegister" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

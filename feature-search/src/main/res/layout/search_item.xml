@@ -7,12 +7,13 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSearchItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/layout_space_32"
         android:layout_marginTop="@dimen/layout_space_8"
         android:layout_marginEnd="@dimen/layout_space_32"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/layout_space_8"
         android:background="@color/white"
         app:cardCornerRadius="@dimen/corner_radius_10"
         app:cardElevation="@dimen/card_elevation_1"

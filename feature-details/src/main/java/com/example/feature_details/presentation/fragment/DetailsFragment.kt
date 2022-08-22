@@ -13,6 +13,7 @@ import com.bumptech.glide.RequestManager
 import com.example.core.ui.BaseFragment
 import com.example.feature_details.databinding.FragmentDetailsBinding
 import com.example.feature_details.presentation.adapter.DetailsViewPagerAdapter
+import com.example.feature_details.presentation.model.DetailsEvent
 import com.example.feature_details.presentation.model.DetailsSideEffect
 import com.example.feature_details.presentation.model.DetailsState
 import com.example.feature_details.presentation.view_model.DetailsViewModel
@@ -35,10 +36,16 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        processUiEvent()
+
         setupViewPager()
 
         observeUiEffect()
         observeUiState()
+    }
+
+    private fun processUiEvent() {
+        binding.btnGoBack.setOnClickListener { viewModel.onEvent(DetailsEvent.BackButtonClicked) }
     }
 
     private fun setupViewPager() {
@@ -83,12 +90,13 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun processUiState(state: DetailsState) {
-        adapter?.submitList(listOf(state.data.images, state.data.images, state.data.images))
+        adapter?.submitList(state.data.images)
 
         binding.tvTitle.text = state.data.modelFull
         binding.tvPrice.text =
             getString(com.example.ui_component.R.string.formatted_price, state.data.price)
         binding.tvDescription.text = state.data.description
+        binding.ratingBar.rating = state.data.rating
     }
 
     override fun initBinding(

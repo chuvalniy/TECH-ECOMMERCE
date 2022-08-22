@@ -7,12 +7,19 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.feature_login.LoginFragment"
+        android:name="com.example.feature_login.presentation.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <deepLink
             android:id="@+id/deepLinkLogin"
             app:uri="myApp://featureLogin" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.feature_login.presentation.fragment.RegisterFragment"
+        android:label="RegisterFragment" />
 
 </navigation>

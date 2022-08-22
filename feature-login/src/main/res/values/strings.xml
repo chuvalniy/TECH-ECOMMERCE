@@ -1,6 +1,21 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_back">Welcome back</string>
     <string name="login">Login</string>
+    <string name="message">Message</string>
+    <string name="email">Email</string>
+    <string name="example_example_com">example@example.com</string>
+    <string name="lock">Lock</string>
+    <string name="password">Password</string>
+    <string name="password_hint">* * * * * * * *</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create account</string>
+    <string name="new_account">New Account</string>
+    <string name="register">Register</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+
+    <string name="empty_email_field">The email can\'t be blank</string>
+    <string name="empty_password_field">The password can\'t be blank</string>
+    <string name="repeated_password_error">The passwords doesn\'t match</string>
+
 </resources>

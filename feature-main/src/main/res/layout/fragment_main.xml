@@ -22,7 +22,7 @@
         android:paddingRight="16dp"
         app:menu="@menu/menu_item"
         android:id="@+id/bottomnavBar"
-        android:background="@color/grayPrimary"
+        android:background="@color/gray_primary"
         android:layout_width="match_parent"
         app:labelVisibilityMode="unlabeled"
         android:layout_height="72dp"/>
