@@ -17,17 +17,12 @@ class DetailsRepositoryImpl(
     private val dao = db.dao
 
     override fun fetchData(id: String) = networkBoundResource(
-        fetchCache = {
-            val data = dao.fetchCache(id)?.toDomainDataSource()
-            data ?: DomainDataSource("", "", "", "", 0F, 0, emptyList())
-        },
+        fetchCache = { dao.fetchCache(id)?.toDomainDataSource() },
         fetchCloud = { api.fetchCloudData(id) },
         saveCache = { data ->
-            data?.let {
-                db.withTransaction {
-                    dao.clearCache(id)
-                    dao.insertCache(data.toCacheDataSource())
-                }
+            db.withTransaction {
+                dao.clearCache(id)
+                dao.insertCache(data.toCacheDataSource())
             }
         }
     )

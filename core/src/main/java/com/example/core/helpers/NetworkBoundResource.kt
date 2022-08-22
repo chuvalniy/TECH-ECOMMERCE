@@ -8,17 +8,17 @@ import java.io.IOException
 import java.net.UnknownHostException
 
 inline fun <ResultType, RequestType> networkBoundResource(
-    crossinline fetchCache: suspend () -> ResultType,
-    crossinline fetchCloud: suspend () -> RequestType,
+    crossinline fetchCache: suspend () -> ResultType?,
+    crossinline fetchCloud: suspend () -> RequestType?,
     crossinline saveCache: suspend (RequestType) -> Unit,
-    crossinline shouldFetchCloud: (ResultType) -> Boolean = { true }
+    crossinline shouldFetchCloud: () -> Boolean = { true }
 ): Flow<Resource<ResultType>> = flow {
     emit(Resource.Loading(isLoading = true))
     val cache = fetchCache()
 
     emit(Resource.Success(cache))
 
-    if (!shouldFetchCloud(cache)) {
+    if (!shouldFetchCloud()) {
         emit(Resource.Loading(isLoading = false))
         return@flow
     }

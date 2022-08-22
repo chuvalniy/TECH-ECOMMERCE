@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/gray_primary"
-    tools:context=".ProfileFragment">
+    tools:context=".presentation.fragment.ProfileFragment">
 
     <ImageButton
         android:id="@+id/btnGoBack"
@@ -46,87 +46,36 @@
         app:layout_constraintTop_toBottomOf="@id/tvHelper" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvAvatar"
-        android:layout_width="@dimen/user_avatar_size"
-        android:layout_height="@dimen/user_avatar_size"
-        android:layout_marginTop="@dimen/layout_space_16"
-        android:outlineProvider="none"
-        app:cardCornerRadius="1000dp"
-        app:cardElevation="@dimen/card_elevation_2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMyProfile">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivAvatar"
-            android:layout_width="@dimen/user_avatar_size"
-            android:layout_height="@dimen/user_avatar_size"
-            android:contentDescription="@string/user_avatar"
-            android:src="@color/violet" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvUserInfo"
-        android:layout_width="match_parent"
-        android:layout_height="167dp"
-        android:layout_marginStart="@dimen/layout_space_32"
-        android:layout_marginTop="@dimen/layout_space_24"
-        android:layout_marginEnd="@dimen/layout_space_32"
-        app:cardCornerRadius="@dimen/corner_radius_20"
-        app:cardElevation="@dimen/card_elevation_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/cvUser"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvMyProfile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cvAvatar">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/layout_space_32"
+        app:cardCornerRadius="1000dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/ivUser"
+            android:src="@drawable/avatar_plug"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvUsername"
-                style="@style/Headline6Semibold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/layout_space_24"
-                android:layout_marginEnd="@dimen/layout_space_24"
-                android:layout_marginBottom="@dimen/layout_space_8"
-                android:gravity="center_horizontal"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Rosina Doe" />
-
-            <ImageView
-                android:id="@+id/ivLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_space_24"
-                android:contentDescription="@string/location"
-                android:src="@drawable/ic_location"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvAddress" />
-
-            <TextView
-                android:id="@+id/tvAddress"
-                style="@style/Body1Regular"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/layout_space_16"
-                android:layout_marginTop="@dimen/layout_space_8"
-                android:layout_marginEnd="@dimen/layout_space_24"
-                android:text="Address: 43 Oxford Road\nM13 4GR\nManchester, UK"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toRightOf="@id/ivLocation"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEdit"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="@dimen/layout_space_32"
+        android:layout_height="@dimen/layout_space_32"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_edit"
+        android:layout_marginTop="@dimen/layout_space_8"
+        android:layout_marginEnd="@dimen/layout_space_8"
+        app:iconGravity="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/cvUser"
+        app:layout_constraintTop_toTopOf="@+id/cvUser" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvEditProfile"
@@ -136,9 +85,10 @@
         app:cardElevation="@dimen/card_elevation_1"
         app:layout_constraintBottom_toTopOf="@+id/cvShoppingAddress"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@id/cvUserInfo"
-        app:layout_constraintRight_toRightOf="@id/cvUserInfo"
-        app:layout_constraintTop_toBottomOf="@+id/cvUserInfo">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/layout_space_32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvUser">
 
         <TextView
             android:id="@+id/tvEditProfile"
