@@ -35,11 +35,34 @@ android {
 dependencies {
     implementation project(path: ':core')
     implementation project(path: ':ui-component')
+    implementation project(path: ':data-user-session')
+
+    // Firebase Core
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Firebase Auth
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
+
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.1'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
 
     // Navigation Component
     def nav_version = "2.5.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Koin
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+
+    // Coroutines
+    def coroutine_version = "1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutine_version"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'

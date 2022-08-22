@@ -87,7 +87,7 @@
             android:layout_marginTop="@dimen/layout_space_16"
             android:layout_marginBottom="@dimen/layout_space_24"
             android:text="Rosina Doe"
-            android:textColor="@color/graySecondary"
+            android:textColor="@color/gray_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvCardNumber"
             app:layout_constraintTop_toBottomOf="@+id/tvCardNumber" />
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_space_16"
             android:text="04/26"
-            android:textColor="@color/graySecondary"
+            android:textColor="@color/gray_secondary"
             app:layout_constraintBottom_toBottomOf="@id/tvName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvName" />

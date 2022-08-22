@@ -9,30 +9,14 @@ import com.example.feature_search.domain.model.DomainDataSource
 data class ModelSearchItem(
     private val glide: RequestManager,
     private val item: DomainDataSource,
-    private val index: Int,
+    private val onProductClick: (String) -> Unit
 ) : ViewBindingKotlinModel<SearchItemBinding>(R.layout.search_item) {
 
     override fun SearchItemBinding.bind() {
-
         tvTitle.text = item.modelFull
         tvPrice.text = root.context.getString(R.string.from_price, item.price)
         glide.load(item.image).into(ivProduct)
-    }
 
-//    private fun SearchItemBinding.setupPadding() {
-//        when (index % 2) {
-//            0 -> layoutSearchItem.setPadding(
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
-//            )
-//            1 -> layoutSearchItem.setPadding(
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_32),
-//                root.context.resources.getDimensionPixelSize(com.example.ui_component.R.dimen.layout_space_16)
-//            )
-//        }
-//    }
+        cvSearchItem.setOnClickListener { onProductClick(item.id) }
+    }
 }

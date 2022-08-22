@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: HomeRepository
+    private val repository: HomeRepository,
 ) : BaseViewModel<HomeEvent, HomeState, HomeSideEffect>(HomeState()) {
 
     init {
@@ -74,4 +74,5 @@ class HomeViewModel(
     private fun showSnackbar(message: UiText) = viewModelScope.launch {
         _sideEffect.send(HomeSideEffect.ShowSnackbar(message))
     }
+
 }

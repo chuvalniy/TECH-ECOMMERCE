@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shimmerLayoutHome"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <include layout="@layout/home_item"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/home_item_width"
+        android:layout_height="@dimen/home_item_height"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/layout_space_16"
+        android:paddingTop="@dimen/layout_space_16"
+        android:paddingEnd="@dimen/layout_space_16"
+        android:paddingBottom="@dimen/layout_space_16"
+        tools:background="@color/gray_primary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/corner_radius_20"
+            app:cardElevation="@dimen/card_elevation_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="@dimen/home_item_product_image_size"
+                    android:layout_height="@dimen/home_item_product_image_size"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:layout_marginTop="@dimen/layout_space_16"
+                    android:layout_marginEnd="@dimen/layout_space_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@color/shimmer_color" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/Headline6Semibold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_space_16"
+                    android:layout_marginEnd="@dimen/layout_space_16"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/shimmer_color"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintBottom_toTopOf="@+id/tvModel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivProduct"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    android:text="Apple Watch"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvModel"
+                    style="@style/Subtitle1Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_8"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/shimmer_color"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintBottom_toTopOf="@+id/tvPrice"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/tvTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    android:text="Series 6"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    style="@style/Subtitle1Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_space_16"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/bg_shimmer"
+                    android:textColor="@color/shimmer_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvModel"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/tvModel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvModel"
+                    android:text="$ 359"
+                    tools:ignore="HardcodedText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.facebook.shimmer.ShimmerFrameLayout>

@@ -10,7 +10,9 @@ fun CloudDataSource.toCacheDataSource(): CacheDataSource {
         modelFull = modelFull,
         price = price,
         description = description,
-        images = images.first()
+        images = images,
+        rating = rating,
+        quantity = quantity
     )
 }
 
@@ -20,6 +22,8 @@ fun CacheDataSource.toDomainDataSource(): DomainDataSource {
         description = description,
         modelFull = modelFull,
         price = price.toString(),
-        images = images
+        images = images,
+        rating = rating,
+        quantity = quantity
     )
 }

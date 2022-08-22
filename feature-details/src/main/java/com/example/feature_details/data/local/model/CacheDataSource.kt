@@ -10,6 +10,8 @@ data class CacheDataSource(
     val id: String,
     val modelFull: String,
     val price: Int,
+    val rating: Float,
+    val quantity: Int,
     val description: String,
-    val images: String,
+    val images: List<String>,
 )

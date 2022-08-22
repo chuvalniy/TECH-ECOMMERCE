@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="search_view_hint_start_padding">20dp</dimen>
+    <dimen name="search_view_drawable_padding">12dp</dimen>
+    <dimen name="home_item_width">236dp</dimen>
+    <dimen name="home_item_height">332dp</dimen>
+    <dimen name="home_item_product_image_size">125dp</dimen>
 </resources>

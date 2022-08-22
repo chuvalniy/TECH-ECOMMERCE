@@ -1,5 +1,6 @@
 package com.example.feature_search.presentation.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onQueryTextChanged
+import com.example.core.navigation.NavCommand
+import com.example.core.navigation.NavCommands
+import com.example.core.navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_search.databinding.FragmentSearchBinding
 import com.example.feature_search.presentation.epoxy.SearchEpoxyController
@@ -47,7 +51,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     private fun setupEpoxyController() {
-        epoxyController = SearchEpoxyController(glide).also { controller ->
+        epoxyController = SearchEpoxyController(
+            glide = glide,
+            onProductClick = { viewModel.onEvent(SearchEvent.ProductClicked(it)) }
+        ).also { controller ->
             binding.epoxyRecyclerView.setController(controller)
         }
     }
@@ -57,11 +64,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             viewModel.sideEffect.collect { effect ->
                 when (effect) {
                     is SearchSideEffect.NavigateBack -> findNavController().popBackStack()
-                    is SearchSideEffect.NavigateToDetails -> TODO()
+                    is SearchSideEffect.NavigateToDetails -> navigateToDetails(effect)
                     is SearchSideEffect.ShowSnackbar -> TODO()
                 }
             }
         }
+    }
+
+    private fun navigateToDetails(effect: SearchSideEffect.NavigateToDetails) {
+        navigate(
+            NavCommand(
+                NavCommands.DeepLink(
+                    url = Uri.parse("myApp://featureDetails/${effect.id}"),
+                    isModal = true,
+                    isSingleTop = false
+                )
+            )
+        )
     }
 
     private fun observeUiState() {

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/grayPrimary"
+    tools:background="@color/gray_primary"
     tools:context=".presentation.fragment.SearchFragment">
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/clickable_icon_size"
+        android:layout_height="@dimen/clickable_icon_size"
         android:layout_marginStart="@dimen/layout_space_24"
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/go_back"
@@ -90,7 +90,7 @@
             android:gravity="center"
             android:lineSpacingMultiplier="1.4"
             android:text="@string/try_a_more_generic_search_term_or_try_looking_for_alternative_products"
-            android:textColor="@color/graySecondary"
+            android:textColor="@color/gray_secondary"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvErrorTitle"

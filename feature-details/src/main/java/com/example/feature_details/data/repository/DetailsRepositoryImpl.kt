@@ -19,7 +19,7 @@ class DetailsRepositoryImpl(
     override fun fetchData(id: String) = networkBoundResource(
         fetchCache = {
             val data = dao.fetchCache(id)?.toDomainDataSource()
-            data ?: DomainDataSource("", "", "", "", "")
+            data ?: DomainDataSource("", "", "", "", 0F, 0, emptyList())
         },
         fetchCloud = { api.fetchCloudData(id) },
         saveCache = { data ->

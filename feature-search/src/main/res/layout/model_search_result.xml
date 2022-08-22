@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/layout_space_24"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:paddingVertical="@dimen/layout_space_24">
 
     <TextView
         android:id="@+id/tvSearchResult"
+        style="@style/Headline5SemiBold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Headline5SemiBold"
-        android:textColor="@color/black"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:textColor="@color/black" />
 </LinearLayout>
