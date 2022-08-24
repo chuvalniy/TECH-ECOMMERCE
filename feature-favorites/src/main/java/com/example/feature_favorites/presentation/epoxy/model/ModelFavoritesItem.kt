@@ -7,7 +7,7 @@ import com.example.feature_favorites.databinding.FavoritesItemBinding
 import com.example.feature_favorites.domain.model.DomainDataSource
 
 data class ModelFavoritesItem(
-    private val item: DomainDataSource,
+    val item: DomainDataSource,
     private val glide: RequestManager
 ) : ViewBindingKotlinModel<FavoritesItemBinding>(R.layout.favorites_item){
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.SnackbarTextView" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textAppearance">@style/SnackbarTextAppearance</item>
+    </style>
+
+    <style name="SnackbarTextAppearance">
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

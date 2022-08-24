@@ -5,12 +5,13 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import com.example.core.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit) {
-    this.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
         override fun onQueryTextSubmit(p0: String?): Boolean {
             return true
         }
@@ -55,9 +56,23 @@ fun Context.showSnackBar(
                     sb?.anchorView = null
                 }
             })
-        snackBar.view.background = ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_error_snackbar)
+        snackBar.view.background =
+            ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_error_snackbar)
         snackBar.show()
     }
+}
+
+fun Context.showActionSnackBar(
+    view: View,
+    message: String,
+    actionMessage: String,
+    action: () -> Unit
+) {
+    Snackbar.make(view, message, Snackbar.LENGTH_LONG)
+        .setAction(actionMessage) { action() }
+        .setBackgroundTint(ContextCompat.getColor(this, com.example.ui_component.R.color.violet))
+        .setActionTextColor(ContextCompat.getColor(this, com.example.ui_component.R.color.white))
+        .show()
 }
 
 fun Context.getSnackBar(
@@ -75,7 +90,8 @@ fun Context.getSnackBar(
                     sb?.anchorView = null
                 }
             })
-        snackBar.view.background = ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_loading_snackbar)
+        snackBar.view.background =
+            ContextCompat.getDrawable(this, com.example.ui_component.R.drawable.bg_snackbar)
 
         snackBar.show()
         return snackBar

@@ -12,4 +12,6 @@
     <string name="product_image">Product image</string>
 
     <string name="formatted_price">$%1$s</string>
+
+    <string name="undo">Undo</string>
 </resources>

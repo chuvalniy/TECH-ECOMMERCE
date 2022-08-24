@@ -9,8 +9,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyTouchHelper
 import com.bumptech.glide.RequestManager
+import com.example.core.extension.showActionSnackBar
 import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
+import com.example.feature_favorites.R
 import com.example.feature_favorites.databinding.FragmentFavoritesBinding
 import com.example.feature_favorites.presentation.epoxy.FavoritesEpoxyController
 import com.example.feature_favorites.presentation.epoxy.model.ModelFavoritesItem
@@ -48,6 +50,22 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
         epoxyController = FavoritesEpoxyController(glide).also { controller ->
             binding.epoxyRecyclerView.setController(controller)
         }
+
+        EpoxyTouchHelper.initSwiping(binding.epoxyRecyclerView)
+            .left()
+            .withTarget(ModelFavoritesItem::class.java)
+            .andCallbacks(object : EpoxyTouchHelper.SwipeCallbacks<ModelFavoritesItem>() {
+                override fun onSwipeCompleted(
+                    model: ModelFavoritesItem?,
+                    itemView: View?,
+                    position: Int,
+                    direction: Int
+                ) {
+                    val swipedItem = model?.item ?: return
+                    viewModel.onEvent(FavoritesEvent.ItemSwiped(swipedItem))
+                }
+            })
+
     }
 
     private fun observeUiState() {
@@ -64,21 +82,32 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
         binding.layoutNoFavorites.isVisible = !state.isLoading && state.data.isEmpty()
     }
 
-    private fun observeUiEffect() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.sideEffect.collect { effect ->
-                when (effect) {
-                    is FavoritesSideEffect.NavigateBack -> findNavController().popBackStack()
-                    is FavoritesSideEffect.ShowSnackbar -> {
-                        requireContext().showSnackBar(
-                            binding.root,
-                            effect.message.asString(requireContext())
-                        )
-                    }
-                }
+    private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.sideEffect.collect { effect ->
+            processUiEffect(effect)
+        }
+    }
+
+    private fun processUiEffect(effect: FavoritesSideEffect) {
+        when (effect) {
+            is FavoritesSideEffect.NavigateBack -> findNavController().popBackStack()
+            is FavoritesSideEffect.ShowSnackbar -> {
+                requireContext().showSnackBar(
+                    binding.root,
+                    effect.message.asString(requireContext())
+                )
+            }
+            is FavoritesSideEffect.ShowUndoSnackbar -> {
+                requireContext().showActionSnackBar(
+                    requireView(),
+                    getString(R.string.favorites_deleted),
+                    getString(com.example.ui_component.R.string.undo),
+                    action = { viewModel.onEvent(FavoritesEvent.UndoClicked(effect.data)) }
+                )
             }
         }
     }
+
 
     override fun initBinding(
         inflater: LayoutInflater,

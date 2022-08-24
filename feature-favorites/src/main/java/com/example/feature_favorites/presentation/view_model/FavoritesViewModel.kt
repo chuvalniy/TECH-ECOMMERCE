@@ -5,6 +5,7 @@ import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import com.example.data_user_session.data.UserSession
+import com.example.feature_favorites.domain.model.DomainDataSource
 import com.example.feature_favorites.domain.repository.FavoritesRepository
 import com.example.feature_favorites.presentation.model.FavoritesEvent
 import com.example.feature_favorites.presentation.model.FavoritesSideEffect
@@ -44,14 +45,32 @@ class FavoritesViewModel(
         _sideEffect.send(FavoritesSideEffect.ShowSnackbar(message))
     }
 
-
     override fun onEvent(event: FavoritesEvent) {
         when (event) {
             is FavoritesEvent.BackButtonClicked -> backButtonClicked()
+            is FavoritesEvent.ItemSwiped -> favoritesSwiped(event.item)
+            is FavoritesEvent.UndoClicked -> undoClicked(event.item)
         }
     }
 
     private fun backButtonClicked() = viewModelScope.launch {
         _sideEffect.send(FavoritesSideEffect.NavigateBack)
+    }
+
+    private fun favoritesSwiped(item: DomainDataSource) = viewModelScope.launch {
+        repository.deleteData(
+            userId = userSession.fetchUserId(),
+            data = item
+        )
+        _sideEffect.send(FavoritesSideEffect.ShowUndoSnackbar(item))
+        fetchData()
+    }
+
+    private fun undoClicked(item: DomainDataSource) = viewModelScope.launch {
+        repository.insertData(
+            userId = userSession.fetchUserId(),
+            data = item
+        )
+        fetchData()
     }
 }

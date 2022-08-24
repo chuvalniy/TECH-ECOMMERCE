@@ -29,7 +29,10 @@ class FavoritesRepositoryImpl(
     )
 
     override suspend fun insertData(userId: String, data: DomainDataSource) {
-        val cloudData = data.toCloudDataSource()
-        api.insertData(userId, cloudData) // TODO()
+        api.insertData(userId, data.toCloudDataSource()) // TODO()
+    }
+
+    override suspend fun deleteData(userId: String, data: DomainDataSource) {
+        api.deleteData(userId, data.toCloudDataSource())
     }
 }

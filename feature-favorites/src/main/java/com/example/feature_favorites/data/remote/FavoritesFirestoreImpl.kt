@@ -28,6 +28,16 @@ class FavoritesFirestoreImpl(
             .await()
     }
 
+    override suspend fun deleteData(userId: String, data: CloudDataSource) {
+        firestore
+            .collection(FAVORITES_COLLECTION)
+            .document(userId)
+            .collection(FAVORITES_COLLECTION_ITEMS)
+            .document(data.id)
+            .delete()
+            .await()
+    }
+
     private companion object {
         const val FAVORITES_COLLECTION = "favorites"
         const val FAVORITES_COLLECTION_ITEMS = "items"
