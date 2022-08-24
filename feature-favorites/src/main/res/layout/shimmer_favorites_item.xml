@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shimmerLayoutFavorites"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingLeft="@dimen/layout_space_32"
+    android:paddingTop="@dimen/layout_space_8"
+    android:paddingRight="@dimen/layout_space_32"
+    android:paddingBottom="@dimen/layout_space_8">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvFavoritesItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/corner_radius_10"
+        app:cardElevation="@dimen/card_elevation_1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="80dp"
+                android:layout_height="105dp"
+                android:layout_marginStart="@dimen/layout_space_16"
+                android:layout_marginTop="@dimen/layout_space_16"
+                android:layout_marginBottom="@dimen/layout_space_16"
+                android:src="@color/shimmer_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvModel"
+                style="@style/Subtitle1Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_space_8"
+                android:background="@drawable/bg_shimmer"
+                android:text="2020 Apple iPad Air 10.9"
+                android:textColor="@color/shimmer_color"
+                app:layout_constraintBottom_toTopOf="@+id/tvPrice"
+                app:layout_constraintStart_toEndOf="@+id/ivProduct"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/Subtitle1Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shimmer"
+                android:text="$375.00"
+                android:textColor="@color/shimmer_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvModel"
+                app:layout_constraintTop_toBottomOf="@+id/tvModel"
+                tools:ignore="HardcodedText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</com.facebook.shimmer.ShimmerFrameLayout>

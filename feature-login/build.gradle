@@ -34,7 +34,7 @@ android {
 
 dependencies {
     implementation project(path: ':core-common')
-    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-resources')
     implementation project(path: ':core-shared-preferences')
 
     // Firebase Core

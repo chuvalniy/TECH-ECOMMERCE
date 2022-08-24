@@ -11,6 +11,7 @@ import com.example.feature_details.domain.repository.DetailsRepository
 import com.example.feature_details.presentation.model.DetailsEvent
 import com.example.feature_details.presentation.model.DetailsSideEffect
 import com.example.feature_details.presentation.model.DetailsState
+import com.example.feature_favorites.domain.repository.FavoritesRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 class DetailsViewModel(
     private val detailsRepository: DetailsRepository,
     private val cartRepository: CartRepository,
+    private val favoritesRepository: FavoritesRepository,
     private val userSession: UserSession,
     private val savedState: SavedStateHandle,
 ) : BaseViewModel<DetailsEvent, DetailsState, DetailsSideEffect>(DetailsState()) {
@@ -47,7 +49,7 @@ class DetailsViewModel(
     override fun onEvent(event: DetailsEvent) {
         when (event) {
             DetailsEvent.AddToCartButtonClicked -> addToCartButtonClicked()
-            DetailsEvent.AddToFavoriteButtonClicked -> Unit
+            DetailsEvent.AddToFavoriteButtonClicked -> addToFavoriteButtonClicked()
             DetailsEvent.BackButtonClicked -> backButtonClicked()
         }
     }
@@ -55,12 +57,24 @@ class DetailsViewModel(
     private fun addToCartButtonClicked() = viewModelScope.launch {
         cartRepository.insertData(
             userId = userSession.fetchUserId(),
-            item = com.example.feature_cart.domain.model.DomainDataSource(
+            data = com.example.feature_cart.domain.model.DomainDataSource(
                 id = _state.value.data.id,
                 img = _state.value.data.images.first(),
                 model = _state.value.data.modelFull,
                 price = _state.value.data.price,
-                quantity = 0
+                quantity = 0 // TODO()
+            )
+        )
+    }
+
+    private fun addToFavoriteButtonClicked() = viewModelScope.launch {
+        favoritesRepository.insertData(
+            userId = userSession.fetchUserId(),
+            data = com.example.feature_favorites.domain.model.DomainDataSource(
+                id = _state.value.data.id,
+                img = _state.value.data.images.first(),
+                model = _state.value.data.modelFull,
+                price = _state.value.data.price,
             )
         )
     }

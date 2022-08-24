@@ -48,6 +48,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.btnGoBack.setOnClickListener { viewModel.onEvent(DetailsEvent.BackButtonClicked) }
 
         binding.cvAddToCart.setOnClickListener { viewModel.onEvent(DetailsEvent.AddToCartButtonClicked) }
+
+        binding.btnFavorites.setOnClickListener { viewModel.onEvent(DetailsEvent.AddToFavoriteButtonClicked) }
     }
 
     private fun setupViewPager() {

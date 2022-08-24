@@ -49,7 +49,7 @@ dependencies {
     // Koin
     implementation "io.insert-koin:koin-android:3.2.0-beta-1"
     implementation project(path: ':feature-favorites')
-    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-resources')
     implementation project(path: ':core-shared-preferences')
 
     // Navigation Component
