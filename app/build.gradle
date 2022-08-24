@@ -39,7 +39,7 @@ android {
 dependencies {
     implementation project(path: ':feature-home')
     implementation project(path: ':feature-login')
-    implementation project(path: ':core')
+    implementation project(path: ':core-common')
     implementation project(path: ':feature-search')
     implementation project(path: ':feature-main')
     implementation project(path: ':feature-profile')
@@ -49,8 +49,8 @@ dependencies {
     // Koin
     implementation "io.insert-koin:koin-android:3.2.0-beta-1"
     implementation project(path: ':feature-favorites')
-    implementation project(path: ':ui-component')
-    implementation project(path: ':data-user-session')
+    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-shared-preferences')
 
     // Navigation Component
     def nav_version = "2.5.1"

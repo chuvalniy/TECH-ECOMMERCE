@@ -48,6 +48,7 @@ class ProfileViewModel(
             ProfileEvent.NotificationsButtonClicked -> notificationButtonClicked()
             ProfileEvent.OrderHistoryButtonClicked -> orderHistoryButtonClicked()
             ProfileEvent.ShoppingAddressButtonClicked -> shoppingAddressButtonClicked()
+            ProfileEvent.StartOrderingButtonClicked -> startOrderingButtonClicked()
         }
     }
 
@@ -77,5 +78,9 @@ class ProfileViewModel(
 
     private fun shoppingAddressButtonClicked() = viewModelScope.launch {
         _sideEffect.send(ProfileSideEffect.NavigateToShoppingAddress)
+    }
+
+    private fun startOrderingButtonClicked() = viewModelScope.launch {
+        _sideEffect.send(ProfileSideEffect.NavigateToSearch)
     }
 }

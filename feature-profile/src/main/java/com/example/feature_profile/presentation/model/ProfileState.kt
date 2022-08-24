@@ -8,8 +8,8 @@ data class ProfileState(
         id = "",
         email = "",
         image = "",
-        firstName = "",
-        lastName = "",
+        firstName = "Unknown",
+        lastName = "User",
         shippingAddresses = emptyList(),
         phoneNumber = ""
     ),

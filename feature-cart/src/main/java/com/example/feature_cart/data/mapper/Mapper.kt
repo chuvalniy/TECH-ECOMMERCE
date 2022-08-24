@@ -7,17 +7,29 @@ import com.example.feature_cart.domain.model.DomainDataSource
 fun CloudDataSource.toCacheDataSource(): CacheDataSource {
     return CacheDataSource(
         id = id,
-        modelFull = modelFull,
+        model = model,
+        img = img,
         price = price,
-        image = images.first()
+        quantity = quantity
     )
 }
 
 fun CacheDataSource.toDomainDataSource(): DomainDataSource {
     return DomainDataSource(
         id = id,
-        modelFull = modelFull,
+        model = model,
+        img = img,
         price = price.toString(),
-        image = image
+        quantity = quantity
+    )
+}
+
+fun DomainDataSource.toCloudCartItem(): CloudDataSource {
+    return CloudDataSource(
+        id = id,
+        model = model,
+        img = img,
+        price = price.toInt(),
+        quantity = quantity
     )
 }

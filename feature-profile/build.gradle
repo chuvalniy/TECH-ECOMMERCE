@@ -34,16 +34,16 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core')
-    implementation project(path: ':ui-component')
+    implementation project(path: ':core-common')
+    implementation project(path: ':core-ui-components')
 
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
-    implementation project(path: ':ui-component')
-    implementation project(path: ':data-user-session')
+    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-shared-preferences')
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     // Room

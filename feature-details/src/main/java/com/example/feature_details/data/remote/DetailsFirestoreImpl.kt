@@ -10,10 +10,14 @@ class DetailsFirestoreImpl : DetailsFirestore {
 
     override suspend fun fetchCloudData(id: String): CloudDataSource? {
         return firestore
-            .collection("products")
+            .collection(PRODUCT_COLLECTION)
             .document(id)
             .get()
             .await()
             .toObject(CloudDataSource::class.java)
+    }
+
+    private companion object {
+        const val PRODUCT_COLLECTION = "products"
     }
 }

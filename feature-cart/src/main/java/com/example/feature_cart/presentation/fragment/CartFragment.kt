@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
 import com.example.feature_cart.R
 import com.example.feature_cart.databinding.FragmentCartBinding
@@ -19,7 +17,6 @@ import com.example.feature_cart.presentation.model.CartSideEffect
 import com.example.feature_cart.presentation.view_model.CartViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CartFragment : BaseFragment<FragmentCartBinding>() {
@@ -60,7 +57,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
                     is CartSideEffect.NavigateToCheckout -> {
                         findNavController().navigate(R.id.action_cartFragment_to_checkoutFragment)
                     }
-                    is CartSideEffect.ShowSnackbar -> TODO()
+                    is CartSideEffect.ShowSnackbar -> {
+                        requireContext().showSnackBar(
+                            binding.root,
+                            effect.message.asString(requireContext())
+                        )
+                    }
                     else -> Unit
                 }
             }

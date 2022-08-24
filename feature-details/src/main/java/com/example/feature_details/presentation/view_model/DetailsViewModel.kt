@@ -4,6 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.ui.BaseViewModel
 import com.example.core.utils.Resource
+import com.example.data_user_session.data.UserSession
+import com.example.feature_cart.domain.repository.CartRepository
 import com.example.feature_details.domain.model.DomainDataSource
 import com.example.feature_details.domain.repository.DetailsRepository
 import com.example.feature_details.presentation.model.DetailsEvent
@@ -14,8 +16,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val repository: DetailsRepository,
-    private val savedState: SavedStateHandle
+    private val detailsRepository: DetailsRepository,
+    private val cartRepository: CartRepository,
+    private val userSession: UserSession,
+    private val savedState: SavedStateHandle,
 ) : BaseViewModel<DetailsEvent, DetailsState, DetailsSideEffect>(DetailsState()) {
 
     init {
@@ -24,9 +28,9 @@ class DetailsViewModel(
 
     private fun fetchData() {
         viewModelScope.launch {
-            repository.fetchData(id = savedState.get<String>("id") ?: "").onEach { result ->
+            detailsRepository.fetchData(id = savedState.get<String>("id") ?: "").onEach { result ->
                 when (result) {
-                    is Resource.Error -> TODO()
+                    is Resource.Error -> Unit
                     is Resource.Loading -> {
                         _state.value = _state.value.copy(isLoading = result.isLoading)
                     }
@@ -42,10 +46,23 @@ class DetailsViewModel(
 
     override fun onEvent(event: DetailsEvent) {
         when (event) {
-            DetailsEvent.AddToCartButtonClicked -> TODO()
-            DetailsEvent.AddToFavoriteButtonClicked -> TODO()
+            DetailsEvent.AddToCartButtonClicked -> addToCartButtonClicked()
+            DetailsEvent.AddToFavoriteButtonClicked -> Unit
             DetailsEvent.BackButtonClicked -> backButtonClicked()
         }
+    }
+
+    private fun addToCartButtonClicked() = viewModelScope.launch {
+        cartRepository.insertData(
+            userId = userSession.fetchUserId(),
+            item = com.example.feature_cart.domain.model.DomainDataSource(
+                id = _state.value.data.id,
+                img = _state.value.data.images.first(),
+                model = _state.value.data.modelFull,
+                price = _state.value.data.price,
+                quantity = 0
+            )
+        )
     }
 
     private fun backButtonClicked() = viewModelScope.launch {

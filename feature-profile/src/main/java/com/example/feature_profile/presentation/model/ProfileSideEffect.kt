@@ -11,4 +11,5 @@ sealed class ProfileSideEffect : UiSideEffect {
     object NavigateToOrderHistory : ProfileSideEffect()
     object NavigateToCards : ProfileSideEffect()
     object NavigateToNotifications : ProfileSideEffect()
+    object NavigateToSearch : ProfileSideEffect()
 }

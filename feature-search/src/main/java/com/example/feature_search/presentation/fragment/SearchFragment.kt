@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onQueryTextChanged
 import com.example.core.navigation.NavCommand
@@ -63,12 +62,24 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.sideEffect.collect { effect ->
                 when (effect) {
-                    is SearchSideEffect.NavigateBack -> findNavController().popBackStack()
+                    is SearchSideEffect.NavigateBack -> navigateBack()
                     is SearchSideEffect.NavigateToDetails -> navigateToDetails(effect)
                     is SearchSideEffect.ShowSnackbar -> TODO()
                 }
             }
         }
+    }
+
+    private fun navigateBack() {
+        navigate(
+            NavCommand(
+                NavCommands.DeepLink(
+                    url = Uri.parse("myApp://featureMain"),
+                    isModal = true,
+                    isSingleTop = true
+                )
+            )
+        )
     }
 
     private fun navigateToDetails(effect: SearchSideEffect.NavigateToDetails) {

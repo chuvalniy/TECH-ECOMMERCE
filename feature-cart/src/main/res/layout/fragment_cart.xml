@@ -90,7 +90,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_space_24"
                 android:layout_marginEnd="@dimen/layout_space_32"
-                android:text="$ 954"
                 android:textColor="@color/violet"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

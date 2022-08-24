@@ -57,6 +57,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                             effect.message.asString(requireContext())
                         )
                     }
+                    else -> Unit
                 }
             }
         }
@@ -81,11 +82,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun processUiState(state: ProfileState) {
-//        binding.tvName.text = getString(
-//            R.string.formatted_name,
-//            state.data.firstName,
-//            state.data.lastName
-//        )
+        binding.tvName.text = getString(
+            R.string.formatted_name,
+            state.data.firstName,
+            state.data.lastName
+        )
 
         if (state.data.image.isNotBlank()) glide.load(state.data.image).into(binding.ivUser)
     }

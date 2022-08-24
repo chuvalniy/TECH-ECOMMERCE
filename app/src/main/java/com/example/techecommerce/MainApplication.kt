@@ -1,7 +1,7 @@
 package com.example.techecommerce
 
 import android.app.Application
-import com.example.data_user_session.di.userSessionDataModule
+import com.example.data_user_session.di.sharedPrefModule
 import com.example.feature_cart.di.cartDataModule
 import com.example.feature_cart.di.cartPresentationModule
 import com.example.feature_details.di.detailsDataModule
@@ -37,7 +37,7 @@ class MainApplication : Application() {
                 loginDataModule,
                 loginDomainModule,
                 loginPresentationModule,
-                userSessionDataModule,
+                sharedPrefModule,
                 profileDataModule,
                 profilePresentationModule
             )

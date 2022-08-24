@@ -9,4 +9,5 @@ sealed class ProfileEvent : UiEvent {
     object CardsButtonClicked : ProfileEvent()
     object NotificationsButtonClicked : ProfileEvent()
     object BackButtonClicked : ProfileEvent()
+    object StartOrderingButtonClicked : ProfileEvent()
 }

@@ -5,7 +5,7 @@ import com.example.data_user_session.data.UserSessionImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-val userSessionDataModule = module {
+val sharedPrefModule = module {
     single<UserSession> {
         UserSessionImpl(androidContext())
     }

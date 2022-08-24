@@ -7,6 +7,11 @@ import org.koin.dsl.module
 
 val detailsPresentationModule = module {
     viewModel { (handle: SavedStateHandle) ->
-        DetailsViewModel(repository = get(), savedState = handle)
+        DetailsViewModel(
+            detailsRepository = get(),
+            savedState = handle,
+            cartRepository = get(),
+            userSession = get()
+        )
     }
 }
