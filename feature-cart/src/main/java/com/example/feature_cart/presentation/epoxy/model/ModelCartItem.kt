@@ -7,14 +7,13 @@ import com.example.feature_cart.databinding.CartItemBinding
 import com.example.feature_cart.domain.model.DomainDataSource
 
 data class ModelCartItem(
-    private val glide: RequestManager,
-    private val item: DomainDataSource
+    val item: DomainDataSource,
+    private val glide: RequestManager
 ) : ViewBindingKotlinModel<CartItemBinding>(R.layout.cart_item) {
 
     override fun CartItemBinding.bind() {
         glide.load(item.img).into(ivProduct)
         tvModel.text = item.model
         tvPrice.text = root.context.getString(R.string.formatted_price_float, item.price)
-        tvQuantity.text = "10" // TODO
     }
 }

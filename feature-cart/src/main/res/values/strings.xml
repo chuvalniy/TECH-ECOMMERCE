@@ -15,4 +15,5 @@
     <string name="pay_now">Pay now</string>
     <string name="my_credit_card">My credit card</string>
     <string name="products">Products:</string>
+    <string name="your_cart_is_empty">Your cart is empty</string>
 </resources>

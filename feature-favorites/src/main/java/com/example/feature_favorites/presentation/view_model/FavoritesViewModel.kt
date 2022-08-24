@@ -25,7 +25,7 @@ class FavoritesViewModel(
 
     private fun fetchData() {
         viewModelScope.launch {
-            repository.fetchData(userId = userSession.fetchUserId()).onEach { result ->
+            repository.fetchData(userSession.fetchUserId()).onEach { result ->
                 when (result) {
                     is Resource.Error -> showSnackbar(
                         result.error
@@ -48,7 +48,7 @@ class FavoritesViewModel(
     override fun onEvent(event: FavoritesEvent) {
         when (event) {
             is FavoritesEvent.BackButtonClicked -> backButtonClicked()
-            is FavoritesEvent.ItemSwiped -> favoritesSwiped(event.item)
+            is FavoritesEvent.ItemSwiped -> itemSwiped(event.item)
             is FavoritesEvent.UndoClicked -> undoClicked(event.item)
         }
     }
@@ -57,7 +57,7 @@ class FavoritesViewModel(
         _sideEffect.send(FavoritesSideEffect.NavigateBack)
     }
 
-    private fun favoritesSwiped(item: DomainDataSource) = viewModelScope.launch {
+    private fun itemSwiped(item: DomainDataSource) = viewModelScope.launch {
         repository.deleteData(
             userId = userSession.fetchUserId(),
             data = item

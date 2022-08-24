@@ -1,6 +1,6 @@
 package com.example.feature_search.presentation.model
 
-import com.example.core.ui.UiEvent
+import com.example.core_ui_models.UiEvent
 
 sealed class SearchEvent : UiEvent {
     data class QueryChanged(val searchQuery: String): SearchEvent()

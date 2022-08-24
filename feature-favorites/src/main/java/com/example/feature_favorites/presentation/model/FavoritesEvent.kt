@@ -1,6 +1,6 @@
 package com.example.feature_favorites.presentation.model
 
-import com.example.core.ui.UiEvent
+import com.example.core_ui_models.UiEvent
 import com.example.feature_favorites.domain.model.DomainDataSource
 
 sealed class FavoritesEvent : UiEvent {

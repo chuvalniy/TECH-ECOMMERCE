@@ -12,8 +12,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-common" />
+            <option value="$PROJECT_DIR$/core-navigation" />
             <option value="$PROJECT_DIR$/core-resources" />
             <option value="$PROJECT_DIR$/core-shared-preferences" />
+            <option value="$PROJECT_DIR$/core-ui-models" />
             <option value="$PROJECT_DIR$/feature-cart" />
             <option value="$PROJECT_DIR$/feature-details" />
             <option value="$PROJECT_DIR$/feature-favorites" />

@@ -19,7 +19,7 @@ class CartEpoxyController(
             }
         } else if (state?.isLoading == false) {
             state.data.onEach { item ->
-                ModelCartItem(glide, item)
+                ModelCartItem(item = item, glide = glide)
                     .id("cart_item_${item.id}")
                     .addTo(this)
             }

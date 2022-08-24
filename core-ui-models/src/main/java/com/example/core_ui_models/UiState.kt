@@ -1,4 +1,4 @@
-package com.example.core.ui
+package com.example.core_ui_models
 
 /**
  * While this interface is empty, it is used to clearly define any class that is representative

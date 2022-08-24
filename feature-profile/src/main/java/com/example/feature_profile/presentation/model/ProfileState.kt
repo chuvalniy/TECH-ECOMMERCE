@@ -1,6 +1,6 @@
 package com.example.feature_profile.presentation.model
 
-import com.example.core.ui.UiState
+import com.example.core_ui_models.UiState
 import com.example.feature_profile.domain.model.DomainDataSource
 
 data class ProfileState(
@@ -14,4 +14,4 @@ data class ProfileState(
         phoneNumber = ""
     ),
     val isLoading: Boolean = false,
-) : UiState
+) : com.example.core_ui_models.UiState

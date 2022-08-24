@@ -1,4 +1,4 @@
-package com.example.core.navigation
+package com.example.core_navigation
 
 import androidx.fragment.app.Fragment
 

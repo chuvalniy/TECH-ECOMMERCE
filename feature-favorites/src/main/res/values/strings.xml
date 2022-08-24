@@ -1,5 +1,4 @@
 <resources>
     <string name="no_favorites_yet">No favorites yet</string>
     <string name="favorites">Favorites</string>
-    <string name="favorites_deleted">Favorites deleted</string>
 </resources>

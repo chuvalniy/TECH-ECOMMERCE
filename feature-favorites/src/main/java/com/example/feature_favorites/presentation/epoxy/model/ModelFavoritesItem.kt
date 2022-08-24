@@ -13,7 +13,10 @@ data class ModelFavoritesItem(
 
     override fun FavoritesItemBinding.bind() {
         tvModel.text = item.model
-        tvPrice.text = item.price
+        tvPrice.text = root.context.getString(
+            com.example.ui_component.R.string.formatted_price,
+            item.price
+        )
         glide.load(item.img).into(ivProduct)
     }
 }

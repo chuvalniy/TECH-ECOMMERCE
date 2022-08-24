@@ -36,6 +36,9 @@ dependencies {
     implementation project(path: ':core-common')
     implementation project(path: ':core-resources')
     implementation project(path: ':core-shared-preferences')
+    implementation project(path: ':core-navigation')
+    implementation project(path: ':core-ui-models')
+
 
     // Firebase Core
     implementation platform('com.google.firebase:firebase-bom:30.2.0')

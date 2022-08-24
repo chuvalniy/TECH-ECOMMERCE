@@ -1,4 +1,4 @@
-package com.example.core.ui
+package com.example.core_ui_models
 
 interface EventHandler<E : UiEvent> {
 

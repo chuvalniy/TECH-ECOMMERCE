@@ -9,9 +9,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onQueryTextChanged
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_search.databinding.FragmentSearchBinding
 import com.example.feature_search.presentation.epoxy.SearchEpoxyController
@@ -72,8 +72,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun navigateBack() {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureMain"),
                     isModal = true,
                     isSingleTop = true
@@ -84,8 +84,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun navigateToDetails(effect: SearchSideEffect.NavigateToDetails) {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureDetails/${effect.id}"),
                     isModal = true,
                     isSingleTop = false

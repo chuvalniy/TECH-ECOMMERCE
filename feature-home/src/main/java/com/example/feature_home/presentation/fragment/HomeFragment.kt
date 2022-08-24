@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onTabSelected
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_home.databinding.FragmentHomeBinding
 import com.example.feature_home.presentation.epoxy.HomeEpoxyController
@@ -86,8 +86,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun navigateToDetails(effect: HomeSideEffect.NavigateToDetails) {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureDetails/${effect.id}"),
                     isModal = true,
                     isSingleTop = false
@@ -98,8 +98,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun navigateToSearch() {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureSearch"),
                     isModal = true,
                     isSingleTop = false

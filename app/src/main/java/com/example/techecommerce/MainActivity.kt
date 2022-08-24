@@ -2,18 +2,16 @@ package com.example.techecommerce
 
 import android.net.Uri
 import android.os.Bundle
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.NavigationProvider
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.NavigationProvider
 import com.example.techecommerce.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), NavigationProvider {
+class MainActivity : AppCompatActivity(), com.example.core_navigation.NavigationProvider {
 
     private val navController: NavController
         get() = findNavController(R.id.nav_host)
@@ -27,14 +25,14 @@ class MainActivity : AppCompatActivity(), NavigationProvider {
         setContentView(binding.root)
     }
 
-    override fun launch(navCommand: NavCommand) {
+    override fun launch(navCommand: com.example.core_navigation.NavCommand) {
         when (val target = navCommand.target) {
-            is NavCommands.DeepLink -> openDeepLink(
+            is com.example.core_navigation.NavCommands.DeepLink -> openDeepLink(
                 url = target.url,
                 isModal = target.isModal,
                 isSingleTop = target.isSingleTop
             )
-            is NavCommands.Browser -> Unit
+            is com.example.core_navigation.NavCommands.Browser -> Unit
         }
     }
 

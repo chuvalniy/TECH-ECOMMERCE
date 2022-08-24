@@ -12,7 +12,6 @@ import com.bumptech.glide.RequestManager
 import com.example.core.extension.showActionSnackBar
 import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
-import com.example.feature_favorites.R
 import com.example.feature_favorites.databinding.FragmentFavoritesBinding
 import com.example.feature_favorites.presentation.epoxy.FavoritesEpoxyController
 import com.example.feature_favorites.presentation.epoxy.model.ModelFavoritesItem
@@ -65,7 +64,6 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
                     viewModel.onEvent(FavoritesEvent.ItemSwiped(swipedItem))
                 }
             })
-
     }
 
     private fun observeUiState() {
@@ -100,7 +98,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
             is FavoritesSideEffect.ShowUndoSnackbar -> {
                 requireContext().showActionSnackBar(
                     requireView(),
-                    getString(R.string.favorites_deleted),
+                    getString(com.example.ui_component.R.string.item_deleted),
                     getString(com.example.ui_component.R.string.undo),
                     action = { viewModel.onEvent(FavoritesEvent.UndoClicked(effect.data)) }
                 )

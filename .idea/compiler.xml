@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="TechEcommerce.app" target="11" />
+      <module name="TechEcommerce.core-common" target="11" />
+      <module name="TechEcommerce.core-navigation" target="11" />
+      <module name="TechEcommerce.core-resources" target="11" />
+      <module name="TechEcommerce.core-shared-preferences" target="11" />
+      <module name="TechEcommerce.feature-cart" target="11" />
+      <module name="TechEcommerce.feature-details" target="11" />
+      <module name="TechEcommerce.feature-favorites" target="11" />
+      <module name="TechEcommerce.feature-home" target="11" />
+      <module name="TechEcommerce.feature-login" target="11" />
+      <module name="TechEcommerce.feature-main" target="11" />
+      <module name="TechEcommerce.feature-profile" target="11" />
+      <module name="TechEcommerce.feature-search" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

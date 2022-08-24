@@ -31,4 +31,12 @@ class CartRepositoryImpl(
     override suspend fun insertData(userId: String, data: DomainDataSource) {
         api.insertCloudData(userId, data.toCloudCartItem()) // TODO()
     }
+
+    override suspend fun deleteAllData(userId: String, data: List<DomainDataSource>) {
+        api.deleteAllCloudData(userId, data.map { it.toCloudCartItem() })
+    }
+
+    override suspend fun deleteData(userId: String, data: DomainDataSource) {
+        api.deleteCloudData(userId, data.toCloudCartItem())
+    }
 }
