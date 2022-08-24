@@ -8,7 +8,8 @@ import com.example.feature_cart.data.local.CartDatabase
 data class CacheDataSource(
     @PrimaryKey
     val id: String,
-    val modelFull: String,
+    val model: String,
+    val img: String,
     val price: Int,
-    val image: String,
+    val quantity: Int
 )

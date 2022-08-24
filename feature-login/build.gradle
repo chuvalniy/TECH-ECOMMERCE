@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core')
-    implementation project(path: ':ui-component')
-    implementation project(path: ':data-user-session')
+    implementation project(path: ':core-common')
+    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-shared-preferences')
 
     // Firebase Core
     implementation platform('com.google.firebase:firebase-bom:30.2.0')

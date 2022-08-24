@@ -7,6 +7,6 @@ import org.koin.dsl.module
 val cartPresentationModule = module {
 
     viewModel {
-        CartViewModel(repository = get())
+        CartViewModel(repository = get(), userSession = get())
     }
 }

@@ -36,8 +36,8 @@ android {
 
 dependencies {
 
-    implementation project(path: ':core')
-    implementation project(path: ':ui-component')
+    implementation project(path: ':core-common')
+    implementation project(path: ':core-ui-components')
 
     // Navigation Component
     def nav_version = "2.5.1"

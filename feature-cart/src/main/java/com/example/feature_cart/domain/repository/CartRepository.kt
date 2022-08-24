@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CartRepository {
 
-    fun fetchData(): Flow<Resource<List<DomainDataSource>>>
+    fun fetchData(userId: String): Flow<Resource<List<DomainDataSource>>>
+
+    suspend fun insertData(userId: String, item: DomainDataSource)
 }

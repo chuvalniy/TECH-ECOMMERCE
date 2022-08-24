@@ -60,8 +60,6 @@ class LoginViewModel(
     ) {
         if (!isValidationSuccessful()) return
 
-        Log.d("TAGTAG", subState.name)
-
         viewModelScope.launch {
             login.execute(email, password, subState).onEach { result ->
                 when (result) {

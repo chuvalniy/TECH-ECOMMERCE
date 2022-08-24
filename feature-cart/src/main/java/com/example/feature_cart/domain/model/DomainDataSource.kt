@@ -2,7 +2,8 @@ package com.example.feature_cart.domain.model
 
 data class DomainDataSource(
     val id: String,
-    val modelFull: String,
+    val img: String,
+    val model: String,
     val price: String,
-    val image: String
+    val quantity: Int
 )

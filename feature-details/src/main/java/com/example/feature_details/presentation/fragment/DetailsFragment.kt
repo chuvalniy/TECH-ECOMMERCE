@@ -46,6 +46,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun processUiEvent() {
         binding.btnGoBack.setOnClickListener { viewModel.onEvent(DetailsEvent.BackButtonClicked) }
+
+        binding.cvAddToCart.setOnClickListener { viewModel.onEvent(DetailsEvent.AddToCartButtonClicked) }
     }
 
     private fun setupViewPager() {
@@ -67,7 +69,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         binding.circleIndicator.attachTo(binding.viewPager)
     }
-
 
 
     private fun observeUiEffect() {

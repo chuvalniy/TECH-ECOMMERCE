@@ -1,6 +1,5 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="my_profile">My profile</string>
     <string name="user_avatar">User avatar</string>
     <string name="location">Location</string>
@@ -11,4 +10,7 @@
     <string name="notifications">Notifications</string>
     <string name="man_with_a_laptop">Man with a laptop</string>
     <string name="no_history_yet">No history yet</string>
+
+    <string name="formatted_name">%1$s %2$s</string>
+    <string name="edit_avatar">Edit avatar</string>
 </resources>

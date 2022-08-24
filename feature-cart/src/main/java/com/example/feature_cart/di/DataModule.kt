@@ -1,11 +1,15 @@
 package com.example.feature_cart.di
 
 import androidx.room.Room
+import com.example.core.utils.JsonParser
 import com.example.feature_cart.data.local.CartDatabase
+import com.example.feature_cart.data.local.converters.Converters
 import com.example.feature_cart.data.remote.CartFirestore
 import com.example.feature_cart.data.remote.CartFirestoreImpl
 import com.example.feature_cart.data.repository.CartRepositoryImpl
 import com.example.feature_cart.domain.repository.CartRepository
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -25,6 +29,10 @@ val cartDataModule = module {
     }
 
     single<CartFirestore> {
-        CartFirestoreImpl()
+        CartFirestoreImpl(firestore = get())
+    }
+
+    single {
+        FirebaseFirestore.getInstance()
     }
 }

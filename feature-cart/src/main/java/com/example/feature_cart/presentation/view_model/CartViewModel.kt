@@ -1,9 +1,11 @@
 package com.example.feature_cart.presentation.view_model
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.core.ui.BaseViewModel
+import com.example.core.ui.UiText
 import com.example.core.utils.Resource
-import com.example.feature_cart.domain.model.DomainDataSource
+import com.example.data_user_session.data.UserSession
 import com.example.feature_cart.domain.repository.CartRepository
 import com.example.feature_cart.presentation.model.CartEvent
 import com.example.feature_cart.presentation.model.CartSideEffect
@@ -13,31 +15,32 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class CartViewModel(
-    private val repository: CartRepository
+    private val repository: CartRepository,
+    private val userSession: UserSession
 ) : BaseViewModel<CartEvent, CartState, CartSideEffect>(CartState()) {
 
     init {
+        Log.d("TAGTAG", "init")
         fetchData()
     }
 
     private fun fetchData() {
         viewModelScope.launch {
-            repository.fetchData().onEach { result ->
+            repository.fetchData(userSession.fetchUserId()).onEach { result ->
                 when (result) {
-                    is Resource.Error -> TODO()
+                    is Resource.Error -> showSnackbar(
+                        result.error
+                            ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                    )
                     is Resource.Loading ->
                         _state.value = _state.value.copy(isLoading = result.isLoading)
                     is Resource.Success -> {
-                        processSuccessState(result)
+                        result.data?.let { data ->
+                            _state.value = _state.value.copy(data = data)
+                        }
                     }
                 }
             }.launchIn(this)
-        }
-    }
-
-    private fun processSuccessState(result: Resource<List<DomainDataSource>>) {
-        result.data?.let { data ->
-            _state.value = _state.value.copy(data = data)
         }
     }
 
@@ -62,5 +65,9 @@ class CartViewModel(
 
     private fun backButtonClicked() = viewModelScope.launch {
         _sideEffect.send(CartSideEffect.NavigateBack)
+    }
+
+    private fun showSnackbar(message: UiText) = viewModelScope.launch {
+        _sideEffect.send(CartSideEffect.ShowSnackbar(message))
     }
 }
