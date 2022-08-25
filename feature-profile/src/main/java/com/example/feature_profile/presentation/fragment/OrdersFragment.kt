@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_profile.databinding.FragmentOrdersBinding
 import com.example.feature_profile.presentation.model.ProfileEvent
@@ -54,8 +54,8 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>() {
 
     private fun navigateToSearch() {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureSearch"),
                     isModal = true,
                     isSingleTop = true

@@ -9,9 +9,10 @@ val detailsPresentationModule = module {
     viewModel { (handle: SavedStateHandle) ->
         DetailsViewModel(
             detailsRepository = get(),
-            savedState = handle,
             cartRepository = get(),
-            userSession = get()
+            favoritesRepository = get(),
+            userSession = get(),
+            savedState = handle
         )
     }
 }

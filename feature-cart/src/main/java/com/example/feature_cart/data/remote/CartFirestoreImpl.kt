@@ -28,6 +28,28 @@ class CartFirestoreImpl(
             .await()
     }
 
+    override suspend fun deleteAllCloudData(userId: String, data: List<CloudDataSource>) {
+        data.onEach { item ->
+            firestore
+                .collection(CART_COLLECTION)
+                .document(userId)
+                .collection(CART_ITEMS_COLLECTION)
+                .document(item.id)
+                .delete()
+                .await()
+        }
+    }
+
+    override suspend fun deleteCloudData(userId: String, data: CloudDataSource) {
+        firestore
+            .collection(CART_COLLECTION)
+            .document(userId)
+            .collection(CART_ITEMS_COLLECTION)
+            .document(data.id)
+            .delete()
+            .await()
+    }
+
     private companion object {
         const val CART_COLLECTION = "cart"
         const val CART_ITEMS_COLLECTION = "items"

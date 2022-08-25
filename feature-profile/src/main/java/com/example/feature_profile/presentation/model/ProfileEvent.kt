@@ -1,8 +1,8 @@
 package com.example.feature_profile.presentation.model
 
-import com.example.core.ui.UiEvent
+import com.example.core_ui_models.UiEvent
 
-sealed class ProfileEvent : UiEvent {
+sealed class ProfileEvent : com.example.core_ui_models.UiEvent {
     object EditProfileButtonClicked : ProfileEvent()
     object ShoppingAddressButtonClicked : ProfileEvent()
     object OrderHistoryButtonClicked : ProfileEvent()

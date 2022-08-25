@@ -34,10 +34,8 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core-ui-components')// Navigation Component
-    def nav_version = "2.5.1"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation project(path: ':core-resources')
+    implementation project(path: ':core-ui-models')
 
     // Epoxy
     def epoxy_version = "4.6.3"
@@ -47,6 +45,13 @@ dependencies {
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    // Firebase analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.1'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'

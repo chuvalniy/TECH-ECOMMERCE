@@ -108,7 +108,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/tvPrice"
+        android:id="@+id/tvTotalPrice"
         style="@style/Headline6Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,9 +127,9 @@
         android:layout_marginStart="@dimen/layout_space_32"
         android:text="@string/total"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalPrice"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvPrice" />
+        app:layout_constraintTop_toTopOf="@id/tvTotalPrice" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvPayNow"
@@ -145,7 +145,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPrice">
+        app:layout_constraintTop_toBottomOf="@id/tvTotalPrice">
 
         <TextView
             android:id="@+id/tvTitle"

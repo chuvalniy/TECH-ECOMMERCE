@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.core.extension.getSnackBar
 import com.example.core.extension.showSnackBar
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.navigate
 import com.example.core.ui.BaseFragment
 import com.example.feature_login.R
 import com.example.feature_login.databinding.FragmentRegisterBinding
@@ -92,8 +92,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     private fun navigateToHome() {
         navigate(
-            NavCommand(
-                NavCommands.DeepLink(
+            com.example.core_navigation.NavCommand(
+                com.example.core_navigation.NavCommands.DeepLink(
                     url = Uri.parse("myApp://featureMain"),
                     isModal = true,
                     isSingleTop = true

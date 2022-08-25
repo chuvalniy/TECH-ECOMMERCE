@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unexpected_error">Unexpected error occurred.</string>
+    <string name="api_error">Can\'t update data. Something went wrong.</string>
+    <string name="internet_connection_error">Can\'t update data. Check your internet connection.</string>
+
+    <string name="hit_the_blue_button">Hit the blue button down\nbelow to start an order</string>
+    <string name="start_ordering">Start ordering</string>
+
+    <string name="search">Search</string>
+    <string name="go_back">Go back</string>
+    <string name="product_image">Product image</string>
+
+    <string name="formatted_price">$%1$s</string>
+
+    <string name="undo">Undo</string>
+    <string name="item_deleted">Item deleted</string>
+</resources>

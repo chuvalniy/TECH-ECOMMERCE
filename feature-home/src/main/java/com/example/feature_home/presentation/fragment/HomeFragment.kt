@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onTabSelected
-import com.example.core.navigation.NavCommand
-import com.example.core.navigation.NavCommands
-import com.example.core.navigation.navigate
+import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
+import com.example.core_navigation.NavCommand
+import com.example.core_navigation.NavCommands
+import com.example.core_navigation.navigate
 import com.example.feature_home.databinding.FragmentHomeBinding
 import com.example.feature_home.presentation.epoxy.HomeEpoxyController
 import com.example.feature_home.presentation.model.HomeEvent
@@ -52,6 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setupTabLayout() {
+        // TODO
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Wearable"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Phones"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Laptops"))
@@ -71,15 +73,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
         viewModel.sideEffect.collect { effect ->
             when (effect) {
-                is HomeSideEffect.ShowSnackbar -> {
-
-                }
-                is HomeSideEffect.NavigateToSearch -> {
-                    navigateToSearch()
-                }
-                is HomeSideEffect.NavigateToDetails -> {
-                    navigateToDetails(effect)
-                }
+                is HomeSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                    binding.root,
+                    effect.message.asString(requireContext())
+                )
+                is HomeSideEffect.NavigateToSearch -> navigateToSearch()
+                is HomeSideEffect.NavigateToDetails -> navigateToDetails(effect)
             }
         }
     }

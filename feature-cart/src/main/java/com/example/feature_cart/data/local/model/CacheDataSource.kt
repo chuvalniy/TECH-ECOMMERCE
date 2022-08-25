@@ -11,5 +11,4 @@ data class CacheDataSource(
     val model: String,
     val img: String,
     val price: Int,
-    val quantity: Int
 )

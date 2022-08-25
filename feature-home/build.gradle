@@ -35,7 +35,10 @@ android {
 
 dependencies {
     implementation project(path: ':core-common')
-    implementation project(path: ':core-ui-components')
+    implementation project(path: ':core-resources')
+    implementation project(path: ':core-navigation')
+    implementation project(path: ':core-ui-models')
+
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'

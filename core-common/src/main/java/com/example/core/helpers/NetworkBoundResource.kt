@@ -44,3 +44,17 @@ inline fun <ResultType, RequestType> networkBoundResource(
         emit(Resource.Loading(isLoading = false))
     }
 }
+
+inline fun <T> networkBoundResource(
+    crossinline requestCloud: suspend () -> T,
+): Flow<Resource<T>> = flow {
+
+    try {
+        val data = requestCloud()
+        emit(Resource.Success(data = data))
+    } catch (e: UnknownHostException) {
+        emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.internet_connection_error)))
+    } catch (e: Exception) {
+        emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.unexpected_error)))
+    }
+}

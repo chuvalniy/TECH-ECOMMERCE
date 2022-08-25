@@ -10,7 +10,6 @@ fun CloudDataSource.toCacheDataSource(): CacheDataSource {
         model = model,
         img = img,
         price = price,
-        quantity = quantity
     )
 }
 
@@ -20,7 +19,6 @@ fun CacheDataSource.toDomainDataSource(): DomainDataSource {
         model = model,
         img = img,
         price = price.toString(),
-        quantity = quantity
     )
 }
 
@@ -30,6 +28,5 @@ fun DomainDataSource.toCloudCartItem(): CloudDataSource {
         model = model,
         img = img,
         price = price.toInt(),
-        quantity = quantity
     )
 }

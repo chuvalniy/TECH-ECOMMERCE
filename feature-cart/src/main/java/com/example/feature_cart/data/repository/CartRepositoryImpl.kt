@@ -2,6 +2,9 @@ package com.example.feature_cart.data.repository
 
 import androidx.room.withTransaction
 import com.example.core.helpers.networkBoundResource
+import com.example.core.ui.UiText
+import com.example.core.utils.Resource
+import com.example.feature_cart.R
 import com.example.feature_cart.data.local.CartDatabase
 import com.example.feature_cart.data.mapper.toCacheDataSource
 import com.example.feature_cart.data.mapper.toCloudCartItem
@@ -9,6 +12,7 @@ import com.example.feature_cart.data.mapper.toDomainDataSource
 import com.example.feature_cart.data.remote.CartFirestore
 import com.example.feature_cart.domain.model.DomainDataSource
 import com.example.feature_cart.domain.repository.CartRepository
+import kotlinx.coroutines.flow.Flow
 
 class CartRepositoryImpl(
     private val db: CartDatabase,
@@ -28,7 +32,27 @@ class CartRepositoryImpl(
         }
     )
 
-    override suspend fun insertData(userId: String, item: DomainDataSource) {
-        api.insertCloudData(userId, item.toCloudCartItem()) // TODO()
+    override suspend fun insertData(
+        userId: String,
+        data: DomainDataSource
+    ): Flow<Resource<UiText>> = networkBoundResource {
+        api.insertCloudData(userId, data.toCloudCartItem())
+        UiText.StringResource(R.string.successfully_added_to_cart)
+    }
+
+    override suspend fun deleteAllData(
+        userId: String,
+        data: List<DomainDataSource>
+    ): Flow<Resource<UiText>> = networkBoundResource {
+        api.deleteAllCloudData(userId, data.map { it.toCloudCartItem() })
+        UiText.StringResource(R.string.cart_cleared)
+    }
+
+    override suspend fun deleteData(
+        userId: String,
+        data: DomainDataSource
+    ): Flow<Resource<UiText>> = networkBoundResource {
+        api.deleteCloudData(userId, data.toCloudCartItem() )
+        UiText.StringResource(R.string.item_removed_from_cart)
     }
 }

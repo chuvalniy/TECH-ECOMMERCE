@@ -27,25 +27,18 @@ class HomeViewModel(
         viewModelScope.launch {
             repository.fetchData(category).onEach { result ->
                 when (result) {
-                    is Resource.Error -> {
-                        processErrorState(result)
-                    }
+                    is Resource.Error -> showSnackbar(
+                        result.error
+                            ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                    )
                     is Resource.Loading -> {
                         _state.value = _state.value.copy(isLoading = result.isLoading)
                     }
-                    is Resource.Success -> {
+                    is Resource.Success ->
                         result.data?.let { _state.value = _state.value.copy(data = it) }
-                    }
                 }
             }.launchIn(this)
         }
-    }
-
-    private fun processErrorState(result: Resource<List<DomainDataSource>>) {
-        showSnackbar(
-            result.error
-                ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
-        )
     }
 
     override fun onEvent(event: HomeEvent) {
@@ -74,5 +67,4 @@ class HomeViewModel(
     private fun showSnackbar(message: UiText) = viewModelScope.launch {
         _sideEffect.send(HomeSideEffect.ShowSnackbar(message))
     }
-
 }
