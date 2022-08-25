@@ -21,7 +21,6 @@ import com.example.feature_cart.presentation.model.CartSideEffect
 import com.example.feature_cart.presentation.model.CartState
 import com.example.feature_cart.presentation.view_model.CartViewModel
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -94,7 +93,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
             is CartSideEffect.ShowUndoSnackbar -> {
                 requireContext().showActionSnackBar(
                     requireView(),
-                    getString(com.example.ui_component.R.string.item_deleted),
+                    effect.message.asString(requireContext()),
                     getString(com.example.ui_component.R.string.undo),
                     action = { viewModel.onEvent(CartEvent.UndoClicked(effect.data)) }
                 )

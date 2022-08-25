@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.bumptech.glide.RequestManager
+import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
 import com.example.feature_details.databinding.FragmentDetailsBinding
 import com.example.feature_details.presentation.adapter.DetailsViewPagerAdapter
@@ -73,13 +74,14 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
 
-    private fun observeUiEffect() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.sideEffect.collect { effect ->
-                when (effect) {
-                    is DetailsSideEffect.NavigateBack -> findNavController().popBackStack()
-                    is DetailsSideEffect.ShowSnackbar -> TODO()
-                }
+    private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                is DetailsSideEffect.NavigateBack -> findNavController().popBackStack()
+                is DetailsSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                    binding.root,
+                    effect.message.asString(requireContext()),
+                )
             }
         }
     }

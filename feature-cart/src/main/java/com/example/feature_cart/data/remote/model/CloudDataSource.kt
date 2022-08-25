@@ -6,5 +6,4 @@ data class CloudDataSource(
     val model: String = "",
     val img: String = "",
     val price: Int = 0,
-    val quantity: Int = 0
 )

@@ -1,4 +1,7 @@
 <resources>
     <string name="no_favorites_yet">No favorites yet</string>
     <string name="favorites">Favorites</string>
+
+    <string name="successfully_added">Successfully added to favorites</string>
+    <string name="successfully_removed">Successfully removed from favorites</string>
 </resources>

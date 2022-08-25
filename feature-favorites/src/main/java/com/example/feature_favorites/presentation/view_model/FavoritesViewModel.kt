@@ -58,19 +58,31 @@ class FavoritesViewModel(
     }
 
     private fun itemSwiped(item: DomainDataSource) = viewModelScope.launch {
-        repository.deleteData(
-            userId = userSession.fetchUserId(),
-            data = item
-        )
-        _sideEffect.send(FavoritesSideEffect.ShowUndoSnackbar(item))
-        fetchData()
+        repository.deleteData(userId = userSession.fetchUserId(), data = item).onEach { result ->
+            when (result) {
+                is Resource.Error -> showSnackbar(
+                    result.error
+                        ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                )
+                is Resource.Success -> result.data?.let { message ->
+                    _sideEffect.send(FavoritesSideEffect.ShowUndoSnackbar(message, item))
+                    fetchData()
+                }
+                else -> Unit
+            }
+        }.launchIn(this)
     }
 
     private fun undoClicked(item: DomainDataSource) = viewModelScope.launch {
-        repository.insertData(
-            userId = userSession.fetchUserId(),
-            data = item
-        )
-        fetchData()
+        repository.insertData(userId = userSession.fetchUserId(), data = item).onEach { result ->
+            when (result) {
+                is Resource.Error -> showSnackbar(
+                    result.error
+                        ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                )
+                is Resource.Success -> fetchData()
+                else -> Unit
+            }
+        }.launchIn(this)
     }
 }

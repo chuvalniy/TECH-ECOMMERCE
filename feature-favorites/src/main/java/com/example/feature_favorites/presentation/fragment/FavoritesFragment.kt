@@ -98,7 +98,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
             is FavoritesSideEffect.ShowUndoSnackbar -> {
                 requireContext().showActionSnackBar(
                     requireView(),
-                    getString(com.example.ui_component.R.string.item_deleted),
+                    effect.message.asString(requireContext()),
                     getString(com.example.ui_component.R.string.undo),
                     action = { viewModel.onEvent(FavoritesEvent.UndoClicked(effect.data)) }
                 )

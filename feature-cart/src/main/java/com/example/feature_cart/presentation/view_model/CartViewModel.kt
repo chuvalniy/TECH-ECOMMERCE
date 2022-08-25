@@ -58,19 +58,35 @@ class CartViewModel(
         repository.deleteData(
             userId = userSession.fetchUserId(),
             data = data
-        )
-
-        _sideEffect.send(CartSideEffect.ShowUndoSnackbar(data))
-        fetchData()
+        ).onEach { result ->
+            when (result) {
+                is Resource.Error -> showSnackbar(
+                    result.error
+                        ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                )
+                is Resource.Success -> result.data?.let { message ->
+                    _sideEffect.send(CartSideEffect.ShowUndoSnackbar(message, data))
+                    fetchData()
+                }
+                else -> Unit
+            }
+        }.launchIn(this)
     }
 
     private fun undoClicked(data: DomainDataSource) = viewModelScope.launch {
         repository.insertData(
             userId = userSession.fetchUserId(),
             data = data
-        )
-
-        fetchData()
+        ).onEach { result ->
+            when (result) {
+                is Resource.Error -> showSnackbar(
+                    result.error
+                        ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                )
+                is Resource.Success -> fetchData()
+                else -> Unit
+            }
+        }.launchIn(this)
     }
 
     private fun backButtonClicked() = viewModelScope.launch {
@@ -85,9 +101,16 @@ class CartViewModel(
         repository.deleteAllData(
             userId = userSession.fetchUserId(),
             data = _state.value.data
-        )
-
-        fetchData()
+        ).onEach { result ->
+            when (result) {
+                is Resource.Error -> showSnackbar(
+                    result.error
+                        ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
+                )
+                is Resource.Success -> fetchData()
+                else -> Unit
+            }
+        }.launchIn(this)
     }
 
     private fun confirmAndPayButtonClicked() = viewModelScope.launch {
