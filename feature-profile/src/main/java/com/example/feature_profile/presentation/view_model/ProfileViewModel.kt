@@ -1,43 +1,32 @@
 package com.example.feature_profile.presentation.view_model
 
 import androidx.lifecycle.viewModelScope
+import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
-import com.example.core.utils.Resource
-import com.example.data_user_session.data.UserSession
+import com.example.data_user_session.data.UserPreferences
 import com.example.feature_profile.domain.repository.ProfileRepository
+import com.example.feature_profile.domain.use_case.FetchProfile
 import com.example.feature_profile.presentation.model.ProfileEvent
 import com.example.feature_profile.presentation.model.ProfileSideEffect
 import com.example.feature_profile.presentation.model.ProfileState
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val repository: ProfileRepository,
-    private val userSession: UserSession
+    private val fetchProfile: FetchProfile,
+    private val userPref: UserPreferences
 ) : BaseViewModel<ProfileEvent, ProfileState, ProfileSideEffect>(ProfileState()) {
 
     init {
         fetchData()
     }
 
-    private fun fetchData() {
-        viewModelScope.launch {
-            repository.fetchData(userSession.fetchUserId()).onEach { result ->
-                when (result) {
-                    is Resource.Error -> showSnackbar(
-                        result.error
-                            ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
-                    )
-                    is Resource.Loading -> _state.value =
-                        _state.value.copy(isLoading = result.isLoading)
-                    is Resource.Success -> result.data?.let { data ->
-                        _state.value = _state.value.copy(data = data)
-                    }
-                }
-            }.launchIn(this)
-        }
+    private fun fetchData() = viewModelScope.launch {
+        fetchProfile.execute(userPref.fetchId()).onEachResource(
+            onError = { showSnackbar(it) },
+            onSuccess = { _state.value = _state.value.copy(data = it) },
+            onLoading = { _state.value = _state.value.copy(isLoading = it) }
+        )
     }
 
     override fun onEvent(event: ProfileEvent) {
@@ -50,10 +39,6 @@ class ProfileViewModel(
             ProfileEvent.ShoppingAddressButtonClicked -> shoppingAddressButtonClicked()
             ProfileEvent.StartOrderingButtonClicked -> startOrderingButtonClicked()
         }
-    }
-
-    private fun showSnackbar(message: UiText) = viewModelScope.launch {
-        _sideEffect.send(ProfileSideEffect.ShowSnackbar(message))
     }
 
     private fun backButtonClicked() = viewModelScope.launch {
@@ -82,5 +67,9 @@ class ProfileViewModel(
 
     private fun startOrderingButtonClicked() = viewModelScope.launch {
         _sideEffect.send(ProfileSideEffect.NavigateToSearch)
+    }
+
+    private fun showSnackbar(message: UiText) = viewModelScope.launch {
+        _sideEffect.send(ProfileSideEffect.ShowSnackbar(message))
     }
 }

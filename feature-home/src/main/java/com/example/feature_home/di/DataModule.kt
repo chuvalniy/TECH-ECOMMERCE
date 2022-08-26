@@ -6,6 +6,7 @@ import com.example.feature_home.data.remote.HomeFirestore
 import com.example.feature_home.data.remote.HomeFirestoreImpl
 import com.example.feature_home.data.repository.HomeRepositoryImpl
 import com.example.feature_home.domain.repository.HomeRepository
+import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -26,6 +27,10 @@ val homeDataModule = module {
     }
 
     single<HomeFirestore> {
-        HomeFirestoreImpl()
+        HomeFirestoreImpl(firestore = get())
+    }
+
+    single {
+        FirebaseFirestore.getInstance()
     }
 }

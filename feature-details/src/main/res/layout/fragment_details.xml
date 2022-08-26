@@ -45,7 +45,8 @@
             android:src="@drawable/ic_favorite"
             app:layout_constraintBottom_toBottomOf="@id/tvHelper"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvHelper" />
+            app:layout_constraintTop_toTopOf="@id/tvHelper"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
             android:id="@+id/circleIndicator"

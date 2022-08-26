@@ -28,7 +28,7 @@ class CartFirestoreImpl(
             .await()
     }
 
-    override suspend fun deleteAllCloudData(userId: String, data: List<CloudDataSource>) {
+    override suspend fun deleteCloudData(userId: String, data: List<CloudDataSource>) {
         data.onEach { item ->
             firestore
                 .collection(CART_COLLECTION)
@@ -40,7 +40,7 @@ class CartFirestoreImpl(
         }
     }
 
-    override suspend fun deleteCloudData(userId: String, data: CloudDataSource) {
+    override suspend fun deleteSingleCloudData(userId: String, data: CloudDataSource) {
         firestore
             .collection(CART_COLLECTION)
             .document(userId)

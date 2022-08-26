@@ -1,12 +1,10 @@
 package com.example.feature_login.presentation.view_model
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
-import com.example.core.utils.Resource
-import com.example.data_user_session.data.UserSession
-import com.example.feature_login.R
+import com.example.data_user_session.data.UserPreferences
 import com.example.feature_login.domain.use_case.Login
 import com.example.feature_login.domain.use_case.ValidateEmail
 import com.example.feature_login.domain.use_case.ValidatePassword
@@ -16,7 +14,6 @@ import com.example.feature_login.presentation.model.LoginSideEffect
 import com.example.feature_login.presentation.model.LoginState
 import com.example.feature_login.presentation.model.LoginSubState
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -24,11 +21,11 @@ class LoginViewModel(
     private val validateEmail: ValidateEmail,
     private val validatePassword: ValidatePassword,
     private val validateRepeatedPassword: ValidateRepeatedPassword,
-    private val userSession: UserSession
+    private val userPref: UserPreferences
 ) : BaseViewModel<LoginEvent, LoginState, LoginSideEffect>(LoginState()) {
 
     init {
-        if (userSession.fetchUserId().isNotBlank()) {
+        if (userPref.fetchId().isNotBlank()) {
             navigateToHome()
         }
     }
@@ -61,20 +58,15 @@ class LoginViewModel(
         if (!isValidationSuccessful()) return
 
         viewModelScope.launch {
-            login.execute(email, password, subState).onEach { result ->
-                when (result) {
-                    is Resource.Error -> showSnackbar(
-                        result.error
-                            ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
-                    )
-                    is Resource.Loading -> _state.value =
-                        _state.value.copy(isLoading = result.isLoading)
-                    is Resource.Success -> result.data?.user?.uid?.let { userId ->
-                        userSession.saveUserId(userId)
+            login.execute(email, password, subState).onEachResource(
+                onError = { showSnackbar(it) },
+                onSuccess = { authResult ->
+                    authResult.user?.uid?.let {
+                        userPref.updateId(it)
                         navigateToHome()
                     }
                 }
-            }.launchIn(this)
+            ).launchIn(this)
         }
     }
 

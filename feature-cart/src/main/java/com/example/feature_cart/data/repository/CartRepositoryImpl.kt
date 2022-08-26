@@ -32,7 +32,7 @@ class CartRepositoryImpl(
         }
     )
 
-    override suspend fun insertData(
+    override fun insertData(
         userId: String,
         data: DomainDataSource
     ): Flow<Resource<UiText>> = networkBoundResource {
@@ -40,19 +40,19 @@ class CartRepositoryImpl(
         UiText.StringResource(R.string.successfully_added_to_cart)
     }
 
-    override suspend fun deleteAllData(
+    override fun deleteData(
         userId: String,
         data: List<DomainDataSource>
     ): Flow<Resource<UiText>> = networkBoundResource {
-        api.deleteAllCloudData(userId, data.map { it.toCloudCartItem() })
+        api.deleteCloudData(userId, data.map { it.toCloudCartItem() })
         UiText.StringResource(R.string.cart_cleared)
     }
 
-    override suspend fun deleteData(
+    override fun deleteSingleData(
         userId: String,
         data: DomainDataSource
     ): Flow<Resource<UiText>> = networkBoundResource {
-        api.deleteCloudData(userId, data.toCloudCartItem() )
+        api.deleteSingleCloudData(userId, data.toCloudCartItem() )
         UiText.StringResource(R.string.item_removed_from_cart)
     }
 }

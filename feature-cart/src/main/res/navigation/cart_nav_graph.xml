@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.feature_cart.presentation.fragment.CartFragment"
+        android:name="com.example.feature_cart.presentation.cart.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart">
         <deepLink
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
-        android:name="com.example.feature_cart.presentation.fragment.CheckoutFragment"
+        android:name="com.example.feature_cart.presentation.checkout.fragment.CheckoutFragment"
         android:label="fragment_checkout"
         tools:layout="@layout/fragment_checkout" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <dialog
         android:id="@+id/paymentBottomSheetFragment"
-        android:name="com.example.feature_cart.presentation.fragment.PaymentBottomSheetFragment"
+        android:name="com.example.feature_cart.presentation.checkout.fragment.PaymentBottomSheetFragment"
         android:label="fragment_payment_bottom_sheet"
         tools:layout="@layout/fragment_payment_bottom_sheet" />
 </navigation>

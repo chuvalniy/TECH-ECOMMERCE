@@ -1,5 +1,6 @@
 package com.example.core.extension
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -96,4 +97,21 @@ fun Context.getSnackBar(
         snackBar.show()
         return snackBar
     } else null
+}
+
+inline fun Context.showActionAlertDialog(
+    title: String,
+    message: String,
+    crossinline positiveAction: () -> Unit,
+) {
+    val alertDialog = AlertDialog.Builder(this)
+        .setTitle(title)
+        .setMessage(message)
+        .setPositiveButton("Confirm") { _, _ ->
+            positiveAction()
+        }
+        .setNegativeButton("Cancel") { _, _ -> }
+        .create()
+
+    alertDialog.show()
 }

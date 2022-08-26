@@ -15,7 +15,9 @@
     <string name="products">Products:</string>
     <string name="your_cart_is_empty">Your cart is empty</string>
 
-    <string name="successfully_added_to_cart">Successfully add to the cart</string>
+    <string name="successfully_added_to_cart">Successfully added to the cart</string>
     <string name="cart_cleared">Cart cleared</string>
     <string name="item_removed_from_cart">Item removed from the cart</string>
+
+    <string name="clear_cart">Clear cart</string>
 </resources>

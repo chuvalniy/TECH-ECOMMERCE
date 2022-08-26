@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/ivProduct"
-                android:layout_width="80dp"
-                android:layout_height="105dp"
+                android:layout_width="@dimen/product_image_size_80"
+                android:layout_height="@dimen/product_image_size_80"
                 android:layout_marginStart="@dimen/layout_space_16"
                 android:layout_marginTop="@dimen/layout_space_16"
                 android:layout_marginBottom="@dimen/layout_space_16"

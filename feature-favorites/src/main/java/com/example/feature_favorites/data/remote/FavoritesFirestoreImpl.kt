@@ -1,5 +1,6 @@
 package com.example.feature_favorites.data.remote
 
+import android.util.Log
 import com.example.feature_favorites.data.remote.model.CloudDataSource
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -36,6 +37,19 @@ class FavoritesFirestoreImpl(
             .document(data.id)
             .delete()
             .await()
+    }
+
+    override suspend fun isDataExist(userId: String, id: String): Boolean {
+        val item = firestore
+            .collection(FAVORITES_COLLECTION)
+            .document(userId)
+            .collection(FAVORITES_COLLECTION_ITEMS)
+            .document(id)
+            .get()
+            .await()
+            .toObject(CloudDataSource::class.java)
+
+        return item != null
     }
 
     private companion object {

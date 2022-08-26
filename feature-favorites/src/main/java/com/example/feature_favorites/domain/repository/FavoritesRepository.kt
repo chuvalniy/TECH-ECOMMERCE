@@ -9,7 +9,9 @@ interface FavoritesRepository {
 
     fun fetchData(userId: String): Flow<Resource<List<DomainDataSource>>>
 
-    suspend fun insertData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
+    fun insertData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
 
-    suspend fun deleteData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
+    fun deleteData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
+
+    fun isDataExist(userId: String, id: String): Flow<Resource<Boolean>>
 }
