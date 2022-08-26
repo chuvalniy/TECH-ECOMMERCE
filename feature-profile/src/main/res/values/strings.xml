@@ -13,4 +13,6 @@
 
     <string name="formatted_name">%1$s %2$s</string>
     <string name="edit_avatar">Edit avatar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

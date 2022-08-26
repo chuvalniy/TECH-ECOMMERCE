@@ -1,15 +1,20 @@
 package com.example.feature_profile.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DomainDataSource(
-    val id: String,
+    val userId: String,
     val email: String,
     val image: String,
     val firstName: String,
     val lastName: String,
     val shippingAddresses: List<DomainShippingAddress>,
     val phoneNumber: String,
-)
+): Parcelable
 
+@Parcelize
 data class DomainShippingAddress(
     val country: String,
     val city: String,
@@ -18,4 +23,4 @@ data class DomainShippingAddress(
     val state: String,
     val zip: String,
     val phone: String,
-)
+): Parcelable

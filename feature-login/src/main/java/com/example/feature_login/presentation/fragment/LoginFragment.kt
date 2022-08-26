@@ -10,10 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.core.extension.getSnackBar
 import com.example.core.extension.showSnackBar
+import com.example.core.ui.BaseFragment
 import com.example.core_navigation.NavCommand
 import com.example.core_navigation.NavCommands
 import com.example.core_navigation.navigate
-import com.example.core.ui.BaseFragment
 import com.example.feature_login.R
 import com.example.feature_login.databinding.FragmentLoginBinding
 import com.example.feature_login.presentation.model.LoginEvent
@@ -39,17 +39,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         observeUiState()
     }
 
-    private fun observeUiState() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.state.collect { state ->
-                processUiState(state)
-            }
+    private fun observeUiState() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.state.collect { state ->
+            processUiState(state)
         }
     }
 
     private fun processUiState(state: LoginState) {
         if (state.isLoading) {
-            snackbar = requireContext().getSnackBar(binding.root, getString(R.string.loading_message))
+            snackbar =
+                requireContext().getSnackBar(binding.root, getString(R.string.loading_message))
         } else snackbar?.dismiss()
     }
 
@@ -81,29 +80,25 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     is LoginSideEffect.NavigateToRegister -> {
                         findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
                     }
-                    is LoginSideEffect.ShowSnackbar -> {
-                        requireContext().showSnackBar(
-                            binding.root,
-                            effect.message.asString(requireContext())
-                        )
-                    }
+                    is LoginSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                        binding.root,
+                        effect.message.asString(requireContext())
+                    )
                     else -> Unit
                 }
             }
         }
     }
 
-    private fun navigateToHome() {
-        navigate(
-            com.example.core_navigation.NavCommand(
-                com.example.core_navigation.NavCommands.DeepLink(
-                    url = Uri.parse("myApp://featureMain"),
-                    isModal = true,
-                    isSingleTop = true
-                )
+    private fun navigateToHome() = navigate(
+        NavCommand(
+            NavCommands.DeepLink(
+                url = Uri.parse("myApp://featureMain"),
+                isModal = true,
+                isSingleTop = true
             )
         )
-    }
+    )
 
 
     override fun onDestroy() {

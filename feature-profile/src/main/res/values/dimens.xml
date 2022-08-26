@@ -2,4 +2,5 @@
 <resources>
     <dimen name="cv_profile_action_height">60dp</dimen>
     <dimen name="user_avatar_size">76dp</dimen>
+    <dimen name="profile_image_size">150dp</dimen>
 </resources>

@@ -12,4 +12,4 @@ data class LoginState(
     val password: String = "",
     val repeatedPassword: String = "",
     val isLoading: Boolean = false,
-): com.example.core_ui_models.UiState
+): UiState

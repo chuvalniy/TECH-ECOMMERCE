@@ -7,7 +7,7 @@ import com.example.feature_profile.data.local.ProfileDatabase
 @Entity(tableName = ProfileDatabase.DATABASE_NAME)
 data class CacheDataSource(
     @PrimaryKey
-    val id: String,
+    val userId: String,
     val email: String,
     val image: String,
     val firstName: String,

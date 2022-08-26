@@ -1,4 +1,4 @@
-package com.example.feature_profile.presentation.model
+package com.example.feature_profile.presentation.profile.model
 
 import com.example.core_ui_models.UiEvent
 
@@ -9,5 +9,4 @@ sealed class ProfileEvent : UiEvent {
     object CardsButtonClicked : ProfileEvent()
     object NotificationsButtonClicked : ProfileEvent()
     object BackButtonClicked : ProfileEvent()
-    object StartOrderingButtonClicked : ProfileEvent()
 }

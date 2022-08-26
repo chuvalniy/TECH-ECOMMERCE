@@ -1,15 +1,15 @@
-package com.example.feature_profile.presentation.view_model
+package com.example.feature_profile.presentation.profile.view_model
 
 import androidx.lifecycle.viewModelScope
 import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
 import com.example.data_user_session.data.UserPreferences
-import com.example.feature_profile.domain.repository.ProfileRepository
 import com.example.feature_profile.domain.use_case.FetchProfile
-import com.example.feature_profile.presentation.model.ProfileEvent
-import com.example.feature_profile.presentation.model.ProfileSideEffect
-import com.example.feature_profile.presentation.model.ProfileState
+import com.example.feature_profile.presentation.profile.model.ProfileEvent
+import com.example.feature_profile.presentation.profile.model.ProfileSideEffect
+import com.example.feature_profile.presentation.profile.model.ProfileState
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
@@ -26,7 +26,7 @@ class ProfileViewModel(
             onError = { showSnackbar(it) },
             onSuccess = { _state.value = _state.value.copy(data = it) },
             onLoading = { _state.value = _state.value.copy(isLoading = it) }
-        )
+        ).launchIn(this)
     }
 
     override fun onEvent(event: ProfileEvent) {
@@ -37,7 +37,6 @@ class ProfileViewModel(
             ProfileEvent.NotificationsButtonClicked -> notificationButtonClicked()
             ProfileEvent.OrderHistoryButtonClicked -> orderHistoryButtonClicked()
             ProfileEvent.ShoppingAddressButtonClicked -> shoppingAddressButtonClicked()
-            ProfileEvent.StartOrderingButtonClicked -> startOrderingButtonClicked()
         }
     }
 
@@ -50,7 +49,7 @@ class ProfileViewModel(
     }
 
     private fun editProfileButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(ProfileSideEffect.NavigateToEditProfile)
+        _sideEffect.send(ProfileSideEffect.NavigateToEditProfile(_state.value.data))
     }
 
     private fun notificationButtonClicked() = viewModelScope.launch {
@@ -63,10 +62,6 @@ class ProfileViewModel(
 
     private fun shoppingAddressButtonClicked() = viewModelScope.launch {
         _sideEffect.send(ProfileSideEffect.NavigateToShoppingAddress)
-    }
-
-    private fun startOrderingButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(ProfileSideEffect.NavigateToSearch)
     }
 
     private fun showSnackbar(message: UiText) = viewModelScope.launch {

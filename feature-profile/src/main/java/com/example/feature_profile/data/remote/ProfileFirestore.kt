@@ -5,4 +5,6 @@ import com.example.feature_profile.data.remote.model.CloudDataSource
 interface ProfileFirestore {
 
     suspend fun fetchCloudData(userId: String): CloudDataSource?
+
+    suspend fun updateCloudData(userId: String, data: CloudDataSource)
 }

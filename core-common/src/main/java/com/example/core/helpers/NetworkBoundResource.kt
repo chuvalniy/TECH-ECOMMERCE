@@ -1,5 +1,6 @@
 package com.example.core.helpers
 
+import android.util.Log
 import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -33,6 +34,8 @@ inline fun <ResultType, RequestType> networkBoundResource(
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.api_error)))
         null
     } catch (e: Exception) {
+        Log.d("TAGTAG", e.message.toString())
+
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.unexpected_error)))
         null
     }
@@ -55,6 +58,8 @@ inline fun <T> networkBoundResource(
     } catch (e: UnknownHostException) {
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.internet_connection_error)))
     } catch (e: Exception) {
+        Log.d("TAGTAG", e.message.toString())
+
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.unexpected_error)))
     }
 }

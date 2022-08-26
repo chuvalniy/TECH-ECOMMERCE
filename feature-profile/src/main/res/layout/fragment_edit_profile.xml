@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.edit_profile.fragment.EditProfileFragment">
+
+    <ImageButton
+        android:id="@+id/btnGoBack"
+        android:layout_width="@dimen/clickable_icon_size"
+        android:layout_height="@dimen/clickable_icon_size"
+        android:layout_marginLeft="@dimen/layout_space_24"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="@string/go_back"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/tvEditProfile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvEditProfile"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvEditProfile"
+        style="@style/Headline6Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_32"
+        android:text="@string/edit_profile"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUser"
+        android:layout_width="@dimen/profile_image_size"
+        android:layout_height="@dimen/profile_image_size"
+        android:layout_marginTop="@dimen/layout_space_48"
+        app:cardCornerRadius="1000dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEditProfile">
+
+        <ImageView
+            android:id="@+id/ivUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/edit_avatar"
+            android:src="@drawable/avatar_plug" />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditImage"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="@dimen/layout_space_32"
+        android:layout_height="@dimen/layout_space_32"
+        android:layout_marginTop="@dimen/layout_space_8"
+        android:layout_marginEnd="@dimen/layout_space_8"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_edit"
+        app:iconGravity="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/cvUser"
+        app:layout_constraintTop_toTopOf="@+id/cvUser"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/etFirstName"
+        style="@style/LoginFormStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/layout_space_48"
+        android:backgroundTint="@color/gray_tetriary"
+        android:hint="Enter your name"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:inputType="text"
+        android:paddingBottom="@dimen/layout_space_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvUser"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/etSecondName"
+        style="@style/LoginFormStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/layout_space_48"
+        android:backgroundTint="@color/gray_tetriary"
+        android:hint="Enter your second name"
+        android:layout_marginTop="@dimen/layout_space_32"
+        android:inputType="text"
+        android:paddingBottom="@dimen/layout_space_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFirstName"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        style="@style/LoginFormStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_space_32"
+        android:layout_marginHorizontal="@dimen/layout_space_48"
+        android:backgroundTint="@color/gray_tetriary"
+        android:hint="Enter your phone number"
+        android:inputType="phone"
+        android:paddingBottom="@dimen/layout_space_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSecondName"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/layout_space_48"
+        android:text="Submit"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/etPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+</androidx.constraintlayout.widget.ConstraintLayout>

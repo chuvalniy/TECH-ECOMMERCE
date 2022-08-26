@@ -70,29 +70,26 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         }
     }
 
-    private fun navigateBack() {
-        navigate(
-            com.example.core_navigation.NavCommand(
-                com.example.core_navigation.NavCommands.DeepLink(
-                    url = Uri.parse("myApp://featureMain"),
-                    isModal = true,
-                    isSingleTop = true
-                )
+    private fun navigateBack() = navigate(
+        com.example.core_navigation.NavCommand(
+            com.example.core_navigation.NavCommands.DeepLink(
+                url = Uri.parse("myApp://featureMain"),
+                isModal = true,
+                isSingleTop = true
             )
         )
-    }
+    )
 
-    private fun navigateToDetails(effect: SearchSideEffect.NavigateToDetails) {
-        navigate(
-            com.example.core_navigation.NavCommand(
-                com.example.core_navigation.NavCommands.DeepLink(
-                    url = Uri.parse("myApp://featureDetails/${effect.id}"),
-                    isModal = true,
-                    isSingleTop = false
-                )
+    private fun navigateToDetails(effect: SearchSideEffect.NavigateToDetails) = navigate(
+        com.example.core_navigation.NavCommand(
+            com.example.core_navigation.NavCommands.DeepLink(
+                url = Uri.parse("myApp://featureDetails/${effect.id}"),
+                isModal = true,
+                isSingleTop = false
             )
         )
-    }
+    )
+
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
