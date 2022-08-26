@@ -19,5 +19,4 @@ class ProfileFirestoreImpl(
     private companion object {
         const val USER_COLLECTION = "users"
     }
-
 }

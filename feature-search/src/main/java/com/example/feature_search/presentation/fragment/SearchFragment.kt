@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onQueryTextChanged
+import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
 import com.example.core_navigation.navigate
 import com.example.feature_search.databinding.FragmentSearchBinding
@@ -56,14 +57,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         }
     }
 
-    private fun observeUiEffect() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.sideEffect.collect { effect ->
-                when (effect) {
-                    is SearchSideEffect.NavigateBack -> navigateBack()
-                    is SearchSideEffect.NavigateToDetails -> navigateToDetails(effect)
-                    is SearchSideEffect.ShowSnackbar -> TODO()
-                }
+    private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                is SearchSideEffect.NavigateBack -> navigateBack()
+                is SearchSideEffect.NavigateToDetails -> navigateToDetails(effect)
+                is SearchSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                    binding.root,
+                    effect.message.asString(requireContext())
+                )
             }
         }
     }
@@ -111,6 +113,5 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentSearchBinding.inflate(inflater, container, false)
-
 
 }

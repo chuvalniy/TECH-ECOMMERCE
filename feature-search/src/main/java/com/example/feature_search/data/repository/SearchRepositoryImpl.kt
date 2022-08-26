@@ -15,7 +15,7 @@ class SearchRepositoryImpl(
 
     private val dao = db.dao
 
-    override fun fetchCache(searchQuery: String) = networkBoundResource(
+    override fun searchData(searchQuery: String) = networkBoundResource(
         fetchCache = { dao.fetchCache(searchQuery).map { it.toDomainDataSource() } },
         fetchCloud = { api.fetchCloudData() },
         saveCache = { data ->

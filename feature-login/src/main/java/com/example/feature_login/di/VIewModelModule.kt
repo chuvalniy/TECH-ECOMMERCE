@@ -4,7 +4,7 @@ import com.example.feature_login.presentation.view_model.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val loginPresentationModule = module {
+val loginViewModelModule = module {
 
     viewModel {
         LoginViewModel(
@@ -12,7 +12,7 @@ val loginPresentationModule = module {
             validateEmail = get(),
             validatePassword = get(),
             validateRepeatedPassword = get(),
-            userSession = get()
+            userPref = get()
         )
     }
 }

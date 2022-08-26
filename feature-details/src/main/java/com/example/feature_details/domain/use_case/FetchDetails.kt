@@ -7,8 +7,7 @@ import com.example.feature_favorites.domain.repository.FavoritesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combineTransform
 
-// TODO fix????
-class FetchData(
+class FetchDetails(
     private val detailsRepository: DetailsRepository,
     private val favoritesRepository: FavoritesRepository
 ) {
@@ -17,9 +16,9 @@ class FetchData(
         val favoritesData = favoritesRepository.isDataExist(userId, id)
 
         return detailsData.combineTransform(favoritesData) { details, favorites ->
-            var model = DetailsModel()
-
             if (details is Resource.Success && favorites is Resource.Success) {
+                var model = DetailsModel()
+
                 details.data?.let { model = model.copy(data = it) }
                 favorites.data?.let { model = model.copy(isFavorites = it) }
 

@@ -8,7 +8,7 @@ interface CartFirestore {
 
     suspend fun insertCloudData(userId: String, data: CloudDataSource)
 
-    suspend fun deleteAllCloudData(userId: String, data: List<CloudDataSource>)
+    suspend fun deleteCloudData(userId: String, data: List<CloudDataSource>)
 
-    suspend fun deleteCloudData(userId: String, data: CloudDataSource)
+    suspend fun deleteSingleCloudData(userId: String, data: CloudDataSource)
 }

@@ -14,4 +14,4 @@ data class ProfileState(
         phoneNumber = ""
     ),
     val isLoading: Boolean = false,
-) : com.example.core_ui_models.UiState
+) : UiState

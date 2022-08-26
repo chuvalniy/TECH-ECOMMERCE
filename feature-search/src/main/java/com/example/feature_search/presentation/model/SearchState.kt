@@ -7,4 +7,4 @@ data class SearchState(
     val data: List<DomainDataSource> = emptyList(),
     val isLoading: Boolean = false,
     val searchQuery: String = ""
-) : com.example.core_ui_models.UiState
+) : UiState

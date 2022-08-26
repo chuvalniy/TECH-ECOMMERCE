@@ -1,27 +1,27 @@
 package com.example.feature_details.presentation.view_model
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
-import com.example.data_user_session.data.UserSession
-import com.example.feature_cart.domain.repository.CartRepository
-import com.example.feature_details.domain.use_case.FetchData
+import com.example.data_user_session.data.UserPreferences
+import com.example.feature_cart.domain.use_case.InsertCart
+import com.example.feature_details.domain.use_case.FetchDetails
 import com.example.feature_details.presentation.model.DetailsEvent
 import com.example.feature_details.presentation.model.DetailsSideEffect
 import com.example.feature_details.presentation.model.DetailsState
-import com.example.feature_favorites.domain.repository.FavoritesRepository
+import com.example.feature_favorites.domain.use_case.DeleteFavorite
+import com.example.feature_favorites.domain.use_case.InsertFavorite
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    // TODO
-    private val cartRepository: CartRepository,
-    private val favoritesRepository: FavoritesRepository,
-    private val userSession: UserSession,
-    private val fetchData: FetchData,
+    private val insertFavorite: InsertFavorite,
+    private val deleteFavorite: DeleteFavorite,
+    private val fetchDetails: FetchDetails,
+    private val insertCart: InsertCart,
+    private val userPref: UserPreferences,
     private val savedState: SavedStateHandle,
 ) : BaseViewModel<DetailsEvent, DetailsState, DetailsSideEffect>(DetailsState()) {
 
@@ -30,15 +30,13 @@ class DetailsViewModel(
     }
 
     private fun fetchData() = viewModelScope.launch {
-
-        fetchData.execute(
-            userId = userSession.fetchUserId(),
+        fetchDetails.execute(
+            userId = userPref.fetchId(),
             id = savedState.get<String>("id") ?: ""
         ).onEachResource(
             onError = { showSnackbar(it) },
             onSuccess = {
                 _state.value = _state.value.copy(model = it)
-                Log.d("TAGTAG", _state.value.model.data.id)
             },
         ).launchIn(this)
     }
@@ -52,8 +50,8 @@ class DetailsViewModel(
     }
 
     private fun addToCartButtonClicked() = viewModelScope.launch {
-        cartRepository.insertData(
-            userId = userSession.fetchUserId(),
+        insertCart.execute(
+            userId = userPref.fetchId(),
             data = com.example.feature_cart.domain.model.DomainDataSource(
                 id = _state.value.model.data.id,
                 img = _state.value.model.data.images.first(),
@@ -67,7 +65,6 @@ class DetailsViewModel(
     }
 
     private fun favoriteButtonClicked() = viewModelScope.launch {
-
         val data = com.example.feature_favorites.domain.model.DomainDataSource(
             id = _state.value.model.data.id,
             img = _state.value.model.data.images.first(),
@@ -75,28 +72,25 @@ class DetailsViewModel(
             price = _state.value.model.data.price,
         )
 
-        if (!_state.value.model.isFavorites) {
-            favoritesRepository.insertData(
-                userId = userSession.fetchUserId(),
-                data = data
-            ).onEachResource(
-                onError = { showSnackbar(it) },
-                onSuccess = {
-                    showSnackbar(it)
-                    fetchData()
-                }
-            ).launchIn(this)
-        } else if (_state.value.model.isFavorites) {
-            favoritesRepository.deleteData(
-                userId = userSession.fetchUserId(),
-                data = data
-            ).onEachResource(
-                onError = { showSnackbar(it) },
-                onSuccess = {
-                    showSnackbar(it)
-                    fetchData()
-                }
-            ).launchIn(this)
+        when (_state.value.model.isFavorites) {
+            true -> {
+                deleteFavorite.execute(userId = userPref.fetchId(), data = data).onEachResource(
+                    onError = { showSnackbar(it) },
+                    onSuccess = {
+                        showSnackbar(it)
+                        fetchData()
+                    }
+                ).launchIn(this)
+            }
+            false -> {
+                insertFavorite.execute(userId = userPref.fetchId(), data = data).onEachResource(
+                    onError = { showSnackbar(it) },
+                    onSuccess = {
+                        showSnackbar(it)
+                        fetchData()
+                    }
+                ).launchIn(this)
+            }
         }
     }
 

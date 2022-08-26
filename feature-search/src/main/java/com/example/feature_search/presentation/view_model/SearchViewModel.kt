@@ -1,59 +1,33 @@
 package com.example.feature_search.presentation.view_model
 
 import androidx.lifecycle.viewModelScope
+import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
 import com.example.core.ui.UiText
-import com.example.core.utils.Resource
-import com.example.feature_search.domain.model.DomainDataSource
 import com.example.feature_search.domain.repository.SearchRepository
+import com.example.feature_search.domain.use_case.SearchData
 import com.example.feature_search.presentation.model.SearchEvent
 import com.example.feature_search.presentation.model.SearchSideEffect
 import com.example.feature_search.presentation.model.SearchState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val repository: SearchRepository
+    private val searchData: SearchData
 ) : BaseViewModel<SearchEvent, SearchState, SearchSideEffect>(SearchState()) {
 
     init {
         fetchData()
     }
 
-    private fun fetchData(
-        searchQuery: String = _state.value.searchQuery
-    ) {
-        viewModelScope.launch {
-            repository.fetchCache(searchQuery).onEach { result ->
-                when (result) {
-                    is Resource.Error -> processErrorState(result)
-                    is Resource.Loading -> _state.value =
-                        _state.value.copy(isLoading = result.isLoading)
-                    is Resource.Success -> processSuccessState(result)
-                }
-            }.launchIn(this)
-        }
-    }
-
-    private fun processErrorState(result: Resource<List<DomainDataSource>>) {
-        viewModelScope.launch {
-            _sideEffect.send(
-                SearchSideEffect.ShowSnackbar(
-                    result.error ?: UiText.StringResource(
-                        com.example.ui_component.R.string.unexpected_error
-                    )
-                )
-            )
-        }
-    }
-
-    private fun processSuccessState(result: Resource<List<DomainDataSource>>) {
-        result.data?.let { data ->
-            _state.value = _state.value.copy(data = data)
-        }
+    private fun fetchData(query: String = _state.value.searchQuery) = viewModelScope.launch {
+        searchData.execute(query).onEachResource(
+            onError = { showSnackbar(it) },
+            onSuccess = { _state.value = _state.value.copy(data = it) },
+            onLoading = { _state.value = _state.value.copy(isLoading = it) }
+        ).launchIn(this)
     }
 
     override fun onEvent(event: SearchEvent) {
@@ -84,5 +58,9 @@ class SearchViewModel(
 
     private fun productClicked(id: String) = viewModelScope.launch {
         _sideEffect.send(SearchSideEffect.NavigateToDetails(id))
+    }
+
+    private fun showSnackbar(message: UiText) = viewModelScope.launch {
+        _sideEffect.send(SearchSideEffect.ShowSnackbar(message))
     }
 }

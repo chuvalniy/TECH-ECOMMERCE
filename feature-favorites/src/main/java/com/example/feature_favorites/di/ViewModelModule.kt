@@ -8,8 +8,10 @@ val favoritesViewModelModule = module {
 
     viewModel {
         FavoritesViewModel(
-            repository = get(),
-            userSession = get()
+            deleteFavorite = get(),
+            insertFavorite = get(),
+            fetchFavorites = get(),
+            userPref = get()
         )
     }
 }

@@ -6,17 +6,17 @@ private const val SHARED_PREFS_NAME = "user_session"
 private const val KEY_USER_ID = "user_id"
 private const val DEFAULT_VALUE = ""
 
-class UserSessionImpl(
+class UserPreferencesImpl(
     context: Context
-) : UserSession {
+) : UserPreferences {
 
     private val sharedPref = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
 
-    override fun saveUserId(userId: String) {
+    override fun updateId(userId: String) {
         sharedPref.edit().putString(KEY_USER_ID, userId).apply()
     }
 
-    override fun fetchUserId(): String {
+    override fun fetchId(): String {
         return sharedPref.getString(KEY_USER_ID, DEFAULT_VALUE) ?: DEFAULT_VALUE
     }
 }

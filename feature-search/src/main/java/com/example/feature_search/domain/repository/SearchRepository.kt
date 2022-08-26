@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {
 
-    fun fetchCache(searchQuery: String): Flow<Resource<List<DomainDataSource>>>
+    fun searchData(searchQuery: String): Flow<Resource<List<DomainDataSource>>>
 }

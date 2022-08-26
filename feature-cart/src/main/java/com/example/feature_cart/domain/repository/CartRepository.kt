@@ -9,9 +9,9 @@ interface CartRepository {
 
     fun fetchData(userId: String): Flow<Resource<List<DomainDataSource>>>
 
-    suspend fun insertData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
+    fun insertData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
 
-    suspend fun deleteAllData(userId: String, data: List<DomainDataSource>): Flow<Resource<UiText>>
+    fun deleteData(userId: String, data: List<DomainDataSource>): Flow<Resource<UiText>>
 
-    suspend fun deleteData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
+    fun deleteSingleData(userId: String, data: DomainDataSource): Flow<Resource<UiText>>
 }

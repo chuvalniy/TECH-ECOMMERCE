@@ -8,10 +8,11 @@ import org.koin.dsl.module
 val detailsViewModelModule = module {
     viewModel { (handle: SavedStateHandle) ->
         DetailsViewModel(
-            cartRepository = get(),
-            favoritesRepository = get(),
-            userSession = get(),
-            fetchData = get(),
+            insertFavorite = get(),
+            deleteFavorite = get(),
+            fetchDetails = get(),
+            insertCart = get(),
+            userPref = get(),
             savedState = handle
         )
     }
