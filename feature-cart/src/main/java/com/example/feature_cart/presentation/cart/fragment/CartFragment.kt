@@ -1,4 +1,4 @@
-package com.example.feature_cart.presentation.fragment
+package com.example.feature_cart.presentation.cart.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,17 +9,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyTouchHelper
 import com.bumptech.glide.RequestManager
+import com.example.core.extension.showActionAlertDialog
 import com.example.core.extension.showActionSnackBar
 import com.example.core.extension.showSnackBar
 import com.example.core.ui.BaseFragment
 import com.example.feature_cart.R
 import com.example.feature_cart.databinding.FragmentCartBinding
-import com.example.feature_cart.presentation.epoxy.CartEpoxyController
-import com.example.feature_cart.presentation.epoxy.model.ModelCartItem
-import com.example.feature_cart.presentation.model.CartEvent
-import com.example.feature_cart.presentation.model.CartSideEffect
-import com.example.feature_cart.presentation.model.CartState
-import com.example.feature_cart.presentation.view_model.CartViewModel
+import com.example.feature_cart.presentation.cart.epoxy.CartEpoxyController
+import com.example.feature_cart.presentation.cart.epoxy.model.ModelCartItem
+import com.example.feature_cart.presentation.cart.model.CartEvent
+import com.example.feature_cart.presentation.cart.model.CartSideEffect
+import com.example.feature_cart.presentation.cart.model.CartState
+import com.example.feature_cart.presentation.cart.view_model.CartViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -81,32 +82,29 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
     private fun processUiEffect(effect: CartSideEffect) {
         when (effect) {
             is CartSideEffect.NavigateBack -> findNavController().popBackStack()
-            is CartSideEffect.NavigateToCheckout -> {
-                findNavController().navigate(R.id.action_cartFragment_to_checkoutFragment)
-            }
-            is CartSideEffect.ShowSnackbar -> {
-                requireContext().showSnackBar(
-                    binding.root,
-                    effect.message.asString(requireContext())
-                )
-            }
-            is CartSideEffect.ShowUndoSnackbar -> {
-                requireContext().showActionSnackBar(
-                    requireView(),
-                    effect.message.asString(requireContext()),
-                    getString(com.example.ui_component.R.string.undo),
-                    action = { viewModel.onEvent(CartEvent.UndoClicked(effect.data)) }
-                )
-            }
-            else -> Unit
+            is CartSideEffect.NavigateToCheckout -> findNavController().navigate(
+                R.id.action_cartFragment_to_checkoutFragment
+            )
+            is CartSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                binding.root,
+                effect.message.asString(requireContext())
+            )
+            is CartSideEffect.ShowUndoSnackbar -> requireContext().showActionSnackBar(
+                requireView(),
+                effect.message.asString(requireContext()),
+                getString(com.example.ui_component.R.string.undo),
+                action = { viewModel.onEvent(CartEvent.UndoClicked(effect.data)) }
+            )
+            is CartSideEffect.ShowAlertDialog -> requireContext().showActionAlertDialog(
+                getString(R.string.clear_cart),
+                "Are you sure you want to delete you cart?",
+            ) { viewModel.onEvent(CartEvent.DialogPositiveButtonClicked) }
         }
     }
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.state.collect { state ->
-                processUiState(state)
-            }
+            viewModel.state.collect { state -> processUiState(state) }
         }
     }
 

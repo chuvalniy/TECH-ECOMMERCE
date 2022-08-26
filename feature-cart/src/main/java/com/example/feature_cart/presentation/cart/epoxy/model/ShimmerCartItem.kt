@@ -1,4 +1,4 @@
-package com.example.feature_cart.presentation.epoxy.model
+package com.example.feature_cart.presentation.cart.epoxy.model
 
 import com.example.core.helpers.ViewBindingKotlinModel
 import com.example.feature_cart.R

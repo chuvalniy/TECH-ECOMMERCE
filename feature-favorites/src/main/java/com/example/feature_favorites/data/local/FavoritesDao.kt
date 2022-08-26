@@ -12,9 +12,9 @@ interface FavoritesDao {
     @Query("SELECT * FROM ${FavoritesDatabase.DATABASE_NAME}")
     suspend fun fetchCache(): List<CacheDataSource>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCache(cache: List<CacheDataSource>)
-
     @Query("DELETE FROM ${FavoritesDatabase.DATABASE_NAME}")
     suspend fun clearCache()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCache(cache: List<CacheDataSource>)
 }

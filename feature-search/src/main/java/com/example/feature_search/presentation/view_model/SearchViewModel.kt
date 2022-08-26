@@ -67,10 +67,11 @@ class SearchViewModel(
     private var searchJob: Job? = null
 
     private fun queryChanged(searchQuery: String) {
+        if (searchQuery == _state.value.searchQuery) return
+
         _state.value = _state.value.copy(searchQuery = searchQuery)
 
         searchJob?.cancel()
-
         searchJob = viewModelScope.launch {
             delay(500)
             fetchData()

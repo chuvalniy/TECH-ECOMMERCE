@@ -32,7 +32,7 @@ class FavoritesRepositoryImpl(
         }
     )
 
-    override suspend fun insertData(
+    override fun insertData(
         userId: String,
         data: DomainDataSource
     ): Flow<Resource<UiText>> = networkBoundResource(
@@ -42,7 +42,7 @@ class FavoritesRepositoryImpl(
         }
     )
 
-    override suspend fun deleteData(
+    override fun deleteData(
         userId: String,
         data: DomainDataSource
     ): Flow<Resource<UiText>> = networkBoundResource(
@@ -51,4 +51,9 @@ class FavoritesRepositoryImpl(
             UiText.StringResource(R.string.successfully_removed)
         }
     )
+
+    override fun isDataExist(
+        userId: String,
+        id: String
+    ) = networkBoundResource { api.isDataExist(userId, id) }
 }

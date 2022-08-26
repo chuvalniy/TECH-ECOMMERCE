@@ -9,4 +9,7 @@ interface FavoritesFirestore {
     suspend fun insertData(userId: String, data: CloudDataSource)
 
     suspend fun deleteData(userId: String, data: CloudDataSource)
+
+    suspend fun isDataExist(userId: String, id: String): Boolean
+
 }

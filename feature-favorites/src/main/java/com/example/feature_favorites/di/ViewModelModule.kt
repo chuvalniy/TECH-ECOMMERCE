@@ -4,7 +4,7 @@ import com.example.feature_favorites.presentation.view_model.FavoritesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val favoritesPresentationModule = module {
+val favoritesViewModelModule = module {
 
     viewModel {
         FavoritesViewModel(

@@ -1,4 +1,4 @@
-package com.example.feature_cart.presentation.epoxy.model
+package com.example.feature_cart.presentation.cart.epoxy.model
 
 import com.bumptech.glide.RequestManager
 import com.example.core.helpers.ViewBindingKotlinModel

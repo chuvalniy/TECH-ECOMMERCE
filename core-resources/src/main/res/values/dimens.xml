@@ -20,4 +20,6 @@
     <dimen name="clickable_icon_size">40dp</dimen>
 
     <dimen name="blue_button_size">224dp</dimen>
+
+    <dimen name="product_image_size_80">80dp</dimen>
 </resources>

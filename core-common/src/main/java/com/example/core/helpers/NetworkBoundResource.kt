@@ -1,6 +1,5 @@
 package com.example.core.helpers
 
-import android.util.Log
 import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +13,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
     crossinline saveCache: suspend (RequestType) -> Unit,
     crossinline shouldFetchCloud: () -> Boolean = { true }
 ): Flow<Resource<ResultType>> = flow {
+
     emit(Resource.Loading(isLoading = true))
     val cache = fetchCache()
 

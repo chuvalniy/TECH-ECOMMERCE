@@ -5,9 +5,10 @@ import com.example.data_user_session.di.sharedPrefModule
 import com.example.feature_cart.di.cartDataModule
 import com.example.feature_cart.di.cartPresentationModule
 import com.example.feature_details.di.detailsDataModule
-import com.example.feature_details.di.detailsPresentationModule
+import com.example.feature_details.di.detailsDomainModule
+import com.example.feature_details.di.detailsViewModelModule
 import com.example.feature_favorites.di.favoritesDataModule
-import com.example.feature_favorites.di.favoritesPresentationModule
+import com.example.feature_favorites.di.favoritesViewModelModule
 import com.example.feature_home.di.homeDataModule
 import com.example.feature_home.di.homePresentationModule
 import com.example.feature_login.di.loginDataModule
@@ -35,7 +36,8 @@ class MainApplication : Application() {
                 cartDataModule,
                 cartPresentationModule,
                 detailsDataModule,
-                detailsPresentationModule,
+                detailsDomainModule,
+                detailsViewModelModule,
                 loginDataModule,
                 loginDomainModule,
                 loginPresentationModule,
@@ -43,7 +45,7 @@ class MainApplication : Application() {
                 profileDataModule,
                 profilePresentationModule,
                 favoritesDataModule,
-                favoritesPresentationModule
+                favoritesViewModelModule
             )
         }
     }

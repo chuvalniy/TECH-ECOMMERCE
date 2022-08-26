@@ -1,10 +1,10 @@
-package com.example.feature_cart.presentation.epoxy
+package com.example.feature_cart.presentation.cart.epoxy
 
 import com.airbnb.epoxy.TypedEpoxyController
 import com.bumptech.glide.RequestManager
-import com.example.feature_cart.presentation.epoxy.model.ModelCartItem
-import com.example.feature_cart.presentation.epoxy.model.ShimmerCartItem
-import com.example.feature_cart.presentation.model.CartState
+import com.example.feature_cart.presentation.cart.epoxy.model.ModelCartItem
+import com.example.feature_cart.presentation.cart.epoxy.model.ShimmerCartItem
+import com.example.feature_cart.presentation.cart.model.CartState
 
 class CartEpoxyController(
     private val glide: RequestManager

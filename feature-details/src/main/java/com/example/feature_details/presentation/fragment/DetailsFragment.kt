@@ -95,13 +95,20 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun processUiState(state: DetailsState) {
-        adapter?.submitList(state.data.images)
+        adapter?.submitList(state.model.data.images)
 
-        binding.tvTitle.text = state.data.modelFull
+        binding.tvTitle.text = state.model.data.modelFull
         binding.tvPrice.text =
-            getString(com.example.ui_component.R.string.formatted_price, state.data.price)
-        binding.tvDescription.text = state.data.description
-        binding.ratingBar.rating = state.data.rating
+            getString(com.example.ui_component.R.string.formatted_price, state.model.data.price)
+        binding.tvDescription.text = state.model.data.description
+        binding.ratingBar.rating = state.model.data.rating
+
+        val favoriteIcon = if (state.model.isFavorites)
+            com.example.ui_component.R.drawable.ic_favorite_filled
+        else
+            com.example.ui_component.R.drawable.ic_favorite
+
+        binding.btnFavorites.setImageResource(favoriteIcon)
     }
 
     override fun initBinding(

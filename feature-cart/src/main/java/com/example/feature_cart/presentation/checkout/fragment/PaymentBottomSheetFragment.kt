@@ -1,4 +1,4 @@
-package com.example.feature_cart.presentation.fragment
+package com.example.feature_cart.presentation.checkout.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

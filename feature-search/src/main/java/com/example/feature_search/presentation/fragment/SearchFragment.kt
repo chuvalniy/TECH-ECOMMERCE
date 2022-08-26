@@ -9,10 +9,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import com.example.core.extension.onQueryTextChanged
-import com.example.core_navigation.NavCommand
-import com.example.core_navigation.NavCommands
-import com.example.core_navigation.navigate
 import com.example.core.ui.BaseFragment
+import com.example.core_navigation.navigate
 import com.example.feature_search.databinding.FragmentSearchBinding
 import com.example.feature_search.presentation.epoxy.SearchEpoxyController
 import com.example.feature_search.presentation.model.SearchEvent

@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/activity_main.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/fragment_splash.xml" value="0.264" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite.xml" value="0.133" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite_border_details.xml" value="0.133" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite_details.xml" value="0.133" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/bg_search.xml" value="0.121" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/bg_search_item.xml" value="0.1895" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core/src/main/res/drawable/ic_arrow_left.xml" value="0.1895" />
@@ -19,6 +22,7 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/cart_item.xml" value="0.4" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_cart.xml" value="0.2" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_checkout.xml" value="0.264" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_confirm_delete_bottom_sheet.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/fragment_payment_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-cart/src/main/res/layout/shimmer_cart_item.xml" value="0.21105072463768115" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-details/src/main/res/layout/fragment_details.xml" value="0.264" />

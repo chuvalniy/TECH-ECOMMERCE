@@ -1,4 +1,4 @@
-package com.example.feature_cart.presentation.view_model
+package com.example.feature_cart.presentation.cart.view_model
 
 import androidx.lifecycle.viewModelScope
 import com.example.core.ui.BaseViewModel
@@ -7,9 +7,9 @@ import com.example.core.utils.Resource
 import com.example.data_user_session.data.UserSession
 import com.example.feature_cart.domain.model.DomainDataSource
 import com.example.feature_cart.domain.repository.CartRepository
-import com.example.feature_cart.presentation.model.CartEvent
-import com.example.feature_cart.presentation.model.CartSideEffect
-import com.example.feature_cart.presentation.model.CartState
+import com.example.feature_cart.presentation.cart.model.CartEvent
+import com.example.feature_cart.presentation.cart.model.CartSideEffect
+import com.example.feature_cart.presentation.cart.model.CartState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -50,7 +50,7 @@ class CartViewModel(
             is CartEvent.BackButtonClicked -> backButtonClicked()
             is CartEvent.CheckoutButtonClicked -> checkoutButtonClicked()
             is CartEvent.ClearCartButtonClicked -> clearCartButtonClicked()
-            is CartEvent.ConfirmAndPayButtonClicked -> confirmAndPayButtonClicked()
+            is CartEvent.DialogPositiveButtonClicked -> dialogPositiveButtonClicked()
         }
     }
 
@@ -97,7 +97,12 @@ class CartViewModel(
         _sideEffect.send(CartSideEffect.NavigateToCheckout)
     }
 
-    private fun clearCartButtonClicked() = viewModelScope.launch {
+    private fun clearCartButtonClicked() {
+        if (_state.value.data.isEmpty()) return
+        viewModelScope.launch { _sideEffect.send(CartSideEffect.ShowAlertDialog) }
+    }
+
+    private fun dialogPositiveButtonClicked() = viewModelScope.launch {
         repository.deleteAllData(
             userId = userSession.fetchUserId(),
             data = _state.value.data
@@ -111,10 +116,6 @@ class CartViewModel(
                 else -> Unit
             }
         }.launchIn(this)
-    }
-
-    private fun confirmAndPayButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(CartSideEffect.NavigateToPayment)
     }
 
 
