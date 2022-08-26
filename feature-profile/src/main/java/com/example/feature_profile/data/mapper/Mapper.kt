@@ -9,7 +9,7 @@ import com.example.feature_profile.domain.model.DomainShippingAddress
 
 fun CloudDataSource.toCacheDataSource(): CacheDataSource {
     return CacheDataSource(
-        id = id,
+        userId = userId,
         email = email,
         image = image,
         firstName = firstName,
@@ -33,7 +33,7 @@ fun CloudShippingAddress.toCacheShippingAddress(): CacheShippingAddress {
 
 fun CacheDataSource.toDomainDataSource(): DomainDataSource {
     return DomainDataSource(
-        id = id,
+        userId = userId,
         email = email,
         image = image,
         firstName = firstName,
@@ -45,6 +45,30 @@ fun CacheDataSource.toDomainDataSource(): DomainDataSource {
 
 fun CacheShippingAddress.toDomainShippingAddress(): DomainShippingAddress {
     return DomainShippingAddress(
+        country = country,
+        city = city,
+        street1 = street1,
+        street2 = street2,
+        state = state,
+        zip = zip,
+        phone = phone
+    )
+}
+
+fun DomainDataSource.toCloudDataSource(): CloudDataSource {
+    return CloudDataSource(
+        userId = userId,
+        email = email,
+        image = image,
+        firstName = firstName,
+        lastName = lastName,
+        shippingAddresses = shippingAddresses.map { it.toCloudShippingAddress() },
+        phoneNumber = phoneNumber
+    )
+}
+
+fun DomainShippingAddress.toCloudShippingAddress(): CloudShippingAddress {
+    return CloudShippingAddress(
         country = country,
         city = city,
         street1 = street1,

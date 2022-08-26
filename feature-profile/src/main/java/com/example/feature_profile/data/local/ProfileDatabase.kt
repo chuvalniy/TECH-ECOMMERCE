@@ -8,7 +8,7 @@ import com.example.feature_profile.data.local.model.CacheDataSource
 
 @Database(
     entities = [CacheDataSource::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(Converters::class)
 abstract class ProfileDatabase : RoomDatabase() {

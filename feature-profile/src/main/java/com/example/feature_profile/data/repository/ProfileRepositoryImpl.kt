@@ -2,9 +2,11 @@ package com.example.feature_profile.data.repository
 
 import androidx.room.withTransaction
 import com.example.core.helpers.networkBoundResource
+import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import com.example.feature_profile.data.local.ProfileDatabase
 import com.example.feature_profile.data.mapper.toCacheDataSource
+import com.example.feature_profile.data.mapper.toCloudDataSource
 import com.example.feature_profile.data.mapper.toDomainDataSource
 import com.example.feature_profile.data.remote.ProfileFirestore
 import com.example.feature_profile.domain.model.DomainDataSource
@@ -28,4 +30,10 @@ class ProfileRepositoryImpl(
             }
         }
     )
+
+    override fun updateData(userId: String, data: DomainDataSource): Flow<Resource<UiText>> =
+        networkBoundResource {
+            api.updateCloudData(userId, data.toCloudDataSource())
+            UiText.DynamicString("Success") // TODo
+        }
 }

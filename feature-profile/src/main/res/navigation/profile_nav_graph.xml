@@ -7,16 +7,28 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.feature_profile.presentation.fragment.ProfileFragment"
+        android:name="com.example.feature_profile.presentation.profile.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/ordersFragment"
-        android:name="com.example.feature_profile.presentation.fragment.OrdersFragment"
+        android:name="com.example.feature_profile.presentation.orders.fragment.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.feature_profile.presentation.edit_profile.fragment.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument
+            android:name="user_info"
+            app:argType="com.example.feature_profile.domain.model.DomainDataSource" />
+    </fragment>
 </navigation>

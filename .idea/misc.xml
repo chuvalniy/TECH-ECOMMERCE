@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/activity_main.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/app/src/main/res/layout/fragment_splash.xml" value="0.264" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/bg_error_snackbar.xml" value="0.1095" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite.xml" value="0.133" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite_border_details.xml" value="0.133" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/core-resources/src/main/res/drawable/ic_favorite_details.xml" value="0.133" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-login/src/main/res/layout/fragment_register.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-main/src/main/res/layout/fragment_main.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-main/src/main/res/menu/menu_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-profile/src/main/res/layout/fragment_edit_profile.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-profile/src/main/res/layout/fragment_orders.xml" value="0.21105072463768115" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-profile/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/TechEcommerce/feature-search/src/main/res/drawable/ic_arrow_left.xml" value="0.138" />
