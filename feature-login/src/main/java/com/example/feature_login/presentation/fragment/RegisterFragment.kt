@@ -39,10 +39,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     private fun processUiEvent() {
-        viewModel.onEvent(LoginEvent.SubStateChanged(LoginSubState.Register))
-
         binding.btnAlreadyHaveAccount.setOnClickListener {
-            viewModel.onEvent(LoginEvent.AlreadyHaveAccountButtonClicked)
+            viewModel.onEvent(LoginEvent.ActionButtonClicked(LoginSubState.Login))
         }
 
         binding.cvRegister.setOnClickListener {

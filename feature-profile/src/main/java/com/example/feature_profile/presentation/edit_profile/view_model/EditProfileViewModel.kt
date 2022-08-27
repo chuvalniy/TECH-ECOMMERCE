@@ -1,10 +1,10 @@
 package com.example.feature_profile.presentation.edit_profile.view_model
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
+import com.example.core.ui.UiText
 import com.example.data_user_session.data.UserPreferences
 import com.example.feature_profile.domain.model.DomainDataSource
 import com.example.feature_profile.domain.use_case.UpdateProfile
@@ -21,14 +21,15 @@ class EditProfileViewModel(
     private val userPref: UserPreferences,
 ) : BaseViewModel<EditProfileEvent, EditProfileState, EditProfileSideEffect>(EditProfileState()) {
 
-    private val userInfo = savedState.get<DomainDataSource>(USER_INFO)!!
+    // Todo
+    val user = savedState.get<DomainDataSource>(USER_INFO)!!
 
     init {
         _state.value = _state.value.copy(
-            firstName = userInfo.firstName,
-            secondName = userInfo.lastName,
-            phoneNumber = userInfo.phoneNumber,
-            profileImage = userInfo.image
+            firstName = user.firstName,
+            secondName = user.lastName,
+            phoneNumber = user.phoneNumber,
+            profileImage = user.image
         )
     }
 
@@ -37,7 +38,7 @@ class EditProfileViewModel(
             is EditProfileEvent.FirstNameChanged -> _state.value =
                 _state.value.copy(firstName = event.firstName)
             is EditProfileEvent.PhoneNumberChanged -> _state.value =
-                _state.value.copy(secondName = event.number)
+                _state.value.copy(phoneNumber = event.number)
             is EditProfileEvent.ProfileImageChanged -> _state.value =
                 _state.value.copy(profileImage = event.image)
             is EditProfileEvent.SecondNameChanged -> _state.value =
@@ -52,7 +53,7 @@ class EditProfileViewModel(
     }
 
     private fun submitButtonClicked() = viewModelScope.launch {
-        val updatedUserInfo = userInfo.copy(
+        val updatedUserInfo = user.copy(
             firstName = _state.value.firstName,
             lastName = _state.value.secondName,
             phoneNumber = _state.value.phoneNumber,
@@ -60,8 +61,12 @@ class EditProfileViewModel(
         )
 
         updateProfile.execute(userPref.fetchId(), updatedUserInfo).onEachResource(
-            onError = { Log.d("TAGTAG", it.toString() )},
-            onSuccess = { Log.d("TAGTAG", "success")}
+            onError = { showSnackbar(it) },
+            onSuccess = { showSnackbar(it) }
         ).launchIn(this)
+    }
+
+    private fun showSnackbar(message: UiText) = viewModelScope.launch {
+        _sideEffect.send(EditProfileSideEffect.ShowSnackbar(message))
     }
 }

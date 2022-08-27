@@ -4,7 +4,7 @@
     <string name="user_avatar">User avatar</string>
     <string name="location">Location</string>
     <string name="edit_profile">Edit profile</string>
-    <string name="shopping_address">Shopping address</string>
+    <string name="shipping_address">Shipping address</string>
     <string name="order_history">Order history</string>
     <string name="cards">Cards</string>
     <string name="notifications">Notifications</string>

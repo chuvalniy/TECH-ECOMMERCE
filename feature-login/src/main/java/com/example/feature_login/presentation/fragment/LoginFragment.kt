@@ -53,14 +53,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun processUiEvent() {
-        viewModel.onEvent(LoginEvent.SubStateChanged(LoginSubState.Login))
-
         binding.cvLogin.setOnClickListener {
             viewModel.onEvent(LoginEvent.LoginButtonClicked)
         }
 
         binding.btnCreateAccount.setOnClickListener {
-            viewModel.onEvent(LoginEvent.CreateNewAccountButtonClicked)
+            viewModel.onEvent(LoginEvent.ActionButtonClicked(LoginSubState.Register))
         }
 
         binding.etEmail.addTextChangedListener {
@@ -72,20 +70,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    private fun observeUiEffect() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.sideEffect.collect { effect ->
-                when (effect) {
-                    is LoginSideEffect.NavigateToHome -> navigateToHome()
-                    is LoginSideEffect.NavigateToRegister -> {
-                        findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-                    }
-                    is LoginSideEffect.ShowSnackbar -> requireContext().showSnackBar(
-                        binding.root,
-                        effect.message.asString(requireContext())
-                    )
-                    else -> Unit
+    private fun observeUiEffect() = viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                is LoginSideEffect.NavigateToHome -> navigateToHome()
+                is LoginSideEffect.NavigateToRegister -> {
+                    findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
                 }
+                is LoginSideEffect.ShowSnackbar -> requireContext().showSnackBar(
+                    binding.root,
+                    effect.message.asString(requireContext())
+                )
+                else -> Unit
             }
         }
     }

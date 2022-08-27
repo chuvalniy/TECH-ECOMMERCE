@@ -1,5 +1,6 @@
 package com.example.feature_login.presentation.view_model
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
@@ -32,22 +33,12 @@ class LoginViewModel(
 
     override fun onEvent(event: LoginEvent) {
         when (event) {
-            is LoginEvent.AlreadyHaveAccountButtonClicked -> alreadyHaveAccountButtonClicked()
-            is LoginEvent.CreateNewAccountButtonClicked -> createNewAccountButtonClicked()
             is LoginEvent.LoginButtonClicked -> loginButtonClicked()
             is LoginEvent.EmailChanged -> emailChanged(event.email)
             is LoginEvent.PasswordChanged -> passwordChanged(event.password)
             is LoginEvent.RepeatedPasswordChanged -> repeatedPasswordChanged(event.password)
-            is LoginEvent.SubStateChanged -> subStateChanged(event.subState)
+            is LoginEvent.ActionButtonClicked -> actionButtonClicked(event.subState)
         }
-    }
-
-    private fun alreadyHaveAccountButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(LoginSideEffect.NavigateToLogin)
-    }
-
-    private fun createNewAccountButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(LoginSideEffect.NavigateToRegister)
     }
 
     private fun loginButtonClicked(
@@ -65,7 +56,8 @@ class LoginViewModel(
                         userPref.updateId(it)
                         navigateToHome()
                     }
-                }
+                },
+                onLoading = { _state.value = _state.value.copy(isLoading = it) }
             ).launchIn(this)
         }
     }
@@ -82,8 +74,20 @@ class LoginViewModel(
         _state.value = _state.value.copy(repeatedPassword = password)
     }
 
-    private fun subStateChanged(subState: LoginSubState) {
+    private fun actionButtonClicked(subState: LoginSubState) {
         _state.value = _state.value.copy(subState = subState)
+        when (subState) {
+            LoginSubState.Login -> navigateToLogin()
+            LoginSubState.Register -> navigateToRegister()
+        }
+    }
+
+    private fun navigateToRegister() = viewModelScope.launch {
+        _sideEffect.send(LoginSideEffect.NavigateToRegister)
+    }
+
+    private fun navigateToLogin() = viewModelScope.launch {
+        _sideEffect.send(LoginSideEffect.NavigateToLogin)
     }
 
     private fun isValidationSuccessful(): Boolean {
@@ -110,7 +114,7 @@ class LoginViewModel(
                 password = _state.value.password,
                 repeatedPassword = _state.value.repeatedPassword
             )
-            if (!password.successful) {
+            if (!repeatedPassword.successful) {
                 showSnackbar(
                     message = repeatedPassword.errorMessage ?: UiText.StringResource(
                         com.example.ui_component.R.string.unexpected_error

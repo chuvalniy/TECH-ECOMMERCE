@@ -1,6 +1,5 @@
 package com.example.feature_login.data.api
 
-import android.util.Log
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,14 +13,13 @@ interface LoginApi {
 
     class Base(
         private val firebaseAuth: FirebaseAuth,
-        private val firebaseFirestore: FirebaseFirestore
+        private val firebaseFirestore: FirebaseFirestore,
     ) : LoginApi {
 
-        override suspend fun login(email: String, password: String): AuthResult {
+        override suspend fun login(email: String, password: String): AuthResult =
+            firebaseAuth.signInWithEmailAndPassword(email, password).await()
 
-            return firebaseAuth.signInWithEmailAndPassword(email, password).await()
-        }
-
+        // TODO
         override suspend fun register(email: String, password: String): AuthResult {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
 
@@ -38,9 +36,9 @@ interface LoginApi {
 
             return result
         }
-    }
 
-    private companion object {
-        private const val USER_COLLECTION = "users"
+        private companion object {
+            private const val USER_COLLECTION = "users"
+        }
     }
 }

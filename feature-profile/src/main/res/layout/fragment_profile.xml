@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="@dimen/layout_space_24"
-                android:text="@string/shopping_address"
+                android:text="@string/shipping_address"
                 android:textColor="@color/black" />
 
             <ImageButton
@@ -147,7 +147,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/layout_space_24"
                 android:background="@null"
-                android:contentDescription="@string/shopping_address"
+                android:contentDescription="@string/shipping_address"
                 android:src="@drawable/ic_chevron_left"
                 tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.card.MaterialCardView>

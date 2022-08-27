@@ -48,14 +48,18 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
 
         binding.btnGoBack.setOnClickListener { viewModel.onEvent(EditProfileEvent.BackButtonClicked) }
 
+
+        binding.etFirstName.setText(viewModel.user.firstName)
         binding.etFirstName.addTextChangedListener {
             viewModel.onEvent(EditProfileEvent.FirstNameChanged(it.toString()))
         }
 
+        binding.etSecondName.setText(viewModel.user.lastName)
         binding.etSecondName.addTextChangedListener {
             viewModel.onEvent(EditProfileEvent.SecondNameChanged(it.toString()))
         }
 
+        binding.etPhoneNumber.setText(viewModel.user.phoneNumber)
         binding.etPhoneNumber.addTextChangedListener {
             viewModel.onEvent(EditProfileEvent.PhoneNumberChanged(it.toString()))
         }
