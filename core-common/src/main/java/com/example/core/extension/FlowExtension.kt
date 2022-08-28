@@ -15,7 +15,9 @@ inline fun <T> Flow<Resource<T>>.onEachResource(
             result.error
                 ?: UiText.StringResource(com.example.ui_component.R.string.unexpected_error)
         )
-        is Resource.Loading -> onLoading(result.isLoading)
+        is Resource.Loading -> {
+            onLoading(result.isLoading)
+        }
         is Resource.Success -> result.data?.let(onSuccess)
     }
 }

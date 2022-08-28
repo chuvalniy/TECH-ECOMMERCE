@@ -1,6 +1,5 @@
 package com.example.feature_login.presentation.view_model
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.core.extension.onEachResource
 import com.example.core.ui.BaseViewModel
@@ -50,14 +49,16 @@ class LoginViewModel(
 
         viewModelScope.launch {
             login.execute(email, password, subState).onEachResource(
+                onLoading = {
+                    _state.value = _state.value.copy(isLoading = it)
+                },
                 onError = { showSnackbar(it) },
                 onSuccess = { authResult ->
                     authResult.user?.uid?.let {
                         userPref.updateId(it)
                         navigateToHome()
                     }
-                },
-                onLoading = { _state.value = _state.value.copy(isLoading = it) }
+                }
             ).launchIn(this)
         }
     }

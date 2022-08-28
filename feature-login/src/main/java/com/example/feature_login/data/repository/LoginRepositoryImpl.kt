@@ -17,10 +17,9 @@ class LoginRepositoryImpl(
         password: String,
         subState: LoginSubState
     ): Flow<Resource<AuthResult>> = networkBoundResource {
-        when (subState) {
-            LoginSubState.Login -> api.login(email, password)
-            LoginSubState.Register -> api.register(email, password)
-        }
+        if (subState == LoginSubState.Login) api.login(email, password)
+        else api.register(email, password)
     }
 }
+
 

@@ -64,7 +64,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         viewModel.sideEffect.collect { effect ->
             when (effect) {
                 is LoginSideEffect.NavigateToHome -> navigateToHome()
-                is LoginSideEffect.NavigateToLogin -> findNavController().popBackStack()
+                is LoginSideEffect.NavigateToLogin -> {
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                }
                 is LoginSideEffect.ShowSnackbar -> {
                     requireContext().showSnackBar(
                         binding.root,

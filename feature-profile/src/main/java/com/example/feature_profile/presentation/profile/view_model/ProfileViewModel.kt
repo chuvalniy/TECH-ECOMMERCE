@@ -49,7 +49,7 @@ class ProfileViewModel(
     }
 
     private fun editProfileButtonClicked() = viewModelScope.launch {
-        _sideEffect.send(ProfileSideEffect.NavigateToEditProfile(_state.value.data))
+        _state.value.data?.let { _sideEffect.send(ProfileSideEffect.NavigateToEditProfile(it)) }
     }
 
     private fun notificationButtonClicked() = viewModelScope.launch {

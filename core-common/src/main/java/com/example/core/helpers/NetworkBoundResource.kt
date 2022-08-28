@@ -1,6 +1,7 @@
 package com.example.core.helpers
 
 import android.util.Log
+import com.example.core.R
 import com.example.core.ui.UiText
 import com.example.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -51,6 +52,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
 inline fun <T> networkBoundResource(
     crossinline requestCloud: suspend () -> T,
 ): Flow<Resource<T>> = flow {
+    emit(Resource.Loading(isLoading = true))
 
     try {
         val data = requestCloud()
@@ -58,8 +60,8 @@ inline fun <T> networkBoundResource(
     } catch (e: UnknownHostException) {
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.internet_connection_error)))
     } catch (e: Exception) {
-        Log.d("TAGTAG", e.message.toString())
-
         emit(Resource.Error(error = UiText.StringResource(com.example.ui_component.R.string.unexpected_error)))
     }
+
+    emit(Resource.Loading(isLoading = false))
 }
